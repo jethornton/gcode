@@ -106,14 +106,17 @@ def generate(parent):
 
 	# depth loop
 	while currentZ > cutdepth:
+		parent.facePTE.appendPlainText(f'G0 Z{safeZ}')
+
 		plusX = (left + widthX) + radius - cutwidth
 		minusX = left - radius + cutwidth
 		plusY = back + radius - cutwidth
 		minusY = (back - depthY) - radius + cutwidth
+		parent.facePTE.appendPlainText(f'G0 X{minusX  - leadin} Y{plusY}')
+
 		nextZ = currentZ - stepdepth
 		parent.facePTE.appendPlainText(f'G1 Z{nextZ}')
 		currentZ = nextZ
-		parent.facePTE.appendPlainText(f'G0 X{minusX  - leadin} Y{plusY}')
 
 		# path loop
 		for i in range(steps):
