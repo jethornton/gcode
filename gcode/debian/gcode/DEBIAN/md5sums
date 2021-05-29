@@ -1,0 +1,8 @@
+b155e7bd32cd76f582bbe26a9c63a2f7  usr/bin/gcode
+4d6ed6cf16029c0cb0fdb5cf8087168a  usr/lib/libgcode/gcode.ui
+bde6434892ade4fe93c2789aea7c7fce  usr/lib/python3/dist-packages/libgcode/develop.py
+e381f40489697cd6565b3d410754f59d  usr/lib/python3/dist-packages/libgcode/face.py
+702dbfd5c9303088bbf5ce8a9cc73765  usr/share/applications/G code Generator.desktop
+ccc182de4d2d6e0880f24e523a9c388b  usr/share/doc/gcode/changelog.gz
+7639b315a5a9b6ba673cd111a5b1c925  usr/share/doc/gcode/copyright
+bdea003a71565cff6afba55ad204d6b0  usr/share/man/man1/gcode.1.gz

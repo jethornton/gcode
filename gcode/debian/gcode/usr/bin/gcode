@@ -1,0 +1,55 @@
+#!/usr/bin/python3
+
+import sys, os
+from functools import partial
+
+from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
+from PyQt5 import uic
+
+from libgcode import face
+from libgcode import develop
+
+if os.path.split(sys.argv[0])[0] == '/usr/bin':
+	GUI_PATH = '/usr/lib/libgcode'
+	print('Installed')
+	DEVEL = False
+
+if os.path.split(sys.argv[0])[0] == '.':
+	GUI_PATH = os.path.split(os.path.realpath(sys.argv[0]))[0]
+	print('In Development')
+	DEVEL = True
+
+class main(QMainWindow):
+	def __init__(self):
+		super().__init__()
+		uic.loadUi(os.path.join(GUI_PATH, 'gcode.ui'), self)
+		self.setGeometry(50, 50, 500, 300)
+		self.setWindowTitle("G code Generator")
+		self.setupConnections()
+		if DEVEL:
+			develop.face(self)
+			face.generate(self)
+		self.show()
+
+
+	#def mousePressEvent(self, e):
+	#	self.selectAll()      
+
+	def setupConnections(self):
+		self.faceGeneratePB.pressed.connect(partial(face.generate, self))
+		self.faceCopyPB.pressed.connect(partial(face.copy, self))
+		self.faceSavePB.pressed.connect(partial(face.save, self))
+		#self.spindleTypeCB.currentIndexChanged.connect(partial(utilities.spindleTypeChanged, self))
+
+	def errorMsgOk(self, text, title=None):
+		msgBox = QMessageBox()
+		msgBox.setIcon(QMessageBox.Warning)
+		msgBox.setWindowTitle(title)
+		msgBox.setText(text)
+		msgBox.setStandardButtons(QMessageBox.Ok)
+		returnValue = msgBox.exec()
+
+if __name__ == '__main__':
+	app = QApplication(sys.argv)
+	gui = main()
+	sys.exit(app.exec_())

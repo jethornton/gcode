@@ -1,0 +1,4 @@
+src/gcode usr/bin
+src/gcode.ui usr/lib/libgcode
+src/libgcode/*.* usr/lib/python3/dist-packages/libgcode
+*.desktop usr/share/applications

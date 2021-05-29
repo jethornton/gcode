@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=gcode
+Comment=LinuxCNC G code Tool
+Exec=gcode
+Icon=/usr/share/pixmaps/linuxcncicon.png
+Categories=X-CNC;Development
+Terminal=false
+StartupNotify=true
+StartupWMClass=gcode
+Name[en_US]=G code Generator
