@@ -2,7 +2,6 @@
 *.xz
 *.buildinfo
 *.changes
-gcode/src/firmware
 gcode/debian/gcode
 gcode/debian/.debhelper
 gcode/debian/*.substvars
