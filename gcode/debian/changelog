@@ -1,5 +1,6 @@
-gcode (0.0.1) UNRELEASED; urgency=medium
+gcode (0.0.2) unstable; urgency=medium
 
   * Initial release.
+  * Add Facing
 
- -- John Thornton <jt@gnipsel.com>  Sat, 22 May 2021 09:15:50 -0500
+ -- John Thornton <jt@gnipsel.com>  Sun, 30 May 2021 07:44:53 -0500
