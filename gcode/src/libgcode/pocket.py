@@ -2,13 +2,6 @@ import os
 from math import ceil
 from PyQt5.QtWidgets import QMessageBox, QApplication, QFileDialog
 
-def isnumber(i):
-	try:
-		tmp = float(i)
-		return True
-	except:
-		return False
-
 def retnumber(parent, i): # get line edit name then test for number
 	if getattr(parent, i).text():
 		try:
@@ -20,7 +13,6 @@ def retnumber(parent, i): # get line edit name then test for number
 			text = getattr(parent, i).text()
 			print(i)
 			parent.errorMsgOk(f'{name} {text} is not a number', 'Error')
-			#print(f'{parent.faceWidthX.property("name")} is not a number')
 			return False
 
 def generate(parent):
@@ -30,11 +22,11 @@ def generate(parent):
 	direction, include a small radial tool path to keep the cutter moving and
 	constantly engaged
 
-	start X face left - leadin
+	start X pocket left - leadin
 	cutter diamter / 2 is center 
 	1" cutter 0.5" center -0.25" path is for 25%
 	stepover cutter diameter * percent
-	start Y = face rear minus cutter radius + step
+	start Y = pocket rear minus cutter radius + step
 	end X = width X + step * 2
 	G2 arc X position + radius Y position - radius I0 J- radius
 	X 9.5 
@@ -60,22 +52,22 @@ def generate(parent):
 	; second loop last positions - cutwidth
 	8 G2 X0.0 Y0.0 I0.1875 J0.0
 	"""
-	widthX = retnumber(parent, 'faceWidthX')
-	depthY = retnumber(parent, 'faceDepthY')
-	left = retnumber(parent, 'faceLeft')
-	back = retnumber(parent, 'faceRear')
-	top = retnumber(parent, 'faceTop')
-	tool = retnumber(parent, 'faceTool')
-	diam = retnumber(parent, 'faceToolDia')
+	widthX = retnumber(parent, 'pocketWidthX')
+	depthY = retnumber(parent, 'pocketDepthY')
+	left = retnumber(parent, 'pocketLeft')
+	back = retnumber(parent, 'pocketRear')
+	top = retnumber(parent, 'pocketTop')
+	tool = retnumber(parent, 'pocketTool')
+	diam = retnumber(parent, 'pocketToolDia')
 	radius = diam / 2
-	rpm = retnumber(parent, 'faceRPM')
-	feed = retnumber(parent, 'faceFeed')
-	stepPercent = retnumber(parent, 'faceStep') * 0.01
-	safeZ = retnumber(parent, 'faceSafeZ')
-	leadin = retnumber(parent, 'faceLeadIn')
-	cutdepth = -retnumber(parent, 'faceCutDepth')
+	rpm = retnumber(parent, 'pocketRPM')
+	feed = retnumber(parent, 'pocketFeed')
+	stepPercent = retnumber(parent, 'pocketStep') * 0.01
+	safeZ = retnumber(parent, 'pocketSafeZ')
+	leadin = retnumber(parent, 'pocketLeadIn')
+	cutdepth = retnumber(parent, 'pocketCutDepth')
 	#print(cutdepth)
-	stepdepth = retnumber(parent, 'faceStepDepth')
+	stepdepth = retnumber(parent, 'pocketStepDepth')
 
 	step = min(widthX, depthY)
 	cutwidth = diam * stepPercent
@@ -85,68 +77,69 @@ def generate(parent):
 
 	# setup initial path ends
 	# end + radius - cutwidth = path
-	plusX = (left + widthX) + radius - cutwidth
-	minusX = left - radius + cutwidth
-	plusY = back + radius - cutwidth
-	minusY = (back - depthY) - radius + cutwidth
+	plusX = (left + widthX) - radius
+	minusX = left + radius
+	plusY = back - radius
+	minusY = (back - depthY) + radius
 
-	parent.facePTE.clear()
-	parent.facePTE.appendPlainText(f';Face Stock X{left} to X{left + widthX} '
+	parent.pocketPTE.clear()
+	parent.pocketPTE.appendPlainText(f';Pocket Size X{left} to X{left + widthX} '
 		f'Y{back} to Y{back - depthY}')
-	parent.facePTE.appendPlainText(f';Inital Path X{minusX - leadin} '
-		f'Y{plusY} to X{plusX} to Y{minusY} to X{minusX} to Y{plusY - cutwidth}')
-	parent.facePTE.appendPlainText(f'G0 Z{safeZ}')
+	parent.pocketPTE.appendPlainText(f';Inital Path X{minusX} '
+		f'Y{plusY} to X{plusX} to Y{minusY} to X{minusX} to Y{plusY}')
+	parent.pocketPTE.appendPlainText(f'G0 Z{safeZ}')
 
 	if tool:
-		parent.facePTE.appendPlainText(f'T{int(tool)} M6 G43')
-	parent.facePTE.appendPlainText(f'G0 X{minusX  - leadin} Y{plusY}')
-	parent.facePTE.appendPlainText(f'M3 S{rpm} F{feed}')
+		parent.pocketPTE.appendPlainText(f'T{int(tool)} M6 G43')
+	parent.pocketPTE.appendPlainText(f'G0 X{minusX  - leadin} Y{plusY}')
+	parent.pocketPTE.appendPlainText(f'M3 S{rpm} F{feed}')
 	# raise top to make even number of full depth cuts if not even
 	depthPasses = ceil(cutdepth / stepdepth)
 	parent.pocketPTE.appendPlainText(f';Steps {depthPasses}')
 	top = round((depthPasses * stepdepth) - cutdepth, 4)
 	parent.pocketPTE.appendPlainText(f';Top {top}')
+	return
 	currentZ = top
 
 	# depth loop
 	while currentZ > cutdepth:
-		parent.facePTE.appendPlainText(f'G0 Z{safeZ}')
+		parent.pocketPTE.appendPlainText(f'G0 Z{safeZ}')
 
 		plusX = (left + widthX) + radius - cutwidth
 		minusX = left - radius + cutwidth
 		plusY = back + radius - cutwidth
 		minusY = (back - depthY) - radius + cutwidth
-		parent.facePTE.appendPlainText(f'G0 X{minusX  - leadin} Y{plusY}')
+		parent.pocketPTE.appendPlainText(f'G0 X{minusX  - leadin} Y{plusY}')
 
 		nextZ = currentZ - stepdepth
-		parent.facePTE.appendPlainText(f'G1 Z{nextZ}')
+		parent.pocketPTE.appendPlainText(f'G1 Z{nextZ}')
 		currentZ = nextZ
 
 		# path loop
 		for i in range(steps):
-			parent.facePTE.appendPlainText(f'G1 X{plusX - cutwidth} Y{plusY}')
+			parent.pocketPTE.appendPlainText(f'G1 X{plusX - cutwidth} Y{plusY}')
 			plusY = plusY - cutwidth
-			parent.facePTE.appendPlainText(f'G2 X{plusX} Y{plusY} I0.0 J-{cutwidth}')
-			parent.facePTE.appendPlainText(f'G1 X{plusX} Y{minusY + cutwidth}')
+			parent.pocketPTE.appendPlainText(f'G2 X{plusX} Y{plusY} I0.0 J-{cutwidth}')
+			parent.pocketPTE.appendPlainText(f'G1 X{plusX} Y{minusY + cutwidth}')
 			plusX = plusX - cutwidth
-			parent.facePTE.appendPlainText(f'G2 X{plusX} Y{minusY} I-{cutwidth} J0.0')
-			parent.facePTE.appendPlainText(f'G1 X{minusX + cutwidth} Y{minusY}')
+			parent.pocketPTE.appendPlainText(f'G2 X{plusX} Y{minusY} I-{cutwidth} J0.0')
+			parent.pocketPTE.appendPlainText(f'G1 X{minusX + cutwidth} Y{minusY}')
 			minusY = minusY + cutwidth
 			w = plusX - minusX
 			d = plusY - minusY
 			if d <= 0.0 or w <= 0.0: break
-			parent.facePTE.appendPlainText(f'G2 X{minusX} Y{minusY} I0.0 J{cutwidth}')
-			parent.facePTE.appendPlainText(f'G1 X{minusX} Y{plusY - cutwidth}')
+			parent.pocketPTE.appendPlainText(f'G2 X{minusX} Y{minusY} I0.0 J{cutwidth}')
+			parent.pocketPTE.appendPlainText(f'G1 X{minusX} Y{plusY - cutwidth}')
 			minusX = minusX + cutwidth
-			parent.facePTE.appendPlainText(f'G2 X{minusX} Y{plusY} I{cutwidth} J0.0')
-		parent.facePTE.appendPlainText(f'G0 Z{safeZ}')
-	parent.facePTE.appendPlainText('M2')
+			parent.pocketPTE.appendPlainText(f'G2 X{minusX} Y{plusY} I{cutwidth} J0.0')
+		parent.pocketPTE.appendPlainText(f'G0 Z{safeZ}')
+	parent.pocketPTE.appendPlainText('M2')
 
-	# parent.facePTE.appendPlainText(f'{}')
+	# parent.pocketPTE.appendPlainText(f'{}')
 
 def copy(parent):
 	qclip = QApplication.clipboard()
-	qclip.setText(parent.facePTE.toPlainText())
+	qclip.setText(parent.pocketPTE.toPlainText())
 	parent.statusbar.showMessage('G code copied to clipboard')
 
 def save(parent):
@@ -158,4 +151,4 @@ def save(parent):
 	filter="All Files (*);;G Code Files (*.ngc)", options=options)
 	if fileName:
 		with open(fileName, 'w') as f:
-			f.writelines(parent.facePTE.toPlainText())
+			f.writelines(parent.pocketPTE.toPlainText())

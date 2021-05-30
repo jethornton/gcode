@@ -7,6 +7,11 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
 from PyQt5 import uic
 
 from libgcode import face
+from libgcode import grid
+from libgcode import hole
+from libgcode import pocket
+from libgcode import tap
+from libgcode import thread
 from libgcode import develop
 
 if os.path.split(sys.argv[0])[0] == '/usr/bin':
@@ -29,6 +34,8 @@ class main(QMainWindow):
 		if DEVEL:
 			develop.face(self)
 			face.generate(self)
+			#develop.pocket(self)
+			#pocket.generate(self)
 		self.show()
 
 
