@@ -140,6 +140,8 @@ def generate(parent):
 			minusX = minusX + cutwidth
 			parent.facePTE.appendPlainText(f'G2 X{minusX} Y{plusY} I{cutwidth} J0.0')
 		parent.facePTE.appendPlainText(f'G0 Z{safeZ}')
+	if parent.returnX0Y0CB.isChecked():
+		parent.facePTE.appendPlainText(f'G0 X0 Y0')
 	parent.facePTE.appendPlainText('M2')
 
 	# parent.facePTE.appendPlainText(f'{}')

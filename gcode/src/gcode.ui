@@ -380,6 +380,13 @@
            <item row="0" column="1">
             <widget class="QLineEdit" name="faceSafeZ"/>
            </item>
+           <item row="6" column="1">
+            <widget class="QCheckBox" name="returnX0Y0CB">
+             <property name="text">
+              <string>Return to X0 Y0</string>
+             </property>
+            </widget>
+           </item>
           </layout>
          </widget>
         </item>
