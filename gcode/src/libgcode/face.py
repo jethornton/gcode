@@ -95,6 +95,9 @@ def generate(parent):
 		f'Y{back} to Y{back - depthY}')
 	parent.facePTE.appendPlainText(f';Inital Path X{minusX - leadin} '
 		f'Y{plusY} to X{plusX} to Y{minusY} to X{minusX} to Y{plusY - cutwidth}')
+	parent.facePTE.appendPlainText(f'{self.unitsBG.checkedButton().property("units")}')
+	#parent.facePTE.appendPlainText(f'{}')
+
 	parent.facePTE.appendPlainText(f'G0 Z{safeZ}')
 
 	if tool:

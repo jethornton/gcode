@@ -87,6 +87,7 @@ def generate(parent):
 		f'Y{back} to Y{back - depthY}')
 	parent.pocketPTE.appendPlainText(f';Inital Path X{minusX} '
 		f'Y{plusY} to X{plusX} to Y{minusY} to X{minusX} to Y{plusY}')
+	parent.facePTE.appendPlainText(f'{self.unitsBG.checkedButton().property("units")}')
 	parent.pocketPTE.appendPlainText(f'G0 Z{safeZ}')
 
 	if tool:
