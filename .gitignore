@@ -1,5 +1,6 @@
 *.dsc
 *.xz
+*.gz
 *.buildinfo
 *.changes
 gcode/debian/gcode
