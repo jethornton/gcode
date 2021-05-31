@@ -73,9 +73,8 @@ def generate(parent):
 	stepPercent = retnumber(parent, 'faceStep') * 0.01
 	safeZ = retnumber(parent, 'faceSafeZ')
 	leadin = retnumber(parent, 'faceLeadIn')
-	cutdepth = -retnumber(parent, 'faceCutDepth')
-	#print(cutdepth)
-	stepdepth = retnumber(parent, 'faceStepDepth')
+	cutdepth = retnumber(parent, 'faceCutDepth')
+	stepdepth = abs(retnumber(parent, 'faceStepDepth'))
 
 	step = min(widthX, depthY)
 	cutwidth = diam * stepPercent
@@ -95,8 +94,8 @@ def generate(parent):
 		f'Y{back} to Y{back - depthY}')
 	parent.facePTE.appendPlainText(f';Inital Path X{minusX - leadin} '
 		f'Y{plusY} to X{plusX} to Y{minusY} to X{minusX} to Y{plusY - cutwidth}')
-	parent.facePTE.appendPlainText(f'{self.unitsBG.checkedButton().property("units")}')
-	#parent.facePTE.appendPlainText(f'{}')
+	parent.facePTE.appendPlainText(f'{parent.unitsBG.checkedButton().property("units")}')
+	parent.facePTE.appendPlainText(f'{parent.preambleLE.text()}')
 
 	parent.facePTE.appendPlainText(f'G0 Z{safeZ}')
 

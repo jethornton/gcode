@@ -12,6 +12,7 @@ from libgcode import hole
 from libgcode import pocket
 from libgcode import tap
 from libgcode import thread
+from libgcode import utilities
 from libgcode import develop
 
 if os.path.split(sys.argv[0])[0] == '/usr/bin':
@@ -31,7 +32,9 @@ class main(QMainWindow):
 		self.setGeometry(50, 50, 500, 300)
 		self.setWindowTitle("G code Generator")
 		self.setupConnections()
+		utilities.getSettings(self)
 		if DEVEL:
+			pass
 			develop.face(self)
 			face.generate(self)
 			#develop.pocket(self)
@@ -43,6 +46,7 @@ class main(QMainWindow):
 	#	self.selectAll()      
 
 	def setupConnections(self):
+		self.savePreamblePB.pressed.connect(partial(utilities.saveSettings, self))
 		self.faceGeneratePB.pressed.connect(partial(face.generate, self))
 		self.faceCopyPB.pressed.connect(partial(face.copy, self))
 		self.faceSavePB.pressed.connect(partial(face.save, self))
