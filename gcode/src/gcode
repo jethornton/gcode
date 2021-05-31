@@ -35,8 +35,8 @@ class main(QMainWindow):
 		utilities.getSettings(self)
 		if DEVEL:
 			pass
-			develop.face(self)
-			face.generate(self)
+			#develop.face(self)
+			#face.generate(self)
 			#develop.pocket(self)
 			#pocket.generate(self)
 		self.show()
