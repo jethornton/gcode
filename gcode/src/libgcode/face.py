@@ -101,7 +101,6 @@ def generate(parent):
 
 	if tool:
 		parent.facePTE.appendPlainText(f'T{int(tool)} M6 G43')
-	parent.facePTE.appendPlainText(f'G0 X{minusX  - leadin} Y{plusY}')
 	parent.facePTE.appendPlainText(f'M3 S{rpm} F{feed}')
 	# raise top to make even number of full depth cuts if not even
 	depthPasses = ceil(cutdepth / stepdepth)
@@ -112,36 +111,36 @@ def generate(parent):
 
 	# depth loop
 	while currentZ > cutdepth:
-		parent.facePTE.appendPlainText(f'G0 Z{safeZ}')
+		parent.facePTE.appendPlainText(f'G0 Z{safeZ:.4f}')
 
 		plusX = (left + widthX) + radius - cutwidth
 		minusX = left - radius + cutwidth
 		plusY = back + radius - cutwidth
 		minusY = (back - depthY) - radius + cutwidth
-		parent.facePTE.appendPlainText(f'G0 X{minusX  - leadin} Y{plusY}')
+		parent.facePTE.appendPlainText(f'G0 X{minusX  - leadin:.4f} Y{plusY:.4f}')
 
 		nextZ = currentZ - stepdepth
-		parent.facePTE.appendPlainText(f'G1 Z{nextZ}')
+		parent.facePTE.appendPlainText(f'G1 Z{nextZ:.4f}')
 		currentZ = nextZ
 
 		# path loop
 		for i in range(steps):
-			parent.facePTE.appendPlainText(f'G1 X{plusX - cutwidth} Y{plusY}')
+			parent.facePTE.appendPlainText(f'G1 X{plusX - cutwidth:.4f} Y{plusY:.4f}')
 			plusY = plusY - cutwidth
-			parent.facePTE.appendPlainText(f'G2 X{plusX} Y{plusY} I0.0 J-{cutwidth}')
-			parent.facePTE.appendPlainText(f'G1 X{plusX} Y{minusY + cutwidth}')
+			parent.facePTE.appendPlainText(f'G2 X{plusX:.4f} Y{plusY:.4f} I0.0 J-{cutwidth:.4f}')
+			parent.facePTE.appendPlainText(f'G1 X{plusX:.4f} Y{minusY + cutwidth:.4f}')
 			plusX = plusX - cutwidth
-			parent.facePTE.appendPlainText(f'G2 X{plusX} Y{minusY} I-{cutwidth} J0.0')
-			parent.facePTE.appendPlainText(f'G1 X{minusX + cutwidth} Y{minusY}')
+			parent.facePTE.appendPlainText(f'G2 X{plusX:.4f} Y{minusY:.4f} I-{cutwidth:.4f} J0.0')
+			parent.facePTE.appendPlainText(f'G1 X{minusX + cutwidth:.4f} Y{minusY:.4f}')
 			minusY = minusY + cutwidth
 			w = plusX - minusX
 			d = plusY - minusY
 			if d <= 0.0 or w <= 0.0: break
-			parent.facePTE.appendPlainText(f'G2 X{minusX} Y{minusY} I0.0 J{cutwidth}')
-			parent.facePTE.appendPlainText(f'G1 X{minusX} Y{plusY - cutwidth}')
+			parent.facePTE.appendPlainText(f'G2 X{minusX:.4f} Y{minusY:.4f} I0.0 J{cutwidth:.4f}')
+			parent.facePTE.appendPlainText(f'G1 X{minusX:.4f} Y{plusY - cutwidth:.4f}')
 			minusX = minusX + cutwidth
-			parent.facePTE.appendPlainText(f'G2 X{minusX} Y{plusY} I{cutwidth} J0.0')
-		parent.facePTE.appendPlainText(f'G0 Z{safeZ}')
+			parent.facePTE.appendPlainText(f'G2 X{minusX:.4f} Y{plusY:.4f} I{cutwidth:.4f} J0.0')
+		parent.facePTE.appendPlainText(f'G0 Z{safeZ:.4f}')
 	if parent.returnX0Y0CB.isChecked():
 		parent.facePTE.appendPlainText(f'G0 X0 Y0')
 	parent.facePTE.appendPlainText('M2')

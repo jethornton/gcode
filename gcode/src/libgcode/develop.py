@@ -5,14 +5,14 @@ def face(parent):
 	parent.faceLeft.setText('0')
 	parent.faceRear.setText('0')
 	parent.faceTop.setText('0')
-	parent.faceTool.setText('5')
+	parent.faceTool.setText('6')
 	parent.faceToolDia.setText('1.0')
 	parent.faceRPM.setText('1800')
 	parent.faceFeed.setText('50')
 	parent.faceStep.setText('75')
 	parent.faceSafeZ.setText('0.75')
 	parent.faceLeadIn.setText('.5')
-	parent.faceCutDepth.setText('.5')
+	parent.faceCutDepth.setText('-.5')
 	parent.faceStepDepth.setText('.125')
 
 def pocket(parent):
