@@ -33,12 +33,13 @@ class main(QMainWindow):
 		self.setWindowTitle("G code Generator")
 		self.setupConnections()
 		utilities.getSettings(self)
+		self.devel = False
 		if DEVEL:
-			pass
+			self.devel = True
 			#develop.face(self)
 			#face.generate(self)
-			#develop.pocket(self)
-			#pocket.generate(self)
+			develop.pocket(self)
+			pocket.generate(self)
 		self.show()
 
 
@@ -50,7 +51,10 @@ class main(QMainWindow):
 		self.faceGeneratePB.pressed.connect(partial(face.generate, self))
 		self.faceCopyPB.pressed.connect(partial(face.copy, self))
 		self.faceSavePB.pressed.connect(partial(face.save, self))
-		#self.spindleTypeCB.currentIndexChanged.connect(partial(utilities.spindleTypeChanged, self))
+		self.pocketGeneratePB.pressed.connect(partial(pocket.generate, self))
+		self.pocketCopyPB.pressed.connect(partial(pocket.copy, self))
+		self.pocketSavePB.pressed.connect(partial(pocket.save, self))
+		self.pocketExitPB.pressed.connect(self.close)
 
 	def errorMsgOk(self, text, title=None):
 		msgBox = QMessageBox()

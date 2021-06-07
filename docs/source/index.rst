@@ -17,11 +17,3 @@ G code Generator's
    grid
    tap
    thread
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
