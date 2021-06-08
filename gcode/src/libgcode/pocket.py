@@ -43,8 +43,8 @@ def generate(parent):
 	parent.pocketPTE.appendPlainText(f';Pocket Size X{left} to X{left + widthX} '
 		f'Y{back} to Y{back - depthY}')
 
-	parent.facePTE.appendPlainText(f'{parent.unitsBG.checkedButton().property("units")}')
-	parent.facePTE.appendPlainText(f'{parent.preambleLE.text()}')
+	parent.pocketPTE.appendPlainText(f'{parent.unitsBG.checkedButton().property("units")}')
+	parent.pocketPTE.appendPlainText(f'{parent.preambleLE.text()}')
 
 	if tool:
 		parent.pocketPTE.appendPlainText(f'T{int(tool)} M6 G43')
