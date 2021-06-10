@@ -9,3 +9,4 @@ gcode/debian/*.substvars
 gcode/debian/files
 gcode/debian/debhelper*
 docs/build
+info
