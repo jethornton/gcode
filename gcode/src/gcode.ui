@@ -52,7 +52,7 @@
          <item row="0" column="0">
           <widget class="QRadioButton" name="inchRB">
            <property name="text">
-            <string>Inches</string>
+            <string>Imperial</string>
            </property>
            <property name="checked">
             <bool>true</bool>
@@ -68,7 +68,7 @@
          <item row="1" column="0">
           <widget class="QRadioButton" name="mmRB">
            <property name="text">
-            <string>Millimeters</string>
+            <string>Metric</string>
            </property>
            <property name="units" stdset="0">
             <string>G21</string>
@@ -840,6 +840,193 @@
         <string>Thread Milling</string>
        </attribute>
       </widget>
+      <widget class="QWidget" name="tab_8">
+       <attribute name="title">
+        <string>Drill Charts</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_13">
+        <item row="5" column="0">
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="1" column="0">
+         <widget class="QGroupBox" name="groupBox_7">
+          <property name="title">
+           <string>Material</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_12">
+           <item row="4" column="0">
+            <widget class="QRadioButton" name="drillMildSteelRB">
+             <property name="text">
+              <string>Mild Steel</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">drillMaterialBG</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QRadioButton" name="drillBronzeRB">
+             <property name="text">
+              <string>Bronze</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">drillMaterialBG</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QRadioButton" name="drillCastIronRB">
+             <property name="text">
+              <string>Cast Iron</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">drillMaterialBG</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QRadioButton" name="drillAluminumRB">
+             <property name="text">
+              <string>Aluminum</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">drillMaterialBG</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QRadioButton" name="drillBrassRB">
+             <property name="text">
+              <string>Brass</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">drillMaterialBG</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <widget class="QRadioButton" name="drillToolSteelRB">
+             <property name="text">
+              <string>Tool Steel</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">drillMaterialBG</string>
+             </attribute>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QGroupBox" name="groupBox_9">
+          <property name="title">
+           <string>Units</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_14">
+           <item row="0" column="0">
+            <widget class="QRadioButton" name="drillImperialRB">
+             <property name="text">
+              <string>Imperial</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">drillUnitsBG</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QRadioButton" name="drillMetricRB">
+             <property name="text">
+              <string>Metric</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">drillUnitsBG</string>
+             </attribute>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="1" rowspan="6">
+         <widget class="QPlainTextEdit" name="drillPTE">
+          <property name="font">
+           <font>
+            <family>BPG Courier S GPL&amp;GNU</family>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QGroupBox" name="drillsfmGB">
+          <property name="title">
+           <string>SFM</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_15">
+           <item row="0" column="0">
+            <widget class="QLabel" name="drillSfmLb">
+             <property name="text">
+              <string>TextLabel</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QScrollBar" name="drillSfmSB">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QGroupBox" name="groupBox_11">
+          <property name="title">
+           <string>IPR Offset</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_16">
+           <item row="1" column="0">
+            <widget class="QScrollBar" name="drilliprSB">
+             <property name="minimum">
+              <number>-1</number>
+             </property>
+             <property name="maximum">
+              <number>1</number>
+             </property>
+             <property name="pageStep">
+              <number>1</number>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="drilliprLb">
+             <property name="text">
+              <string>TextLabel</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -875,5 +1062,7 @@
  <connections/>
  <buttongroups>
   <buttongroup name="unitsBG"/>
+  <buttongroup name="drillUnitsBG"/>
+  <buttongroup name="drillMaterialBG"/>
  </buttongroups>
 </ui>

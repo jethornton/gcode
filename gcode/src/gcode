@@ -10,6 +10,7 @@ from libgcode import face
 from libgcode import grid
 from libgcode import hole
 from libgcode import pocket
+from libgcode import drill
 from libgcode import tap
 from libgcode import thread
 from libgcode import utilities
@@ -38,8 +39,8 @@ class main(QMainWindow):
 			self.devel = True
 			#develop.face(self)
 			#face.generate(self)
-			develop.pocket(self)
-			pocket.generate(self)
+			#develop.pocket(self)
+			#pocket.generate(self)
 		self.show()
 
 
@@ -54,6 +55,11 @@ class main(QMainWindow):
 		self.pocketGeneratePB.pressed.connect(partial(pocket.generate, self))
 		self.pocketCopyPB.pressed.connect(partial(pocket.copy, self))
 		self.pocketSavePB.pressed.connect(partial(pocket.save, self))
+		self.drillUnitsBG.buttonClicked.connect(partial(drill.update, self))
+		self.drillMaterialBG.buttonClicked.connect(partial(drill.update, self))
+		self.drillSfmSB.sliderReleased.connect(partial(drill.populate, self))
+		self.drillSfmSB.valueChanged.connect(partial(drill.sfmupdate, self))
+		self.drilliprSB.valueChanged.connect(partial(drill.populate, self))
 		self.pocketExitPB.pressed.connect(self.close)
 
 	def errorMsgOk(self, text, title=None):
