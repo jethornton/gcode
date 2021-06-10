@@ -28,23 +28,23 @@ def update(parent):
 	if units == 'Metric':
 		parent.drillsfmGB.setTitle('SMM')
 		if material == 'Aluminum':
-			parent.drillPTE.clear()
-			parent.drillPTE.appendPlainText('Metric Not Programmed Yet')
+			setslider(parent, 30, 90)
+			populate(parent)
 		elif material == 'Brass':
-			parent.drillPTE.clear()
-			parent.drillPTE.appendPlainText('Metric Not Programmed Yet')
+			setslider(parent, 45, 90)
+			populate(parent)
 		elif material == 'Bronze':
-			parent.drillPTE.clear()
-			parent.drillPTE.appendPlainText('Metric Not Programmed Yet')
+			setslider(parent, 21, 45)
+			populate(parent)
 		elif material == 'Cast Iron':
-			parent.drillPTE.clear()
-			parent.drillPTE.appendPlainText('Metric Not Programmed Yet')
+			setslider(parent, 15, 30)
+			populate(parent)
 		elif material == 'Mild Steel':
-			parent.drillPTE.clear()
-			parent.drillPTE.appendPlainText('Metric Not Programmed Yet')
+			setslider(parent, 24, 33)
+			populate(parent)
 		elif material == 'Tool Steel':
-			parent.drillPTE.clear()
-			parent.drillPTE.appendPlainText('Metric Not Programmed Yet')
+			setslider(parent, 15, 18)
+			populate(parent)
 
 def setslider(parent, low, high):
 	parent.drillSfmSB.setMinimum(low)
@@ -55,11 +55,39 @@ def sfmupdate(parent):
 	parent.drillSfmLb.setText(str(parent.drillSfmSB.value()))
 
 def populate(parent):
+	units = parent.drillUnitsBG.checkedButton().text()
 	parent.drillPTE.clear()
-	dia = 0.0
-	for i in range(16):
-		dia = dia + 0.0625
-		rpm = int((3.8197 / dia) * parent.drillSfmSB.value())
-		ipr = ((dia / 0.0625) * 0.001) + (parent.drilliprSB.value() * 0.001)
-		ipm = ipr * rpm
-		parent.drillPTE.appendPlainText(f'{dia} \t RPM {rpm:,} \t IPM {ipm:.1f}')
+
+	if units == 'Imperial':
+		# drillDepthBG
+		# drill2xDiam
+		# drill3xDiam
+		# drill4xDiam
+		dia = 0.0
+		for i in range(16):
+			dia = dia + 0.0625
+			rpm = int((3.8197 / dia) * parent.drillSfmSB.value())
+			ipr = ((dia / 0.0625) * 0.001) + (parent.drilliprSB.value() * 0.001)
+			ipm = ipr * rpm
+			if parent.drill3xDiam.isChecked():
+				rpm = int(rpm * 0.8)
+				ipm = ipm * 0.8
+			if parent.drill4xDiam.isChecked():
+				rpm = int(rpm * 0.6)
+				ipm = ipm * 0.6
+			parent.drillPTE.appendPlainText(f'{dia} \t RPM {rpm:,} \t IPM {ipm:.1f}')
+	elif units == 'Metric':
+		dia = 0
+		for i in range(25):
+			dia = dia + 1
+			rpm = int((1000 * parent.drillSfmSB.value()) / (3.14 * dia))
+			ipr = ((dia / 0.0625) * 0.001) + (parent.drilliprSB.value() * 0.001)
+			ipm = ipr * rpm
+			if parent.drill3xDiam.isChecked():
+				rpm = int(rpm * 0.8)
+				ipm = ipm * 0.8
+			if parent.drill4xDiam.isChecked():
+				rpm = int(rpm * 0.6)
+				ipm = ipm * 0.6
+			parent.drillPTE.appendPlainText(f'{dia} \t RPM {rpm:,} \t MPM {ipm:.1f}')
+

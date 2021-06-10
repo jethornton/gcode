@@ -1025,6 +1025,48 @@
           </layout>
          </widget>
         </item>
+        <item row="4" column="0">
+         <widget class="QGroupBox" name="groupBox_10">
+          <property name="title">
+           <string>Hole Depth</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_17">
+           <item row="1" column="0">
+            <widget class="QRadioButton" name="drill3xDiam">
+             <property name="text">
+              <string>&gt;2 &lt;=4 x Diam</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">drillDepthBG</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QRadioButton" name="drill2xDiam">
+             <property name="text">
+              <string>&lt;=2 x Diam</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">drillDepthBG</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QRadioButton" name="drill4xDiam">
+             <property name="text">
+              <string>&gt;4 x Diam</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">drillDepthBG</string>
+             </attribute>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
        </layout>
       </widget>
      </widget>
@@ -1061,8 +1103,9 @@
  <resources/>
  <connections/>
  <buttongroups>
+  <buttongroup name="drillMaterialBG"/>
   <buttongroup name="unitsBG"/>
   <buttongroup name="drillUnitsBG"/>
-  <buttongroup name="drillMaterialBG"/>
+  <buttongroup name="drillDepthBG"/>
  </buttongroups>
 </ui>

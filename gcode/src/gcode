@@ -57,6 +57,7 @@ class main(QMainWindow):
 		self.pocketSavePB.pressed.connect(partial(pocket.save, self))
 		self.drillUnitsBG.buttonClicked.connect(partial(drill.update, self))
 		self.drillMaterialBG.buttonClicked.connect(partial(drill.update, self))
+		self.drillDepthBG.buttonClicked.connect(partial(drill.populate, self))
 		self.drillSfmSB.sliderReleased.connect(partial(drill.populate, self))
 		self.drillSfmSB.valueChanged.connect(partial(drill.sfmupdate, self))
 		self.drilliprSB.valueChanged.connect(partial(drill.populate, self))
