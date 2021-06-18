@@ -5,12 +5,14 @@ from functools import partial
 
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
 from PyQt5 import uic
+from PyQt5.QtSql import QSqlDatabase
+
 
 from libgcode import face
 from libgcode import grid
 from libgcode import hole
 from libgcode import pocket
-from libgcode import drill
+from libgcode import drillchart
 from libgcode import tap
 from libgcode import thread
 from libgcode import utilities
@@ -34,6 +36,12 @@ class main(QMainWindow):
 		self.setWindowTitle("G code Generator")
 		self.setupConnections()
 		utilities.getSettings(self)
+		db = QSqlDatabase.addDatabase('QSQLITE')
+		db.setDatabaseName(GUI_PATH + 'threads.db')
+		if db.open():
+			print("Connection success !")
+		else:
+			print("Connection failed !\n{}".format(db.lastError().text()))
 		self.devel = False
 		if DEVEL:
 			self.devel = True
@@ -55,13 +63,13 @@ class main(QMainWindow):
 		self.pocketGeneratePB.pressed.connect(partial(pocket.generate, self))
 		self.pocketCopyPB.pressed.connect(partial(pocket.copy, self))
 		self.pocketSavePB.pressed.connect(partial(pocket.save, self))
-		self.drillUnitsBG.buttonClicked.connect(partial(drill.update, self))
-		self.drillMaterialBG.buttonClicked.connect(partial(drill.update, self))
-		self.drillDepthBG.buttonClicked.connect(partial(drill.populate, self))
-		self.drillSfmSB.sliderReleased.connect(partial(drill.populate, self))
-		self.drillSfmSB.valueChanged.connect(partial(drill.sfmupdate, self))
-		self.drilliprSB.valueChanged.connect(partial(drill.populate, self))
+		self.drillUnitsBG.buttonClicked.connect(partial(drillchart.update, self))
+		self.drillMaterialBG.buttonClicked.connect(partial(drillchart.update, self))
+		self.drillDepthBG.buttonClicked.connect(partial(drillchart.populate, self))
+		self.drillSfmSB.valueChanged.connect(partial(drillchart.populate, self))
+		self.drilliprSB.valueChanged.connect(partial(drillchart.populate, self))
 		self.pocketExitPB.pressed.connect(self.close)
+		self.drillSelectPB.pressed.connect(partial(hole.drill, self))
 
 	def errorMsgOk(self, text, title=None):
 		msgBox = QMessageBox()

@@ -824,6 +824,302 @@
        <attribute name="title">
         <string>Holes</string>
        </attribute>
+       <layout class="QGridLayout" name="gridLayout_18">
+        <item row="0" column="0">
+         <widget class="QTabWidget" name="tabWidget_2">
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="tab_9">
+           <attribute name="title">
+            <string>Spot Drill</string>
+           </attribute>
+           <widget class="QLabel" name="label_34">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>10</y>
+              <width>401</width>
+              <height>101</height>
+             </rect>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
+            <property name="text">
+             <string>Drilling uses the G81 Canned Cycle
+If the current Z position is below the Z Retract position,
+at the start of the cycle the Z axis does a rapid move
+to the Z Retract position prior to starting the cycle.</string>
+            </property>
+            <property name="textFormat">
+             <enum>Qt::PlainText</enum>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+            </property>
+           </widget>
+           <widget class="QGroupBox" name="groupBox_12">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>120</y>
+              <width>171</width>
+              <height>203</height>
+             </rect>
+            </property>
+            <property name="title">
+             <string>Spot Drill</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_19">
+             <item row="2" column="1" colspan="2">
+              <widget class="QLineEdit" name="lineEdit_3"/>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_42">
+               <property name="text">
+                <string>Feed</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1" colspan="2">
+              <widget class="QLineEdit" name="lineEdit_2"/>
+             </item>
+             <item row="0" column="1" colspan="2">
+              <widget class="QLineEdit" name="lineEdit"/>
+             </item>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_41">
+               <property name="text">
+                <string>Tool #</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_40">
+               <property name="text">
+                <string>Depth</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_39">
+               <property name="text">
+                <string>RPM</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1" colspan="2">
+              <widget class="QLineEdit" name="lineEdit_4"/>
+             </item>
+             <item row="4" column="0" colspan="3">
+              <widget class="QPushButton" name="pushButton">
+               <property name="text">
+                <string>Use Selected Data</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QGroupBox" name="groupBox_13">
+            <property name="geometry">
+             <rect>
+              <x>200</x>
+              <y>120</y>
+              <width>171</width>
+              <height>203</height>
+             </rect>
+            </property>
+            <property name="title">
+             <string>Drilling</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_20">
+             <item row="2" column="1" colspan="2">
+              <widget class="QLineEdit" name="drillDepthLE"/>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_46">
+               <property name="text">
+                <string>Feed</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1" colspan="2">
+              <widget class="QLineEdit" name="drillRpmLE"/>
+             </item>
+             <item row="0" column="1" colspan="2">
+              <widget class="QLineEdit" name="drillToolLE"/>
+             </item>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_45">
+               <property name="text">
+                <string>Tool #</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_44">
+               <property name="text">
+                <string>Depth</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_43">
+               <property name="text">
+                <string>RPM</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1" colspan="2">
+              <widget class="QLineEdit" name="drillFeedLE"/>
+             </item>
+             <item row="4" column="0" colspan="3">
+              <widget class="QPushButton" name="drillSelectPB">
+               <property name="text">
+                <string>Use Selected Data</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+          <widget class="QWidget" name="tab_10">
+           <attribute name="title">
+            <string>Drill</string>
+           </attribute>
+           <widget class="QLabel" name="label_35">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>10</y>
+              <width>401</width>
+              <height>156</height>
+             </rect>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
+            <property name="text">
+             <string>Drill uses the G81 Canned Cycle
+If the current Z position is below the Z Retract position,
+at the start of the cycle the Z axis does a rapid move
+to the Z Retract position prior to starting the cycle.</string>
+            </property>
+            <property name="textFormat">
+             <enum>Qt::PlainText</enum>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+            </property>
+           </widget>
+          </widget>
+          <widget class="QWidget" name="tab_11">
+           <attribute name="title">
+            <string>Chamfer</string>
+           </attribute>
+           <widget class="QLabel" name="label_36">
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>10</y>
+              <width>401</width>
+              <height>156</height>
+             </rect>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
+            <property name="text">
+             <string>Chamfer uses the G81 Canned Cycle
+If the current Z position is below the Z Retract position,
+at the start of the cycle the Z axis does a rapid move
+to the Z Retract position prior to starting the cycle.</string>
+            </property>
+            <property name="textFormat">
+             <enum>Qt::PlainText</enum>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+            </property>
+           </widget>
+          </widget>
+          <widget class="QWidget" name="tab_12">
+           <attribute name="title">
+            <string>Ream</string>
+           </attribute>
+           <widget class="QLabel" name="label_37">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>10</y>
+              <width>401</width>
+              <height>156</height>
+             </rect>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
+            <property name="text">
+             <string>Ream uses the G81 Canned Cycle
+If the current Z position is below the Z Retract position,
+at the start of the cycle the Z axis does a rapid move
+to the Z Retract position prior to starting the cycle.</string>
+            </property>
+            <property name="textFormat">
+             <enum>Qt::PlainText</enum>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+            </property>
+           </widget>
+          </widget>
+          <widget class="QWidget" name="tab_13">
+           <attribute name="title">
+            <string>Tap</string>
+           </attribute>
+           <widget class="QLabel" name="label_38">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>10</y>
+              <width>401</width>
+              <height>156</height>
+             </rect>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::Box</enum>
+            </property>
+            <property name="text">
+             <string>Rigid Tapping uses  G33.1 
+Position move then G33.1 for each hole.</string>
+            </property>
+            <property name="textFormat">
+             <enum>Qt::PlainText</enum>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+            </property>
+           </widget>
+          </widget>
+          <widget class="QWidget" name="tab_14">
+           <attribute name="title">
+            <string>Thread Mill</string>
+           </attribute>
+          </widget>
+          <widget class="QWidget" name="tab_15">
+           <attribute name="title">
+            <string>Coordinates</string>
+           </attribute>
+          </widget>
+          <widget class="QWidget" name="tab_16">
+           <attribute name="title">
+            <string>G code</string>
+           </attribute>
+          </widget>
+         </widget>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="tab_7">
        <attribute name="title">
@@ -934,9 +1230,9 @@
           </property>
           <layout class="QGridLayout" name="gridLayout_14">
            <item row="0" column="0">
-            <widget class="QRadioButton" name="drillImperialRB">
+            <widget class="QRadioButton" name="drillFractionRB">
              <property name="text">
-              <string>Imperial</string>
+              <string>Inch Fraction</string>
              </property>
              <property name="checked">
               <bool>true</bool>
@@ -946,10 +1242,20 @@
              </attribute>
             </widget>
            </item>
-           <item row="1" column="0">
+           <item row="2" column="0">
             <widget class="QRadioButton" name="drillMetricRB">
              <property name="text">
               <string>Metric</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">drillUnitsBG</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QRadioButton" name="drillTapDrillRB">
+             <property name="text">
+              <string>Inch Tap</string>
              </property>
              <attribute name="buttonGroup">
               <string notr="true">drillUnitsBG</string>
@@ -985,6 +1291,9 @@
            </item>
            <item row="1" column="0">
             <widget class="QScrollBar" name="drillSfmSB">
+             <property name="singleStep">
+              <number>10</number>
+             </property>
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
              </property>
@@ -1028,7 +1337,7 @@
         <item row="4" column="0">
          <widget class="QGroupBox" name="groupBox_10">
           <property name="title">
-           <string>Hole Depth</string>
+           <string>Hole Op</string>
           </property>
           <layout class="QGridLayout" name="gridLayout_17">
            <item row="1" column="0">
@@ -1058,6 +1367,16 @@
             <widget class="QRadioButton" name="drill4xDiam">
              <property name="text">
               <string>&gt;4 x Diam</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">drillDepthBG</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QRadioButton" name="dcReamRB">
+             <property name="text">
+              <string>Reaming</string>
              </property>
              <attribute name="buttonGroup">
               <string notr="true">drillDepthBG</string>
@@ -1103,9 +1422,9 @@
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="drillMaterialBG"/>
-  <buttongroup name="unitsBG"/>
-  <buttongroup name="drillUnitsBG"/>
   <buttongroup name="drillDepthBG"/>
+  <buttongroup name="unitsBG"/>
+  <buttongroup name="drillMaterialBG"/>
+  <buttongroup name="drillUnitsBG"/>
  </buttongroups>
 </ui>

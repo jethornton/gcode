@@ -1,3 +1,9 @@
+gcode (0.0.3) unstable; urgency=medium
+
+  * Add Pocket and Speeds and Feeds 
+
+ -- John Thornton <jt@gnipsel.com>  Sun, 13 Jun 2021 11:16:06 -0500
+
 gcode (0.0.2) unstable; urgency=medium
 
   * Initial release.
