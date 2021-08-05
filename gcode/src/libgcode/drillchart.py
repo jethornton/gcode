@@ -1,18 +1,34 @@
 tapDrills = [
-['#4-40	#43', 0.0890],
-['#5-40	#38', 0.1015],
-['#6-32	#36', 0.1065],
-['#8-32	#29', 0.1360],
-['#10-24	#25', 0.1495],
-['#10-32	#21', 0.1590],
-['1/4-20	#7', 0.2010],
-['5/16-18	F', 0.2570],
-['3/8-16	5/16', 0.3125],
-['7/16-14	U', 0.3680],
-['1/2-13	27/64', 0.4219],
+['#4-40 NC 	#43', 0.0890],
+['#4-48 NF 	#42', 0.0935],
+['#5-40 NC 	#38', 0.1015],
+['#5-44 NF 	#37', 0.1040],
+['#6-32 NC 	#36', 0.1065],
+['#6-40 NF 	#33', 0.1130],
+['#8-32 NC 	#29', 0.1360],
+['#8-36 NF 	#29', 0.1360],
+['#10-24 NC	#25', 0.1495],
+['#10-32 NF	#21', 0.1590],
+['1/4-20 NC	#7', 0.2010],
+['1/4-28 NF	#3', 0.2130],
+['5/16-18 NC	F', 0.2570],
+['5/16-24 NF	I', 0.2720],
+['3/8-16 NC	5/16"', 0.3125],
+['3/8-24 NF	Q', 0.3320],
+['7/16-14 NC	U', 0.3680],
+['7/16-20 NF	25/64"', 0.3905],
+['1/2-13 NC	27/64"', 0.4219],
+['1/2-20 NF	29/64"', 0.4531],
+['9/16-12 NC	31/64"', 0.4844],
+['9/16-18 NF	33/64"', 0.5156],
+['5/8-11 NC	17/32"', 0.5312],
+['5/8-18 NF	37/64"', 0.5781],
+['3/4-10 NC	21/32"', 0.6562],
 ]
 
 def update(parent):
+	if parent.drillMaterialBG.checkedButton() is None:
+		return
 	units = parent.drillUnitsBG.checkedButton().text()
 	material = parent.drillMaterialBG.checkedButton().text()
 	parent.drillSfmLb.setText(str(parent.drillSfmSB.value()))
@@ -96,6 +112,7 @@ def populate(parent):
 				ipm = ipm * 2
 			parent.drillPTE.appendPlainText(f'{dia} \t RPM {rpm:,} \t IPM {ipm:.1f}')
 	elif units == 'Inch Tap':
+		parent.drillPTE.appendPlainText('Tap \t\tDrill \t RPM \t Feed IPM')
 		for i in tapDrills:
 			dia = i[1]
 			rpm = int((3.8197 / dia) * parent.drillSfmSB.value())
@@ -110,7 +127,7 @@ def populate(parent):
 			if parent.dcReamRB.isChecked():
 				rpm = int(rpm * 0.5)
 				ipm = ipm * 2
-			parent.drillPTE.appendPlainText(f'{i[0]} \t RPM {rpm:,} \t IPM {ipm:.1f}')
+			parent.drillPTE.appendPlainText(f'{i[0]} \t {rpm:,} \t {ipm:.1f}')
 
 
 	elif units == 'Metric':
