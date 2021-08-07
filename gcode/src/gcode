@@ -13,6 +13,7 @@ from libgcode import grid
 from libgcode import hole
 from libgcode import pocket
 from libgcode import drillchart
+from libgcode import millchart
 from libgcode import tap
 from libgcode import thread
 from libgcode import utilities
@@ -36,12 +37,12 @@ class main(QMainWindow):
 		self.setWindowTitle("G code Generator")
 		self.setupConnections()
 		utilities.getSettings(self)
-		db = QSqlDatabase.addDatabase('QSQLITE')
-		db.setDatabaseName(GUI_PATH + 'threads.db')
-		if db.open():
-			print("Connection success !")
-		else:
-			print("Connection failed !\n{}".format(db.lastError().text()))
+		#db = QSqlDatabase.addDatabase('QSQLITE')
+		#db.setDatabaseName(GUI_PATH + 'threads.db')
+		#if db.open():
+		#	print("Connection success !")
+		#else:
+		#	print("Connection failed !\n{}".format(db.lastError().text()))
 		self.devel = False
 		if DEVEL:
 			self.devel = True
@@ -68,8 +69,23 @@ class main(QMainWindow):
 		self.drillDepthBG.buttonClicked.connect(partial(drillchart.populate, self))
 		self.drillSfmSB.valueChanged.connect(partial(drillchart.populate, self))
 		self.drilliprSB.valueChanged.connect(partial(drillchart.populate, self))
+		self.millUnitsBG.buttonClicked.connect(partial(millchart.update, self))
+		self.millMaterialBG.buttonClicked.connect(partial(millchart.update, self))
+		self.millSfmSB.valueChanged.connect(partial(millchart.populate, self))
+		self.millToothsSB.valueChanged.connect(partial(millchart.populate, self))
+		self.millChipLoadFactorDSB.valueChanged.connect(partial(millchart.populate, self))
+
+
+
 		self.pocketExitPB.pressed.connect(self.close)
 		self.drillSelectPB.pressed.connect(partial(hole.drill, self))
+
+	def setupVariables(self):
+		self.s1018 = []
+		self.sa2d2 = []
+		self.cast = []
+		self.aluminum = []
+		self.brass = []
 
 	def errorMsgOk(self, text, title=None):
 		msgBox = QMessageBox()

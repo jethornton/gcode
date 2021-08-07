@@ -1282,13 +1282,6 @@ Position move then G33.1 for each hole.</string>
            <string>SFM</string>
           </property>
           <layout class="QGridLayout" name="gridLayout_15">
-           <item row="0" column="0">
-            <widget class="QLabel" name="drillSfmLb">
-             <property name="text">
-              <string>TextLabel</string>
-             </property>
-            </widget>
-           </item>
            <item row="1" column="0">
             <widget class="QScrollBar" name="drillSfmSB">
              <property name="singleStep">
@@ -1296,6 +1289,16 @@ Position move then G33.1 for each hole.</string>
              </property>
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="drillSfmLb">
+             <property name="frameShape">
+              <enum>QFrame::Box</enum>
+             </property>
+             <property name="text">
+              <string/>
              </property>
             </widget>
            </item>
@@ -1326,8 +1329,11 @@ Position move then G33.1 for each hole.</string>
            </item>
            <item row="0" column="0">
             <widget class="QLabel" name="drilliprLb">
+             <property name="frameShape">
+              <enum>QFrame::Box</enum>
+             </property>
              <property name="text">
-              <string>TextLabel</string>
+              <string/>
              </property>
             </widget>
            </item>
@@ -1388,6 +1394,258 @@ Position move then G33.1 for each hole.</string>
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="tab_17">
+       <attribute name="title">
+        <string>Mill Charts</string>
+       </attribute>
+       <widget class="QPlainTextEdit" name="millPTE">
+        <property name="geometry">
+         <rect>
+          <x>403</x>
+          <y>20</y>
+          <width>551</width>
+          <height>751</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_14">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>20</y>
+          <width>96</width>
+          <height>105</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Units</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_21">
+         <item row="0" column="0">
+          <widget class="QRadioButton" name="millInchRB">
+           <property name="text">
+            <string>Inch</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+           <attribute name="buttonGroup">
+            <string notr="true">millUnitsBG</string>
+           </attribute>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QRadioButton" name="millMetricRB">
+           <property name="text">
+            <string>Metric</string>
+           </property>
+           <attribute name="buttonGroup">
+            <string notr="true">millUnitsBG</string>
+           </attribute>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_17">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>30</y>
+          <width>155</width>
+          <height>233</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Material</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_22">
+         <item row="0" column="0">
+          <widget class="QRadioButton" name="millAluminumRB">
+           <property name="text">
+            <string>Aluminum</string>
+           </property>
+           <property name="material" stdset="0">
+            <string>aluminum</string>
+           </property>
+           <property name="sfm" stdset="0">
+            <number>600</number>
+           </property>
+           <attribute name="buttonGroup">
+            <string notr="true">millMaterialBG</string>
+           </attribute>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QRadioButton" name="millBrassRB">
+           <property name="text">
+            <string>Brass</string>
+           </property>
+           <property name="material" stdset="0">
+            <string>aluminum</string>
+           </property>
+           <property name="sfm" stdset="0">
+            <number>480</number>
+           </property>
+           <attribute name="buttonGroup">
+            <string notr="true">millMaterialBG</string>
+           </attribute>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <widget class="QRadioButton" name="millToolSteelRB">
+           <property name="text">
+            <string>Steel 4140</string>
+           </property>
+           <property name="material" stdset="0">
+            <string>s1018</string>
+           </property>
+           <property name="sfm" stdset="0">
+            <number>300</number>
+           </property>
+           <attribute name="buttonGroup">
+            <string notr="true">millMaterialBG</string>
+           </attribute>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QRadioButton" name="radioButton">
+           <property name="text">
+            <string>Steel A2 D2</string>
+           </property>
+           <property name="material" stdset="0">
+            <string>sa2d2</string>
+           </property>
+           <property name="sfm" stdset="0">
+            <number>240</number>
+           </property>
+           <attribute name="buttonGroup">
+            <string notr="true">millMaterialBG</string>
+           </attribute>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QRadioButton" name="millCastIronRB">
+           <property name="text">
+            <string>Cast Iron</string>
+           </property>
+           <property name="material" stdset="0">
+            <string>cast</string>
+           </property>
+           <property name="sfm" stdset="0">
+            <number>360</number>
+           </property>
+           <attribute name="buttonGroup">
+            <string notr="true">millMaterialBG</string>
+           </attribute>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QRadioButton" name="millMildSteelRB">
+           <property name="text">
+            <string>Steel 1018</string>
+           </property>
+           <property name="material" stdset="0">
+            <string>s1018</string>
+           </property>
+           <property name="sfm" stdset="0">
+            <number>420</number>
+           </property>
+           <attribute name="buttonGroup">
+            <string notr="true">millMaterialBG</string>
+           </attribute>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QGroupBox" name="drillsfmGB_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>150</y>
+          <width>155</width>
+          <height>91</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>SFM</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_23">
+         <item row="1" column="0">
+          <widget class="QScrollBar" name="millSfmSB">
+           <property name="singleStep">
+            <number>10</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="millSfmLb">
+           <property name="frameShape">
+            <enum>QFrame::Box</enum>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_15">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>270</y>
+          <width>131</width>
+          <height>76</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Tooths</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_24">
+         <item row="0" column="0">
+          <widget class="QSpinBox" name="millToothsSB">
+           <property name="maximum">
+            <number>20</number>
+           </property>
+           <property name="value">
+            <number>2</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_16">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>370</y>
+          <width>141</width>
+          <height>76</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Chip Load Factor</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_25">
+         <item row="0" column="0">
+          <widget class="QDoubleSpinBox" name="millChipLoadFactorDSB">
+           <property name="decimals">
+            <number>1</number>
+           </property>
+           <property name="singleStep">
+            <double>0.100000000000000</double>
+           </property>
+           <property name="value">
+            <double>1.000000000000000</double>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -1422,9 +1680,11 @@ Position move then G33.1 for each hole.</string>
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="drillDepthBG"/>
-  <buttongroup name="unitsBG"/>
   <buttongroup name="drillMaterialBG"/>
   <buttongroup name="drillUnitsBG"/>
+  <buttongroup name="unitsBG"/>
+  <buttongroup name="drillDepthBG"/>
+  <buttongroup name="millUnitsBG"/>
+  <buttongroup name="millMaterialBG"/>
  </buttongroups>
 </ui>
