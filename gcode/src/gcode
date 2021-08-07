@@ -57,7 +57,7 @@ class main(QMainWindow):
 	#	self.selectAll()      
 
 	def setupConnections(self):
-		self.savePreamblePB.pressed.connect(partial(utilities.saveSettings, self))
+		self.saveSettingsPB.pressed.connect(partial(utilities.saveSettings, self))
 		self.faceGeneratePB.pressed.connect(partial(face.generate, self))
 		self.faceCopyPB.pressed.connect(partial(face.copy, self))
 		self.faceSavePB.pressed.connect(partial(face.save, self))

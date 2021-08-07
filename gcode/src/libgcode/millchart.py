@@ -11,6 +11,20 @@
 1.0, 
 '''
 
+'''
+3
+4
+5
+6
+8
+10
+12
+16
+20
+25
+
+'''
+
 
 
 sample = [
@@ -101,6 +115,8 @@ def populate(parent):
 	for i in feeds:
 		#print(i)
 		rpm = int(parent.millSfmSB.value() * 3.82 / i[1])
+		if rpm > parent.rpmMaxSB.value():
+			rpm = parent.rpmMaxSB.value()
 		tooths = parent.millToothsSB.value()
 		clf = parent.millChipLoadFactorDSB.value()
 		ipt = i[2]

@@ -5,6 +5,7 @@ def saveSettings(parent):
 	settings = ['[SETTINGS]\n']
 	settings.append(f'UNITS = {parent.unitsBG.checkedButton().property("units")}\n')
 	settings.append(f'PREAMBLE = {parent.preambleLE.text()}\n')
+	settings.append(f'MAX_RPM = {parent.rpmMaxSB.value()}\n')
 
 	sf = os.path.expanduser('~/.gcode_settings')
 	with open(sf, 'w') as f:
@@ -21,5 +22,6 @@ def getSettings(parent):
 		else:
 			parent.mmRB.setChecked(True)
 		parent.preambleLE.setText(config['SETTINGS']['PREAMBLE'])
+		parent.rpmMaxSB.setValue(int(config['SETTINGS']['MAX_RPM']))
 
 
