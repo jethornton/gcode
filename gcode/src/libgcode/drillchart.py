@@ -99,6 +99,8 @@ def populate(parent):
 		for i in range(32):
 			dia = dia + 0.03125
 			rpm = int((3.8197 / dia) * parent.drillSfmSB.value())
+			if rpm > parent.rpmMaxSB.value():
+				rpm = parent.rpmMaxSB.value()
 			ipr = ((dia / 0.0625) * 0.001) + (parent.drilliprSB.value() * 0.001)
 			ipm = ipr * rpm
 			if parent.drill3xDiam.isChecked():
@@ -116,6 +118,8 @@ def populate(parent):
 		for i in tapDrills:
 			dia = i[1]
 			rpm = int((3.8197 / dia) * parent.drillSfmSB.value())
+			if rpm > parent.rpmMaxSB.value():
+				rpm = parent.rpmMaxSB.value()
 			ipr = ((dia / 0.0625) * 0.001) + (parent.drilliprSB.value() * 0.001)
 			ipm = ipr * rpm
 			if parent.drill3xDiam.isChecked():
