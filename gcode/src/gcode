@@ -58,24 +58,28 @@ class main(QMainWindow):
 
 	def setupConnections(self):
 		self.saveSettingsPB.pressed.connect(partial(utilities.saveSettings, self))
+
 		self.faceGeneratePB.pressed.connect(partial(face.generate, self))
 		self.faceCopyPB.pressed.connect(partial(face.copy, self))
 		self.faceSavePB.pressed.connect(partial(face.save, self))
+
 		self.pocketGeneratePB.pressed.connect(partial(pocket.generate, self))
 		self.pocketCopyPB.pressed.connect(partial(pocket.copy, self))
 		self.pocketSavePB.pressed.connect(partial(pocket.save, self))
+
 		self.drillUnitsBG.buttonClicked.connect(partial(drillchart.update, self))
 		self.drillMaterialBG.buttonClicked.connect(partial(drillchart.update, self))
 		self.drillDepthBG.buttonClicked.connect(partial(drillchart.populate, self))
 		self.drillSfmSB.valueChanged.connect(partial(drillchart.populate, self))
 		self.drilliprSB.valueChanged.connect(partial(drillchart.populate, self))
+		self.drillMachineCB.currentIndexChanged.connect(partial(drillchart.update, self))
+
 		self.millUnitsBG.buttonClicked.connect(partial(millchart.update, self))
 		self.millMaterialBG.buttonClicked.connect(partial(millchart.update, self))
 		self.millSfmSB.valueChanged.connect(partial(millchart.populate, self))
 		self.millToothsSB.valueChanged.connect(partial(millchart.populate, self))
 		self.millChipLoadFactorDSB.valueChanged.connect(partial(millchart.populate, self))
-
-
+		self.millMachineCB.currentIndexChanged.connect(partial(millchart.update, self))
 
 		self.pocketExitPB.pressed.connect(self.close)
 		self.drillSelectPB.pressed.connect(partial(hole.drill, self))

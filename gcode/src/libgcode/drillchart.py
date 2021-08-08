@@ -84,6 +84,8 @@ def setslider(parent, low, high):
 def populate(parent):
 	parent.drillSfmLb.setText(str(parent.drillSfmSB.value()))
 	units = parent.drillUnitsBG.checkedButton().text()
+	max_rpm = int(parent.drillMachineCB.currentData())
+
 	#print(units)
 	parent.drillPTE.clear()
 
@@ -99,8 +101,8 @@ def populate(parent):
 		for i in range(32):
 			dia = dia + 0.03125
 			rpm = int((3.8197 / dia) * parent.drillSfmSB.value())
-			if rpm > parent.rpmMaxSB.value():
-				rpm = parent.rpmMaxSB.value()
+			if rpm > max_rpm:
+				rpm = max_rpm
 			ipr = ((dia / 0.0625) * 0.001) + (parent.drilliprSB.value() * 0.001)
 			ipm = ipr * rpm
 			if parent.drill3xDiam.isChecked():
@@ -118,8 +120,8 @@ def populate(parent):
 		for i in tapDrills:
 			dia = i[1]
 			rpm = int((3.8197 / dia) * parent.drillSfmSB.value())
-			if rpm > parent.rpmMaxSB.value():
-				rpm = parent.rpmMaxSB.value()
+			if rpm > max_rpm:
+				rpm = max_rpm
 			ipr = ((dia / 0.0625) * 0.001) + (parent.drilliprSB.value() * 0.001)
 			ipm = ipr * rpm
 			if parent.drill3xDiam.isChecked():
@@ -139,6 +141,8 @@ def populate(parent):
 		for i in range(25):
 			dia = dia + 1
 			rpm = int((1000 * parent.drillSfmSB.value()) / (3.14 * dia))
+			if rpm > max_rpm:
+				rpm = max_rpm
 			ipr = ((dia / 0.0625) * 0.001) + (parent.drilliprSB.value() * 0.001)
 			ipm = ipr * rpm
 			if parent.drill3xDiam.isChecked():

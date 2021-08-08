@@ -122,8 +122,8 @@
          <rect>
           <x>30</x>
           <y>170</y>
-          <width>141</width>
-          <height>76</height>
+          <width>261</width>
+          <height>161</height>
          </rect>
         </property>
         <property name="title">
@@ -131,12 +131,50 @@
         </property>
         <layout class="QGridLayout" name="gridLayout_26">
          <item row="0" column="0">
-          <widget class="QSpinBox" name="rpmMaxSB">
+          <widget class="QLineEdit" name="machine1LE">
+           <property name="text">
+            <string>Machine 1</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QSpinBox" name="machine1MaxSB">
            <property name="maximum">
             <number>30000</number>
            </property>
            <property name="singleStep">
             <number>100</number>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLineEdit" name="machine2LE">
+           <property name="text">
+            <string>Machine 2</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLineEdit" name="machine3LE">
+           <property name="text">
+            <string>Machine 3</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QSpinBox" name="machine2MaxSB">
+           <property name="maximum">
+            <number>30000</number>
+           </property>
+           <property name="singleStep">
+            <number>100</number>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QSpinBox" name="machine3MaxSB">
+           <property name="maximum">
+            <number>30000</number>
            </property>
           </widget>
          </item>
@@ -1166,7 +1204,7 @@ Position move then G33.1 for each hole.</string>
         <string>Drill Charts</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_13">
-        <item row="5" column="0">
+        <item row="6" column="0">
          <spacer name="verticalSpacer">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -1179,7 +1217,7 @@ Position move then G33.1 for each hole.</string>
           </property>
          </spacer>
         </item>
-        <item row="1" column="0">
+        <item row="2" column="0">
          <widget class="QGroupBox" name="groupBox_7">
           <property name="title">
            <string>Material</string>
@@ -1248,7 +1286,7 @@ Position move then G33.1 for each hole.</string>
           </layout>
          </widget>
         </item>
-        <item row="0" column="0">
+        <item row="1" column="0">
          <widget class="QGroupBox" name="groupBox_9">
           <property name="title">
            <string>Units</string>
@@ -1290,18 +1328,7 @@ Position move then G33.1 for each hole.</string>
           </layout>
          </widget>
         </item>
-        <item row="0" column="1" rowspan="6">
-         <widget class="QPlainTextEdit" name="drillPTE">
-          <property name="font">
-           <font>
-            <family>BPG Courier S GPL&amp;GNU</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
+        <item row="3" column="0">
          <widget class="QGroupBox" name="drillsfmGB">
           <property name="title">
            <string>SFM</string>
@@ -1330,7 +1357,7 @@ Position move then G33.1 for each hole.</string>
           </layout>
          </widget>
         </item>
-        <item row="3" column="0">
+        <item row="4" column="0">
          <widget class="QGroupBox" name="groupBox_11">
           <property name="title">
            <string>IPR Offset</string>
@@ -1365,7 +1392,7 @@ Position move then G33.1 for each hole.</string>
           </layout>
          </widget>
         </item>
-        <item row="4" column="0">
+        <item row="5" column="0">
          <widget class="QGroupBox" name="groupBox_10">
           <property name="title">
            <string>Hole Op</string>
@@ -1417,6 +1444,29 @@ Position move then G33.1 for each hole.</string>
           </layout>
          </widget>
         </item>
+        <item row="0" column="0">
+         <widget class="QGroupBox" name="groupBox_19">
+          <property name="title">
+           <string>Machine</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_27">
+           <item row="0" column="0">
+            <widget class="QComboBox" name="drillMachineCB"/>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="1" rowspan="7">
+         <widget class="QPlainTextEdit" name="drillPTE">
+          <property name="font">
+           <font>
+            <family>BPG Courier S GPL&amp;GNU</family>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+         </widget>
+        </item>
        </layout>
       </widget>
       <widget class="QWidget" name="tab_17">
@@ -1440,7 +1490,7 @@ Position move then G33.1 for each hole.</string>
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>20</y>
+          <y>80</y>
           <width>96</width>
           <height>105</height>
          </rect>
@@ -1589,7 +1639,7 @@ Position move then G33.1 for each hole.</string>
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>150</y>
+          <y>210</y>
           <width>155</width>
           <height>91</height>
          </rect>
@@ -1624,7 +1674,7 @@ Position move then G33.1 for each hole.</string>
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>270</y>
+          <y>330</y>
           <width>131</width>
           <height>76</height>
          </rect>
@@ -1649,7 +1699,7 @@ Position move then G33.1 for each hole.</string>
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>370</y>
+          <y>430</y>
           <width>141</width>
           <height>76</height>
          </rect>
@@ -1670,6 +1720,24 @@ Position move then G33.1 for each hole.</string>
             <double>1.000000000000000</double>
            </property>
           </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_20">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>155</width>
+          <height>75</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Machine</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_28">
+         <item row="0" column="0">
+          <widget class="QComboBox" name="millMachineCB"/>
          </item>
         </layout>
        </widget>

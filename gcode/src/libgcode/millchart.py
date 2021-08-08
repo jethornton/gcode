@@ -109,14 +109,15 @@ def populate(parent):
 	units = parent.drillUnitsBG.checkedButton().text()
 	material = parent.millMaterialBG.checkedButton().property('material')
 	feeds = getattr(parent, material)
+	max_rpm = int(parent.millMachineCB.currentData())
 	#print(feeds)
 	parent.millPTE.clear()
 	parent.millPTE.appendPlainText('Size \t RPM \t IPM')
 	for i in feeds:
 		#print(i)
 		rpm = int(parent.millSfmSB.value() * 3.82 / i[1])
-		if rpm > parent.rpmMaxSB.value():
-			rpm = parent.rpmMaxSB.value()
+		if rpm > max_rpm:
+			rpm = max_rpm
 		tooths = parent.millToothsSB.value()
 		clf = parent.millChipLoadFactorDSB.value()
 		ipt = i[2]
