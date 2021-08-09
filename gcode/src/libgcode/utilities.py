@@ -1,5 +1,15 @@
 import os, configparser
+from PyQt5.QtWidgets import (QApplication, QMainWindow, QFileDialog, QLineEdit, QSpinBox, QCheckBox, QComboBox, QLabel, QGroupBox, QDoubleSpinBox, QMessageBox, QInputDialog)
 
+ini_options = [['SETTINGS', 'UNITS', 'unitsBG'],
+				['SETTINGS', 'PREAMBLE', 'preambleLE'],
+				['SETTINGS', 'NAME_1', 'machine1LE'],
+				['SETTINGS', 'MAX_RPM_1', 'machine1MaxSB'],
+				['SETTINGS', 'NAME_2', 'machine2LE'],
+				['SETTINGS', 'MAX_RPM_2', 'machine2MaxSB'],
+				['SETTINGS', 'NAME_3', 'machine3LE'],
+				['SETTINGS', 'MAX_RPM_3', 'machine3MaxSB'],
+		]
 
 def saveSettings(parent):
 	settings = ['[SETTINGS]\n']
@@ -23,6 +33,33 @@ def getSettings(parent):
 		config = configparser.ConfigParser(strict=False)
 		config.optionxform = str
 		config.read(sf)
+
+		for item in ini_options:
+			if config.has_option(item[0], item[1]):
+				if isinstance(getattr(parent, item[2]), QLabel):
+					getattr(parent, item[2]).setText(config[item[0]][item[1]])
+				if isinstance(getattr(parent, item[2]), QLineEdit):
+					getattr(parent, item[2]).setText(config[item[0]][item[1]])
+				if isinstance(getattr(parent, item[2]), QSpinBox):
+					getattr(parent, item[2]).setValue(abs(int(config[item[0]][item[1]])))
+				if isinstance(getattr(parent, item[2]), QDoubleSpinBox):
+					getattr(parent, item[2]).setValue(float(config[item[0]][item[1]]))
+				if isinstance(getattr(parent, item[2]), QCheckBox):
+					getattr(parent, item[2]).setChecked(eval(config[item[0]][item[1]]))
+				if isinstance(getattr(parent, item[2]), QGroupBox):
+					getattr(parent, item[2]).setChecked(eval(config[item[0]][item[1]]))
+					#print(self.config[item[0]][item[1]])
+				if isinstance(getattr(parent, item[2]), QComboBox):
+					index = getattr(v, item[2]).findData(config[item[0]][item[1]])
+					if index >= 0:
+						getattr(parent, item[2]).setCurrentIndex(index)
+
+
+	'''
+		if config.has_section('SETTINGS'):
+			for i in items:
+				if config.has_option(i[0], i[1]):
+					print(i)
 		if config['SETTINGS']['UNITS'] == 'G20':
 			parent.inchRB.setChecked(True)
 		else:
@@ -46,3 +83,4 @@ def getSettings(parent):
 # drillMachineCB
 
 # millMachineCB
+	'''
