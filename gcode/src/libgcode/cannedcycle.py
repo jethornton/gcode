@@ -93,7 +93,7 @@ def gcode(parent):
 		value = getattr(parent, item).text()
 		if len(value) > 0:
 			cycleline.append(f'{word} {value}')
-	print(cycleline)
+	#print(cycleline)
 	firstline = ''.join(cycleline)
 	parent.cannedGcodePTE.appendPlainText(f'{firstline}')
 
