@@ -10,7 +10,7 @@ from PyQt5.QtSql import QSqlDatabase
 
 from libgcode import face
 from libgcode import grid
-from libgcode import hole
+from libgcode import cannedcycle
 from libgcode import pocket
 from libgcode import drillchart
 from libgcode import millchart
@@ -46,6 +46,14 @@ class main(QMainWindow):
 		self.devel = False
 		if DEVEL:
 			self.devel = True
+			self.cannedToolLE.setText('1')
+			self.cannedRetractLE.setText('0.250')
+			self.cannedRpmLE.setText('675')
+			self.cannedDepthLE.setText('-1.250')
+			self.cannedFeedLE.setText('5')
+			self.cannedCoordPTE.appendPlainText('X1.0 Y-1.0 Z-1.75')
+			self.cannedCoordPTE.appendPlainText('X2.0 Y-1.0 Z-1.75')
+			self.cannedCoordPTE.appendPlainText('X3.0 Y-1.0 Z-1.75')
 			#develop.face(self)
 			#face.generate(self)
 			#develop.pocket(self)
@@ -67,6 +75,13 @@ class main(QMainWindow):
 		self.pocketCopyPB.pressed.connect(partial(pocket.copy, self))
 		self.pocketSavePB.pressed.connect(partial(pocket.save, self))
 
+		self.cannedCycleBG.buttonClicked.connect(partial(cannedcycle.update, self))
+		self.cannedSelectPB.pressed.connect(partial(cannedcycle.get, self))
+		self.cannedGeneratePB.pressed.connect(partial(cannedcycle.gcode, self))
+		self.cannedXcoordLE.returnPressed.connect(partial(cannedcycle.xcoord, self))
+		self.cannedYcoordLE.returnPressed.connect(partial(cannedcycle.ycoord, self))
+
+
 		self.drillUnitsBG.buttonClicked.connect(partial(drillchart.update, self))
 		self.drillMaterialBG.buttonClicked.connect(partial(drillchart.update, self))
 		self.drillDepthBG.buttonClicked.connect(partial(drillchart.populate, self))
@@ -82,7 +97,7 @@ class main(QMainWindow):
 		self.millMachineCB.currentIndexChanged.connect(partial(millchart.update, self))
 
 		self.pocketExitPB.pressed.connect(self.close)
-		self.drillSelectPB.pressed.connect(partial(hole.drill, self))
+		#self.drillSelectPB.pressed.connect(partial(hole.drill, self))
 
 	def setupVariables(self):
 		self.s1018 = []

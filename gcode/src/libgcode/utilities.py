@@ -1,15 +1,17 @@
 import os, configparser
-from PyQt5.QtWidgets import (QApplication, QMainWindow, QFileDialog, QLineEdit, QSpinBox, QCheckBox, QComboBox, QLabel, QGroupBox, QDoubleSpinBox, QMessageBox, QInputDialog)
+from PyQt5.QtWidgets import (QLineEdit, QSpinBox, QCheckBox, QComboBox,
+	QLabel, QGroupBox, QDoubleSpinBox)
 
-ini_options = [['SETTINGS', 'UNITS', 'unitsBG'],
-				['SETTINGS', 'PREAMBLE', 'preambleLE'],
-				['SETTINGS', 'NAME_1', 'machine1LE'],
-				['SETTINGS', 'MAX_RPM_1', 'machine1MaxSB'],
-				['SETTINGS', 'NAME_2', 'machine2LE'],
-				['SETTINGS', 'MAX_RPM_2', 'machine2MaxSB'],
-				['SETTINGS', 'NAME_3', 'machine3LE'],
-				['SETTINGS', 'MAX_RPM_3', 'machine3MaxSB'],
-		]
+ini_options = [
+	['SETTINGS', 'UNITS', 'unitsBG'],
+	['SETTINGS', 'PREAMBLE', 'preambleLE'],
+	['SETTINGS', 'NAME_1', 'machineLE_0'],
+	['SETTINGS', 'MAX_RPM_1', 'rpmMaxSB_0'],
+	['SETTINGS', 'NAME_2', 'machineLE_1'],
+	['SETTINGS', 'MAX_RPM_2', 'rpmMaxSB_1'],
+	['SETTINGS', 'NAME_3', 'machineLE_2'],
+	['SETTINGS', 'MAX_RPM_3', 'rpmMaxSB_2'],
+	]
 
 def saveSettings(parent):
 	settings = ['[SETTINGS]\n']
@@ -54,6 +56,15 @@ def getSettings(parent):
 					if index >= 0:
 						getattr(parent, item[2]).setCurrentIndex(index)
 
+		for i in range(3):
+			#print(parent.machineLE_0.text())
+			#print(getattr(parent, 'machineLE_' + str(i)).text())
+			# getattr(self, 'minLimit_' + str(i)).setToolTip('inches')
+			#print(getattr(parent, 'machineLE_') + str(i)).text()
+			machine = getattr(parent, 'machineLE_' + str(i)).text()
+			rpm = getattr(parent, 'rpmMaxSB_' + str(i)).text()
+			getattr(parent, 'drillMachineCB').addItem(machine, rpm)
+			#parent.drillMachineCB.addItem
 
 	'''
 		if config.has_section('SETTINGS'):
