@@ -46,14 +46,14 @@ class main(QMainWindow):
 		self.devel = False
 		if DEVEL:
 			self.devel = True
-			self.cannedToolLE.setText('1')
-			self.cannedRetractLE.setText('0.250')
-			self.cannedRpmLE.setText('675')
-			self.cannedDepthLE.setText('-1.250')
-			self.cannedFeedLE.setText('5')
-			self.cannedCoordPTE.appendPlainText('X1.0 Y-1.0 Z-1.75')
-			self.cannedCoordPTE.appendPlainText('X2.0 Y-1.0 Z-1.75')
-			self.cannedCoordPTE.appendPlainText('X3.0 Y-1.0 Z-1.75')
+			self.canToolLE.setText('1')
+			self.canRetractLE.setText('0.250')
+			self.canRpmLE.setText('675')
+			self.canZdepthLE.setText('-1.250')
+			self.canFeedLE.setText('5')
+			self.canCoordPTE.appendPlainText('X1.0 Y-1.0')
+			self.canCoordPTE.appendPlainText('X2.0 Y-1.0')
+			self.canCoordPTE.appendPlainText('X3.0 Y-1.0')
 			#develop.face(self)
 			#face.generate(self)
 			#develop.pocket(self)
@@ -78,8 +78,9 @@ class main(QMainWindow):
 		self.cannedCycleBG.buttonClicked.connect(partial(cannedcycle.update, self))
 		self.cannedSelectPB.pressed.connect(partial(cannedcycle.get, self))
 		self.cannedGeneratePB.pressed.connect(partial(cannedcycle.gcode, self))
-		self.cannedXcoordLE.returnPressed.connect(partial(cannedcycle.xcoord, self))
-		self.cannedYcoordLE.returnPressed.connect(partial(cannedcycle.ycoord, self))
+		self.canXcoordLE.returnPressed.connect(partial(cannedcycle.xcoord, self))
+		self.canYcoordLE.returnPressed.connect(partial(cannedcycle.ycoord, self))
+		self.canCopyPB.pressed.connect(partial(cannedcycle.copy, self))
 
 
 		self.drillUnitsBG.buttonClicked.connect(partial(drillchart.update, self))

@@ -1,11 +1,13 @@
+from PyQt5.QtWidgets import QApplication
+
 gcodes = {
-	'G81':['cannedRetractLE', 'repeteLE'],
-	'G82':['cannedRetractLE', 'repeteLE', 'dwellLE'],
-	'G83':['cannedRetractLE', 'repeteLE', 'peckLE'],
-	'G84':['cannedRetractLE', 'repeteLE', 'dwellLE', 'spindleSB'],
-	'G85':['cannedRetractLE', 'repeteLE'],
-	'G86':['cannedRetractLE', 'repeteLE', 'dwellLE', 'spindleSB'],
-	'G89':['cannedRetractLE', 'repeteLE', 'dwellLE']
+	'G81':['canRetractLE', 'repeteLE'],
+	'G82':['canRetractLE', 'repeteLE', 'dwellLE'],
+	'G83':['canRetractLE', 'repeteLE', 'peckLE'],
+	'G84':['canRetractLE', 'repeteLE', 'dwellLE', 'spindleSB'],
+	'G85':['canRetractLE', 'repeteLE'],
+	'G86':['canRetractLE', 'repeteLE', 'dwellLE', 'spindleSB'],
+	'G89':['canRetractLE', 'repeteLE', 'dwellLE']
 	}
 
 def g81(parent):
@@ -54,52 +56,62 @@ def xcoord(parent):
 	parent.cannedYcoordLE.setFocus()
 
 def ycoord(parent):
-	parent.cannedZcoordLE.setFocus()
-
-def zcoord(parent):
-	x = parent.cannedXcoordLE.text()
+	x = parent.canCoordPTE.text()
 	y = parent.cannedYcoordLE.text()
-	z = parent.cannedZcoordLE.text()
-	parent.cannedCoordPTE.appendPlainText(f'X{x} Y{y} Z{z}')
-	parent.cannedXcoordLE.setFocus()
-	parent.cannedXcoordLE.clear()
+	parent.cannedCoordPTE.appendPlainText(f'X{x} Y{y}')
+	parent.canCoordPTE.setFocus()
+	parent.canCoordPTE.clear()
 	parent.cannedYcoordLE.clear()
-	parent.cannedZcoordLE.clear()
+
 
 def gcode(parent):
-	parent.cannedGcodePTE.clear()
+	parent.canGcodePTE.clear()
 	cycle = parent.cannedCycleBG.checkedButton().text()
 	#print(cycles[cycle](parent))
-	coords = parent.cannedCoordPTE.toPlainText().split('\n')
+	coords = parent.canCoordPTE.toPlainText().split('\n')
 	#print(len(coords))
-	parent.cannedGcodePTE.appendPlainText(f'; {cycle} Cycle')
+	parent.canGcodePTE.appendPlainText(f'; {cycle} Cycle')
+	rpm = parent.canRpmLE.text()
+	feed = parent.canFeedLE.text()
+	parent.canGcodePTE.appendPlainText(f'S{rpm} F{feed}')
+	if parent.canToolLE.text() != '':
+		tool = parent.canToolLE.text()
+		parent.canGcodePTE.appendPlainText(f'T{tool} M6')
 	startZ = parent.cannedZstartLE.text()
-	parent.cannedGcodePTE.appendPlainText(f'G0 Z{startZ}')
+	parent.canGcodePTE.appendPlainText(f'G0 Z{startZ}')
 	startX = parent.cannedXstartLE.text()
 	startY =  parent.cannedYstartLE.text()
-	parent.cannedGcodePTE.appendPlainText(f'X{startX} Y{startY}')
-	if parent.cannedToolLE.text() != '':
-		tool = parent.cannedToolLE.text()
-		parent.cannedGcodePTE.appendPlainText(f'T{tool} M6')
+	parent.canGcodePTE.appendPlainText(f'X{startX} Y{startY}')
 	retract = parent.cannedRetractBG.checkedButton().text()
 	distance = parent.cannedDistanceBG.checkedButton().text()
-	parent.cannedGcodePTE.appendPlainText(f'{retract} {distance}')
-
+	parent.canGcodePTE.appendPlainText(f'{retract} {distance}')
+	parent.canGcodePTE.appendPlainText('M3')
 	cycleline = []
-	cycleline.append(cycle + ' ')
-	cycleline.append(coords[0] + ' ')
+	cycleline.append(f'{cycle} ')
+	cycleline.append(f'{coords[0]} ')
+	cycleline.append(f'Z{parent.canZdepthLE.text()} ')
 	for item in gcodes[cycle]:
 		word = getattr(parent, item).property('word')
 		value = getattr(parent, item).text()
 		if len(value) > 0:
-			cycleline.append(f'{word} {value}')
+			cycleline.append(f'{word}{value} ')
 	#print(cycleline)
 	firstline = ''.join(cycleline)
-	parent.cannedGcodePTE.appendPlainText(f'{firstline}')
+	parent.canGcodePTE.appendPlainText(f'{firstline}')
+	if len(coords) > 1:
+		for item in coords[1:]:
+			parent.canGcodePTE.appendPlainText(f'{item}')
 
-	parent.cannedGcodePTE.appendPlainText('M2')
-	# parent.cannedGcodePTE.appendPlainText(f'{}')
+	parent.canGcodePTE.appendPlainText('M80')
+	parent.canGcodePTE.appendPlainText('M5')
+	if parent.canProgEndCB.isChecked():
+		parent.canGcodePTE.appendPlainText('M2')
+	# parent.canGcodePTE.appendPlainText(f'{}')
 
+def copy(parent):
+	qclip = QApplication.clipboard()
+	qclip.setText(parent.canGcodePTE.toPlainText())
+	parent.statusbar.showMessage('G code copied to clipboard')
 
 def drill(parent):
 	cursor = parent.drillPTE.textCursor()

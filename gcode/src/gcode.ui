@@ -30,7 +30,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -956,7 +956,7 @@
         </property>
         <layout class="QGridLayout" name="gridLayout_29">
          <item row="2" column="1" colspan="2">
-          <widget class="QLineEdit" name="cannedDepthLE"/>
+          <widget class="QLineEdit" name="canZdepthLE"/>
          </item>
          <item row="3" column="0">
           <widget class="QLabel" name="label_48">
@@ -966,10 +966,10 @@
           </widget>
          </item>
          <item row="1" column="1" colspan="2">
-          <widget class="QLineEdit" name="cannedRpmLE"/>
+          <widget class="QLineEdit" name="canRpmLE"/>
          </item>
          <item row="0" column="1" colspan="2">
-          <widget class="QLineEdit" name="cannedToolLE"/>
+          <widget class="QLineEdit" name="canToolLE"/>
          </item>
          <item row="0" column="0">
           <widget class="QLabel" name="label_49">
@@ -981,7 +981,7 @@
          <item row="2" column="0">
           <widget class="QLabel" name="label_50">
            <property name="text">
-            <string>Depth</string>
+            <string>Z Depth</string>
            </property>
           </widget>
          </item>
@@ -993,7 +993,7 @@
           </widget>
          </item>
          <item row="3" column="1" colspan="2">
-          <widget class="QLineEdit" name="cannedFeedLE"/>
+          <widget class="QLineEdit" name="canFeedLE"/>
          </item>
          <item row="4" column="0" colspan="3">
           <widget class="QPushButton" name="cannedSelectPB">
@@ -1144,7 +1144,7 @@
           <x>20</x>
           <y>410</y>
           <width>251</width>
-          <height>241</height>
+          <height>221</height>
          </rect>
         </property>
         <property name="title">
@@ -1239,7 +1239,7 @@
           </widget>
          </item>
          <item row="0" column="2">
-          <widget class="QLineEdit" name="cannedRetractLE">
+          <widget class="QLineEdit" name="canRetractLE">
            <property name="word" stdset="0">
             <string>R</string>
            </property>
@@ -1265,7 +1265,7 @@
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>660</y>
+          <y>640</y>
           <width>251</width>
           <height>101</height>
          </rect>
@@ -1342,8 +1342,8 @@
         </property>
         <property name="geometry">
          <rect>
-          <x>310</x>
-          <y>760</y>
+          <x>290</x>
+          <y>750</y>
           <width>93</width>
           <height>28</height>
          </rect>
@@ -1352,23 +1352,13 @@
          <string>Generate</string>
         </property>
        </widget>
-       <widget class="QPlainTextEdit" name="cannedGcodePTE">
-        <property name="geometry">
-         <rect>
-          <x>500</x>
-          <y>400</y>
-          <width>461</width>
-          <height>381</height>
-         </rect>
-        </property>
-       </widget>
        <widget class="QGroupBox" name="groupBox_26">
         <property name="geometry">
          <rect>
           <x>500</x>
           <y>20</y>
-          <width>314</width>
-          <height>311</height>
+          <width>251</width>
+          <height>341</height>
          </rect>
         </property>
         <property name="title">
@@ -1383,10 +1373,10 @@
           </widget>
          </item>
          <item row="1" column="2">
-          <widget class="QLineEdit" name="cannedXcoordLE"/>
+          <widget class="QLineEdit" name="canXcoordLE"/>
          </item>
          <item row="1" column="4">
-          <widget class="QLineEdit" name="cannedYcoordLE"/>
+          <widget class="QLineEdit" name="canYcoordLE"/>
          </item>
          <item row="1" column="3">
           <widget class="QLabel" name="label_75">
@@ -1395,18 +1385,8 @@
            </property>
           </widget>
          </item>
-         <item row="1" column="5">
-          <widget class="QLabel" name="label_78">
-           <property name="text">
-            <string>Z</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="6">
-          <widget class="QLineEdit" name="cannedZcoordLE"/>
-         </item>
-         <item row="2" column="0" colspan="7">
-          <widget class="QPlainTextEdit" name="cannedCoordPTE"/>
+         <item row="2" column="0" colspan="6">
+          <widget class="QPlainTextEdit" name="canCoordPTE"/>
          </item>
         </layout>
        </widget>
@@ -1461,6 +1441,50 @@
           </widget>
          </item>
         </layout>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_28">
+        <property name="geometry">
+         <rect>
+          <x>500</x>
+          <y>370</y>
+          <width>291</width>
+          <height>421</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>G code</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_36">
+         <item row="0" column="0">
+          <widget class="QPlainTextEdit" name="canGcodePTE"/>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QCheckBox" name="canProgEndCB">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>750</y>
+          <width>251</width>
+          <height>26</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Add Program End M2</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="canCopyPB">
+        <property name="geometry">
+         <rect>
+          <x>390</x>
+          <y>750</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Copy</string>
+        </property>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_4">
@@ -2386,14 +2410,14 @@ Position move then G33.1 for each hole.</string>
  <resources/>
  <connections/>
  <buttongroups>
+  <buttongroup name="cannedRetractBG"/>
+  <buttongroup name="millUnitsBG"/>
+  <buttongroup name="cannedDistanceBG"/>
+  <buttongroup name="cannedCycleBG"/>
   <buttongroup name="drillDepthBG"/>
   <buttongroup name="unitsBG"/>
-  <buttongroup name="cannedDistanceBG"/>
-  <buttongroup name="drillMaterialBG"/>
-  <buttongroup name="millUnitsBG"/>
-  <buttongroup name="cannedCycleBG"/>
   <buttongroup name="drillUnitsBG"/>
-  <buttongroup name="cannedRetractBG"/>
   <buttongroup name="millMaterialBG"/>
+  <buttongroup name="drillMaterialBG"/>
  </buttongroups>
 </ui>
