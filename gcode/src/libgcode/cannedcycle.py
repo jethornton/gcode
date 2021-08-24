@@ -10,6 +10,16 @@ gcodes = {
 	'G89':['canRetractLE', 'repeteLE', 'dwellLE']
 	}
 
+required = {
+	'G81':['canRetractLE'],
+	'G82':['canRetractLE', 'dwellLE'],
+	'G83':['canRetractLE', 'peckLE'],
+	'G84':['canRetractLE', 'dwellLE', 'spindleSB'],
+	'G85':['canRetractLE'],
+	'G86':['canRetractLE', 'dwellLE', 'spindleSB'],
+	'G89':['canRetractLE', 'dwellLE']
+	}
+
 def g81(parent):
 	return('G81 X Y Z R L')
 
@@ -67,6 +77,12 @@ def ycoord(parent):
 def gcode(parent):
 	parent.canGcodePTE.clear()
 	cycle = parent.cannedCycleBG.checkedButton().text()
+	#print(required[cycle])
+	for item in required[cycle]:
+		if getattr(parent, item).text() == '':
+			name = getattr(parent, item).property('name')
+			parent.canGcodePTE.appendPlainText(f'{name} Must Not be Blank')
+			return
 	#print(cycles[cycle](parent))
 	coords = parent.canCoordPTE.toPlainText().split('\n')
 	#print(len(coords))
