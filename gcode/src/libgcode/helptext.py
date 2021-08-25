@@ -78,6 +78,8 @@ Select a Canned Cycle then press F1 for help on that cycle
 text_31 = """
 Help Text for G81 Drilling Cycle
 
+The L (repetitions) must be 2 or more.
+
 To use the L (repetitions) function the incremental mode (G91) must be
 selected. Only one hole location must be specified. Set the start
 location the distance and angle from the hole. The repeted holes will
@@ -92,6 +94,8 @@ G82 Cycle is drilling with a dwell at the bottom of the hole.
 
 Dwell must be specified.
 
+The L (repetitions) must be 2 or more.
+
 To use the L (repetitions) function the incremental mode (G91) must be
 selected. Only one hole location must be specified. Set the start
 location the distance and angle from the hole. The repeted holes will
@@ -104,11 +108,16 @@ Help Text for G83 Peck Drilling Cycle
 G83 Cycle is peck drilling with full retract to the retract position (R)
 for each peck cycle.
 
+The L (repetitions) must be 2 or more.
+
 To use the L (repetitions) function the incremental mode (G91) must be
 selected. Only one hole location must be specified. Set the start
 location the distance and angle from the hole. The repeted holes will
 be parallel to the path from start to the hole and the distance from
 the start postion to the hole.
+
+It is an error if:
+• the Q number is negative or zero.
 """
 text_34 = """
 Help Text for G84 Right-hand Tapping Cycle, Dwell
@@ -120,6 +129,8 @@ The Feed rate and RPM must match the pitch of the thread.
 
 Spindle and Dwell must be specified.
 
+The L (repetitions) must be 2 or more.
+
 To use the L (repetitions) function the incremental mode (G91) must be
 selected. Only one hole location must be specified. Set the start
 location the distance and angle from the hole. The repeted holes will
@@ -130,6 +141,8 @@ text_35 = """
 Help Text for G85 Boring Cycle, Feed Out
 
 G85 cycle is for boring or reaming
+
+The L (repetitions) must be 2 or more.
 
 To use the L (repetitions) function the incremental mode (G91) must be
 selected. Only one hole location must be specified. Set the start
@@ -144,11 +157,16 @@ G85 cycle is for boring or reaming with spindle stopped on retract.
 
 Spindle must be specified.
 
+The L (repetitions) must be 2 or more.
+
 To use the L (repetitions) function the incremental mode (G91) must be
 selected. Only one hole location must be specified. Set the start
 location the distance and angle from the hole. The repeted holes will
 be parallel to the path from start to the hole and the distance from
 the start postion to the hole.
+
+It is an error if:
+• the spindle is not turning before this cycle is executed.
 """
 text_39 = """
 Help Text for G89 Boring Cycle, Dwell, Feed Out
@@ -157,6 +175,8 @@ G89 cycle is for boring with a dwell at the bottom of the hole and
 retract at the current feed rate.
 
 Dwell must be specified.
+
+The L (repetitions) must be 2 or more.
 
 To use the L (repetitions) function the incremental mode (G91) must be
 selected. Only one hole location must be specified. Set the start

@@ -75,8 +75,11 @@ def ycoord(parent):
 
 
 def gcode(parent):
-	parent.canGcodePTE.clear()
+	if parent.canGenerateBG.checkedButton().text() == 'Replace':
+		parent.canGcodePTE.clear()
 	cycle = parent.canCycleBG.checkedButton().text()
+	coords = parent.canCoordPTE.toPlainText().split('\n')
+
 	#print(required[cycle])
 	for item in required[cycle]:
 		if getattr(parent, item).text() == '':
@@ -84,14 +87,23 @@ def gcode(parent):
 			parent.canGcodePTE.appendPlainText(f'{name} Must Not be Blank')
 			return
 	if parent.canRepeteLE.text() != '':
+		error = False
+		#print(coords)
 		#print(parent.canRepeteLE.text())
 		#print(parent.canDistanceBG.checkedButton().text())
+		if int(parent.canRepeteLE.text()) < 2:
+			parent.canGcodePTE.appendPlainText('Repeat must be 2 or more for the L word')
+			error = True
 		if parent.canDistanceBG.checkedButton().text() == 'G90':
 			parent.canGcodePTE.appendPlainText('G91 must be selected for the L word')
+			error = True
+		if len(coords) > 1:
+			parent.canGcodePTE.appendPlainText('Only One hole position is used for the L word')
+			error = True
+		if error:
 			return
 
 	#print(cycles[cycle](parent))
-	coords = parent.canCoordPTE.toPlainText().split('\n')
 	#print(len(coords))
 	parent.canGcodePTE.appendPlainText(f'; {cycle} Cycle')
 	rpm = parent.canRpmLE.text()
@@ -125,8 +137,11 @@ def gcode(parent):
 		for item in coords[1:]:
 			parent.canGcodePTE.appendPlainText(f'{item}')
 
-	parent.canGcodePTE.appendPlainText('M80')
+	parent.canGcodePTE.appendPlainText('G80')
 	parent.canGcodePTE.appendPlainText('M5')
+	if parent.canEndReturnCB.isChecked():
+		parent.canGcodePTE.appendPlainText('G0 Z0')
+		parent.canGcodePTE.appendPlainText('G0 X0 Y0')
 	if parent.canProgEndCB.isChecked():
 		parent.canGcodePTE.appendPlainText('M2')
 	# parent.canGcodePTE.appendPlainText(f'{}')
