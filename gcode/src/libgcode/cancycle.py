@@ -1,23 +1,23 @@
 from PyQt5.QtWidgets import QApplication
 
 gcodes = {
-	'G81':['canRetractLE', 'repeteLE'],
-	'G82':['canRetractLE', 'repeteLE', 'dwellLE'],
-	'G83':['canRetractLE', 'repeteLE', 'peckLE'],
-	'G84':['canRetractLE', 'repeteLE', 'dwellLE', 'spindleSB'],
-	'G85':['canRetractLE', 'repeteLE'],
-	'G86':['canRetractLE', 'repeteLE', 'dwellLE', 'spindleSB'],
-	'G89':['canRetractLE', 'repeteLE', 'dwellLE']
+	'G81':['canRetractLE', 'canRepeteLE'],
+	'G82':['canRetractLE', 'canRepeteLE', 'canDwellLE'],
+	'G83':['canRetractLE', 'canRepeteLE', 'canPeckLE'],
+	'G84':['canRetractLE', 'canRepeteLE', 'canDwellLE', 'canSpindleSB'],
+	'G85':['canRetractLE', 'canRepeteLE'],
+	'G86':['canRetractLE', 'canRepeteLE', 'canDwellLE', 'canSpindleSB'],
+	'G89':['canRetractLE', 'canRepeteLE', 'canDwellLE']
 	}
 
 required = {
 	'G81':['canRetractLE'],
-	'G82':['canRetractLE', 'dwellLE'],
-	'G83':['canRetractLE', 'peckLE'],
-	'G84':['canRetractLE', 'dwellLE', 'spindleSB'],
+	'G82':['canRetractLE', 'canDwellLE'],
+	'G83':['canRetractLE', 'canPeckLE'],
+	'G84':['canRetractLE', 'canDwellLE', 'canSpindleSB'],
 	'G85':['canRetractLE'],
-	'G86':['canRetractLE', 'dwellLE', 'spindleSB'],
-	'G89':['canRetractLE', 'dwellLE']
+	'G86':['canRetractLE', 'canDwellLE', 'canSpindleSB'],
+	'G89':['canRetractLE', 'canDwellLE']
 	}
 
 def g81(parent):
@@ -54,35 +54,42 @@ cycles = {
 	}
 
 def update(parent):
-	words = ['dwellLE', 'spindleSB', 'peckLE']
+	words = ['canDwellLE', 'canSpindleSB', 'canPeckLE']
 	for item in words:
 		getattr(parent, item).setEnabled(False)
-	cycle = parent.cannedCycleBG.checkedButton().text()
+	cycle = parent.canCycleBG.checkedButton().text()
 	for item in gcodes[cycle]:
 		getattr(parent, item).setEnabled(True)
-	parent.cannedGeneratePB.setEnabled(True)
+	parent.canGeneratePB.setEnabled(True)
 
 def xcoord(parent):
-	parent.cannedYcoordLE.setFocus()
+	parent.canYcoordLE.setFocus()
 
 def ycoord(parent):
-	x = parent.canCoordPTE.text()
-	y = parent.cannedYcoordLE.text()
-	parent.cannedCoordPTE.appendPlainText(f'X{x} Y{y}')
-	parent.canCoordPTE.setFocus()
-	parent.canCoordPTE.clear()
-	parent.cannedYcoordLE.clear()
+	x = parent.canXcoordLE.text()
+	y = parent.canYcoordLE.text()
+	parent.canCoordPTE.appendPlainText(f'X{x} Y{y}')
+	parent.canXcoordLE.setFocus()
+	parent.canXcoordLE.clear()
+	parent.canYcoordLE.clear()
 
 
 def gcode(parent):
 	parent.canGcodePTE.clear()
-	cycle = parent.cannedCycleBG.checkedButton().text()
+	cycle = parent.canCycleBG.checkedButton().text()
 	#print(required[cycle])
 	for item in required[cycle]:
 		if getattr(parent, item).text() == '':
 			name = getattr(parent, item).property('name')
 			parent.canGcodePTE.appendPlainText(f'{name} Must Not be Blank')
 			return
+	if parent.canRepeteLE.text() != '':
+		#print(parent.canRepeteLE.text())
+		#print(parent.canDistanceBG.checkedButton().text())
+		if parent.canDistanceBG.checkedButton().text() == 'G90':
+			parent.canGcodePTE.appendPlainText('G91 must be selected for the L word')
+			return
+
 	#print(cycles[cycle](parent))
 	coords = parent.canCoordPTE.toPlainText().split('\n')
 	#print(len(coords))
@@ -93,13 +100,13 @@ def gcode(parent):
 	if parent.canToolLE.text() != '':
 		tool = parent.canToolLE.text()
 		parent.canGcodePTE.appendPlainText(f'T{tool} M6')
-	startZ = parent.cannedZstartLE.text()
+	startZ = parent.canZstartLE.text()
 	parent.canGcodePTE.appendPlainText(f'G0 Z{startZ}')
-	startX = parent.cannedXstartLE.text()
-	startY =  parent.cannedYstartLE.text()
+	startX = parent.canXstartLE.text()
+	startY =  parent.canYstartLE.text()
 	parent.canGcodePTE.appendPlainText(f'X{startX} Y{startY}')
-	retract = parent.cannedRetractBG.checkedButton().text()
-	distance = parent.cannedDistanceBG.checkedButton().text()
+	retract = parent.canRetractBG.checkedButton().text()
+	distance = parent.canDistanceBG.checkedButton().text()
 	parent.canGcodePTE.appendPlainText(f'{retract} {distance}')
 	parent.canGcodePTE.appendPlainText('M3')
 	cycleline = []
@@ -140,7 +147,7 @@ def get(parent):
 	items = cursor.selectedText().split()
 	if len(items) > 4:
 		#print(len(items))
-		parent.cannedRpmLE.setText(items[2])
-		parent.cannedFeedLE.setText(items[4])
+		parent.canRpmLE.setText(items[2])
+		parent.canFeedLE.setText(items[4])
 	#print(items[2])
 	#print(items[4])

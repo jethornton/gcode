@@ -4,13 +4,13 @@ import sys, os
 from functools import partial
 
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
-from PyQt5 import uic
+from PyQt5 import uic, QtWidgets
 from PyQt5.QtSql import QSqlDatabase
 
 
 from libgcode import face
 from libgcode import grid
-from libgcode import cannedcycle
+from libgcode import cancycle
 from libgcode import pocket
 from libgcode import drillchart
 from libgcode import millchart
@@ -18,6 +18,9 @@ from libgcode import tap
 from libgcode import thread
 from libgcode import utilities
 from libgcode import develop
+from libgcode import helptext
+from libgcode.help import Ui_Dialog as helpDialog
+
 
 if os.path.split(sys.argv[0])[0] == '/usr/bin':
 	GUI_PATH = '/usr/lib/libgcode'
@@ -37,6 +40,7 @@ class main(QMainWindow):
 		self.setWindowTitle("G code Generator")
 		self.setupConnections()
 		utilities.getSettings(self)
+		self.helpInfo = helptext.descriptions
 		#db = QSqlDatabase.addDatabase('QSQLITE')
 		#db.setDatabaseName(GUI_PATH + 'threads.db')
 		#if db.open():
@@ -75,12 +79,12 @@ class main(QMainWindow):
 		self.pocketCopyPB.pressed.connect(partial(pocket.copy, self))
 		self.pocketSavePB.pressed.connect(partial(pocket.save, self))
 
-		self.cannedCycleBG.buttonClicked.connect(partial(cannedcycle.update, self))
-		self.cannedSelectPB.pressed.connect(partial(cannedcycle.get, self))
-		self.cannedGeneratePB.pressed.connect(partial(cannedcycle.gcode, self))
-		self.canXcoordLE.returnPressed.connect(partial(cannedcycle.xcoord, self))
-		self.canYcoordLE.returnPressed.connect(partial(cannedcycle.ycoord, self))
-		self.canCopyPB.pressed.connect(partial(cannedcycle.copy, self))
+		self.canCycleBG.buttonClicked.connect(partial(cancycle.update, self))
+		self.canSelectPB.pressed.connect(partial(cancycle.get, self))
+		self.canGeneratePB.pressed.connect(partial(cancycle.gcode, self))
+		self.canXcoordLE.returnPressed.connect(partial(cancycle.xcoord, self))
+		self.canYcoordLE.returnPressed.connect(partial(cancycle.ycoord, self))
+		self.canCopyPB.pressed.connect(partial(cancycle.copy, self))
 
 
 		self.drillUnitsBG.buttonClicked.connect(partial(drillchart.update, self))
@@ -100,6 +104,8 @@ class main(QMainWindow):
 		self.pocketExitPB.pressed.connect(self.close)
 		#self.drillSelectPB.pressed.connect(partial(hole.drill, self))
 
+		self.actionTabHelp.triggered.connect(self.help)
+
 	def setupVariables(self):
 		self.s1018 = []
 		self.sa2d2 = []
@@ -114,6 +120,29 @@ class main(QMainWindow):
 		msgBox.setText(text)
 		msgBox.setStandardButtons(QMessageBox.Ok)
 		returnValue = msgBox.exec()
+
+	def help(self, index = False):
+		dialog = QtWidgets.QDialog()
+		dialog.ui = helpDialog()
+		dialog.ui.setupUi(dialog)
+		if index:
+			dialog.ui.helpPTE.setPlainText(self.helpInfo(index))
+		else:
+			index = self.tabWidget.currentIndex()
+			if index == 3:
+				print(self.canCycleBG.checkedButton())
+				if self.canCycleBG.checkedButton() is None:
+					print('here')
+					dialog.ui.helpPTE.setPlainText(self.helpInfo(30))
+				else:
+					tab = {'G81':31, 'G82':32, 'G83':33, 'G84':34, 'G85':35,
+						'G86':36, 'G89':39}
+					cycle = self.canCycleBG.checkedButton().text()
+					dialog.ui.helpPTE.setPlainText(self.helpInfo(tab[cycle]))
+			else:
+				dialog.ui.helpPTE.setPlainText(self.helpInfo(self.tabWidget.currentIndex()))
+		dialog.exec_()
+
 
 if __name__ == '__main__':
 	app = QApplication(sys.argv)
