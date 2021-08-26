@@ -8,7 +8,7 @@ Priority: optional
 Package: gcode
 Priority: optional
 Architecture: any
-Depends: python3 (>=3.6), python3-pyqt5, python3-pyqt5.qtsql, ${misc:Depends}
+Depends: python3 (>=3.6), python3-pyqt5, ${misc:Depends}
 Description: Conversational G code generator for LinuxCNC
  Generate routines like facing, pocket, hole patterns
 
