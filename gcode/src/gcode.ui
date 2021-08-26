@@ -100,7 +100,11 @@
         </property>
         <layout class="QGridLayout" name="gridLayout_11">
          <item row="0" column="0">
-          <widget class="QLineEdit" name="preambleLE"/>
+          <widget class="QLineEdit" name="preambleLE">
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
@@ -138,7 +142,7 @@
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QSpinBox" name="rpmMaxSB_0">
+          <widget class="QSpinBox" name="machineMaxSB_0">
            <property name="maximum">
             <number>30000</number>
            </property>
@@ -162,7 +166,7 @@
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QSpinBox" name="rpmMaxSB_1">
+          <widget class="QSpinBox" name="machineMaxSB_1">
            <property name="maximum">
             <number>30000</number>
            </property>
@@ -172,7 +176,7 @@
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QSpinBox" name="rpmMaxSB_2">
+          <widget class="QSpinBox" name="machineMaxSB_2">
            <property name="maximum">
             <number>30000</number>
            </property>
@@ -2647,10 +2651,10 @@ Position move then G33.1 for each hole.</string>
   <tabstop>pocketSendPB</tabstop>
   <tabstop>pocketCopyPB</tabstop>
   <tabstop>pocketSavePB</tabstop>
-  <tabstop>rpmMaxSB_0</tabstop>
+  <tabstop>machineMaxSB_0</tabstop>
   <tabstop>machineLE_2</tabstop>
-  <tabstop>rpmMaxSB_1</tabstop>
-  <tabstop>rpmMaxSB_2</tabstop>
+  <tabstop>machineMaxSB_1</tabstop>
+  <tabstop>machineMaxSB_2</tabstop>
   <tabstop>machineLE_1</tabstop>
   <tabstop>inchRB</tabstop>
   <tabstop>faceSavePB</tabstop>

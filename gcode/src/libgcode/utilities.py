@@ -5,24 +5,24 @@ from PyQt5.QtWidgets import (QLineEdit, QSpinBox, QCheckBox, QComboBox,
 ini_options = [
 	['SETTINGS', 'UNITS', 'unitsBG'],
 	['SETTINGS', 'PREAMBLE', 'preambleLE'],
-	['SETTINGS', 'NAME_1', 'machineLE_0'],
-	['SETTINGS', 'MAX_RPM_1', 'rpmMaxSB_0'],
-	['SETTINGS', 'NAME_2', 'machineLE_1'],
-	['SETTINGS', 'MAX_RPM_2', 'rpmMaxSB_1'],
-	['SETTINGS', 'NAME_3', 'machineLE_2'],
-	['SETTINGS', 'MAX_RPM_3', 'rpmMaxSB_2'],
+	['SETTINGS', 'NAME_0', 'machineLE_0'],
+	['SETTINGS', 'MAX_RPM_0', 'machineMaxSB_0'],
+	['SETTINGS', 'NAME_1', 'machineLE_1'],
+	['SETTINGS', 'MAX_RPM_1', 'machineMaxSB_1'],
+	['SETTINGS', 'NAME_2', 'machineLE_2'],
+	['SETTINGS', 'MAX_RPM_2', 'machineMaxSB_2'],
 	]
 
 def saveSettings(parent):
 	settings = ['[SETTINGS]\n']
 	settings.append(f'UNITS = {parent.unitsBG.checkedButton().property("units")}\n')
 	settings.append(f'PREAMBLE = {parent.preambleLE.text()}\n')
-	settings.append(f'NAME_1 = {parent.machine1LE.text()}\n')
-	settings.append(f'MAX_RPM_1 = {parent.machine1MaxSB.value()}\n')
-	settings.append(f'NAME_2 = {parent.machine2LE.text()}\n')
-	settings.append(f'MAX_RPM_2 = {parent.machine2MaxSB.value()}\n')
-	settings.append(f'NAME_3 = {parent.machine3LE.text()}\n')
-	settings.append(f'MAX_RPM_3 = {parent.machine3MaxSB.value()}\n')
+	settings.append(f'NAME_0 = {parent.machineLE_0.text()}\n')
+	settings.append(f'MAX_RPM_0 = {parent.machineMaxSB_0.value()}\n')
+	settings.append(f'NAME_1 = {parent.machineLE_1.text()}\n')
+	settings.append(f'MAX_RPM_1 = {parent.machineMaxSB_1.value()}\n')
+	settings.append(f'NAME_2 = {parent.machineLE_2.text()}\n')
+	settings.append(f'MAX_RPM_2 = {parent.machineMaxSB_2.value()}\n')
 	
 
 	sf = os.path.expanduser('~/.gcode_settings')
@@ -62,7 +62,7 @@ def getSettings(parent):
 			# getattr(self, 'minLimit_' + str(i)).setToolTip('inches')
 			#print(getattr(parent, 'machineLE_') + str(i)).text()
 			machine = getattr(parent, 'machineLE_' + str(i)).text()
-			rpm = getattr(parent, 'rpmMaxSB_' + str(i)).text()
+			rpm = getattr(parent, 'machineMaxSB_' + str(i)).text()
 			getattr(parent, 'drillMachineCB').addItem(machine, rpm)
 			#parent.drillMachineCB.addItem
 
