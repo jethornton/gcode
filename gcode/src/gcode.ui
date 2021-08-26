@@ -1052,75 +1052,7 @@
          <string>Canned Cycle</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_31">
-         <item row="3" column="0">
-          <widget class="QRadioButton" name="radioButton_5">
-           <property name="text">
-            <string>G84</string>
-           </property>
-           <attribute name="buttonGroup">
-            <string notr="true">canCycleBG</string>
-           </attribute>
-          </widget>
-         </item>
-         <item row="4" column="1">
-          <widget class="QLabel" name="label_58">
-           <property name="text">
-            <string>Boring Cycle, Feed Out</string>
-           </property>
-          </widget>
-         </item>
          <item row="1" column="0">
-          <widget class="QRadioButton" name="radioButton_3">
-           <property name="text">
-            <string>G82</string>
-           </property>
-           <attribute name="buttonGroup">
-            <string notr="true">canCycleBG</string>
-           </attribute>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QRadioButton" name="radioButton_4">
-           <property name="text">
-            <string>G83</string>
-           </property>
-           <attribute name="buttonGroup">
-            <string notr="true">canCycleBG</string>
-           </attribute>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QLabel" name="label_56">
-           <property name="text">
-            <string>Peck Drilling Cycle</string>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="1">
-          <widget class="QLabel" name="label_62">
-           <property name="text">
-            <string>Boring Cycle, Spindle Stop, Rapid Out</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLabel" name="label_54">
-           <property name="text">
-            <string>Drilling Cycle</string>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="0">
-          <widget class="QRadioButton" name="radioButton_7">
-           <property name="text">
-            <string>G86</string>
-           </property>
-           <attribute name="buttonGroup">
-            <string notr="true">canCycleBG</string>
-           </attribute>
-          </widget>
-         </item>
-         <item row="0" column="0">
           <widget class="QRadioButton" name="radioButton_2">
            <property name="text">
             <string>G81</string>
@@ -1130,7 +1062,75 @@
            </attribute>
           </widget>
          </item>
+         <item row="4" column="0">
+          <widget class="QRadioButton" name="radioButton_5">
+           <property name="text">
+            <string>G84</string>
+           </property>
+           <attribute name="buttonGroup">
+            <string notr="true">canCycleBG</string>
+           </attribute>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QLabel" name="label_58">
+           <property name="text">
+            <string>Boring Cycle, Feed Out</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QRadioButton" name="radioButton_3">
+           <property name="text">
+            <string>G82</string>
+           </property>
+           <attribute name="buttonGroup">
+            <string notr="true">canCycleBG</string>
+           </attribute>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QRadioButton" name="radioButton_4">
+           <property name="text">
+            <string>G83</string>
+           </property>
+           <attribute name="buttonGroup">
+            <string notr="true">canCycleBG</string>
+           </attribute>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QLabel" name="label_56">
+           <property name="text">
+            <string>Peck Drilling Cycle</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="QLabel" name="label_62">
+           <property name="text">
+            <string>Boring Cycle, Spindle Stop, Rapid Out</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLabel" name="label_54">
+           <property name="text">
+            <string>Drilling Cycle</string>
+           </property>
+          </widget>
+         </item>
          <item row="6" column="0">
+          <widget class="QRadioButton" name="radioButton_7">
+           <property name="text">
+            <string>G86</string>
+           </property>
+           <attribute name="buttonGroup">
+            <string notr="true">canCycleBG</string>
+           </attribute>
+          </widget>
+         </item>
+         <item row="7" column="0">
           <widget class="QRadioButton" name="radioButton_10">
            <property name="text">
             <string>G89</string>
@@ -1140,14 +1140,14 @@
            </attribute>
           </widget>
          </item>
-         <item row="1" column="1">
+         <item row="2" column="1">
           <widget class="QLabel" name="label_55">
            <property name="text">
             <string>Drilling Cycle, Dwell</string>
            </property>
           </widget>
          </item>
-         <item row="4" column="0">
+         <item row="5" column="0">
           <widget class="QRadioButton" name="radioButton_6">
            <property name="text">
             <string>G85</string>
@@ -1157,17 +1157,34 @@
            </attribute>
           </widget>
          </item>
-         <item row="6" column="1">
+         <item row="7" column="1">
           <widget class="QLabel" name="label_61">
            <property name="text">
             <string>Boring Cycle, Dwell, Feed Out</string>
            </property>
           </widget>
          </item>
-         <item row="3" column="1">
+         <item row="4" column="1">
           <widget class="QLabel" name="label_57">
            <property name="text">
             <string>Right Hand Tapping, Dwell</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QRadioButton" name="radioButton_11">
+           <property name="text">
+            <string>G73</string>
+           </property>
+           <attribute name="buttonGroup">
+            <string notr="true">canCycleBG</string>
+           </attribute>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLabel" name="label_31">
+           <property name="text">
+            <string>Drilling Cycle with Chip Breaking</string>
            </property>
           </widget>
          </item>

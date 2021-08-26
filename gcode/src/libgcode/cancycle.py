@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QApplication
 from PyQt5.QtGui import QTextCursor
 
 gcodes = {
+	'G73':['canRetractLE', 'canRepeteLE', 'canPeckLE'],
 	'G81':['canRetractLE', 'canRepeteLE'],
 	'G82':['canRetractLE', 'canRepeteLE', 'canDwellLE'],
 	'G83':['canRetractLE', 'canRepeteLE', 'canPeckLE'],
@@ -12,6 +13,7 @@ gcodes = {
 	}
 
 required = {
+	'G73':['canRetractLE', 'canPeckLE'],
 	'G81':['canRetractLE'],
 	'G82':['canRetractLE', 'canDwellLE'],
 	'G83':['canRetractLE', 'canPeckLE'],
@@ -20,6 +22,9 @@ required = {
 	'G86':['canRetractLE', 'canDwellLE', 'canSpindleSB'],
 	'G89':['canRetractLE', 'canDwellLE']
 	}
+
+def g73(parent):
+	return('G73 X Y Z R L Q')
 
 def g81(parent):
 	return('G81 X Y Z R L')
@@ -43,6 +48,7 @@ def g89(parent):
 	return('G89 X Y Z R L P')
 
 cycles = {
+	'G73':g73,
 	'G81':g81,
 	'G82':g82,
 	'G83':g83,
@@ -82,6 +88,7 @@ def gcode(parent):
 	#print(required[cycle])
 	for item in required[cycle]:
 		if getattr(parent, item).text() == '':
+			parent.canGcodePTE.clear()
 			name = getattr(parent, item).property('name')
 			parent.canGcodePTE.appendPlainText(f'{name} Must Not be Blank')
 			return
