@@ -33,3 +33,13 @@ def pocket(parent):
 	parent.pocketCutDepth.setText('-.250')
 	parent.pocketStepDepth.setText('.125')
 
+def canned(parent):
+	parent.tabWidget.setCurrentIndex(3)
+	parent.canToolLE.setText('1')
+	parent.canRetractLE.setText('0.250')
+	parent.canRpmLE.setText('675')
+	parent.canZdepthLE.setText('-1.250')
+	parent.canFeedLE.setText('5')
+	parent.canCoordPTE.appendPlainText('X1.0 Y-1.0')
+	parent.canCoordPTE.appendPlainText('X2.0 Y-1.0')
+	parent.canCoordPTE.appendPlainText('X3.0 Y-1.0')

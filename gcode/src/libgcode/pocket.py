@@ -121,7 +121,8 @@ def generate(parent):
 
 	if parent.devel:
 		pocket(parent)
-	parent.pocketPTE.appendPlainText('M2')
+	if parent.pocketProgEndCB.isChecked():
+		parent.pocketPTE.appendPlainText('M2')
 
 	# draw the pocket pocketReturnCB
 def pocket(parent):

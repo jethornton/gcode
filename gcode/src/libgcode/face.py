@@ -146,7 +146,8 @@ def generate(parent):
 		parent.facePTE.appendPlainText(f'G0 Z{safeZ:.4f}')
 	if parent.faceReturnCB.isChecked():
 		parent.facePTE.appendPlainText(f'G0 X0 Y0')
-	parent.facePTE.appendPlainText('M2')
+	if parent.faceProgEndCB.isChecked():
+		parent.facePTE.appendPlainText('M2')
 
 	# parent.facePTE.appendPlainText(f'{}')
 

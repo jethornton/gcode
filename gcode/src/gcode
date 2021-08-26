@@ -51,18 +51,12 @@ class main(QMainWindow):
 		self.devel = False
 		if DEVEL:
 			self.devel = True
-			self.canToolLE.setText('1')
-			self.canRetractLE.setText('0.250')
-			self.canRpmLE.setText('675')
-			self.canZdepthLE.setText('-1.250')
-			self.canFeedLE.setText('5')
-			self.canCoordPTE.appendPlainText('X1.0 Y-1.0')
-			self.canCoordPTE.appendPlainText('X2.0 Y-1.0')
-			self.canCoordPTE.appendPlainText('X3.0 Y-1.0')
 			#develop.face(self)
 			#face.generate(self)
 			#develop.pocket(self)
 			#pocket.generate(self)
+			develop.canned(self)
+
 		self.show()
 
 
@@ -89,7 +83,8 @@ class main(QMainWindow):
 		self.canXcoordLE.returnPressed.connect(partial(cancycle.xcoord, self))
 		self.canYcoordLE.returnPressed.connect(partial(cancycle.ycoord, self))
 		self.canCopyPB.clicked.connect(partial(cancycle.copy, self))
-		self.canRemovePB.clicked.connect(partial(cancycle.delete, self))
+		self.canCoordRemovePB.clicked.connect(partial(cancycle.deleteCoord, self))
+		self.canGcodeRemovePB.clicked.connect(partial(cancycle.deleteGcode, self))
 		self.canSendPB.clicked.connect(partial(cancycle.send, self))
 
 		self.drillUnitsBG.buttonClicked.connect(partial(drillchart.update, self))

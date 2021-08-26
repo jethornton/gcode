@@ -150,7 +150,13 @@ def copy(parent):
 	qclip.setText(parent.canGcodePTE.toPlainText())
 	parent.statusbar.showMessage('G code copied to clipboard')
 
-def delete(parent):
+def deleteCoord(parent):
+	cursor = parent.canCoordPTE.textCursor()
+	cursor.select(QTextCursor.LineUnderCursor)
+	cursor.removeSelectedText()
+	cursor.deleteChar()
+
+def deleteGcode(parent):
 	cursor = parent.canGcodePTE.textCursor()
 	cursor.select(QTextCursor.LineUnderCursor)
 	cursor.removeSelectedText()
