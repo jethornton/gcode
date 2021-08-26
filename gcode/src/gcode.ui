@@ -1979,22 +1979,6 @@ Position move then G33.1 for each hole.</string>
           </layout>
          </widget>
         </item>
-        <item row="0" column="0" rowspan="3">
-         <widget class="QPlainTextEdit" name="gcodePTE"/>
-        </item>
-        <item row="2" column="1">
-         <spacer name="verticalSpacer_2">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
         <item row="1" column="1">
          <widget class="QGroupBox" name="groupBox_32">
           <property name="title">
@@ -2019,6 +2003,29 @@ Position move then G33.1 for each hole.</string>
             </widget>
            </item>
           </layout>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <spacer name="verticalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="0" rowspan="3">
+         <widget class="QWidget" name="gcodeFrame" native="true">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
          </widget>
         </item>
        </layout>
@@ -2725,7 +2732,6 @@ Position move then G33.1 for each hole.</string>
   <tabstop>radioButton_8</tabstop>
   <tabstop>radioButton_9</tabstop>
   <tabstop>canEndReturnCB</tabstop>
-  <tabstop>gcodePTE</tabstop>
   <tabstop>gcodeCopyPB</tabstop>
   <tabstop>gcodeRemovePB</tabstop>
   <tabstop>gcodeAddM2PB</tabstop>

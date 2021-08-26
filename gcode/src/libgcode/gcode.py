@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QApplication
-from PyQt5.QtGui import QTextCursor
+from PyQt5.QtGui import QTextCursor, QTextCharFormat, QTextCharFormat
 
 def copy(parent):
 	qclip = QApplication.clipboard()
@@ -20,3 +20,12 @@ def insert(parent):
 
 def addM2(parent):
 	parent.gcodePTE.appendPlainText('M2')
+
+def selectLine(parent):
+	#print('here')
+	fmt = QTextCharFormat()
+	#fmt.setUnderlineColor(Qt.red)
+	fmt.setUnderlineStyle(QTextCharFormat.SpellCheckUnderline)
+	cursor = parent.gcodePTE.textCursor()
+	cursor.select(QTextCursor.LineUnderCursor)
+	cursor.setCharFormat(fmt)

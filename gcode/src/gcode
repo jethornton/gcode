@@ -3,9 +3,12 @@
 import sys, os
 from functools import partial
 
-from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
+from PyQt5.QtWidgets import (QApplication, QMainWindow, QMessageBox,
+	QPlainTextEdit, QGridLayout)
 from PyQt5 import uic, QtWidgets
-from PyQt5.QtSql import QSqlDatabase
+from PyQt5.QtCore import pyqtSignal
+
+#from PyQt5.QtSql import QSqlDatabase
 
 
 from libgcode import face
@@ -33,15 +36,24 @@ if os.path.split(sys.argv[0])[0] == '.':
 	print('In Development')
 	DEVEL = True
 
+class gcodeEditor(QPlainTextEdit):
+	clicked = pyqtSignal()
+	def mouseReleaseEvent(self, event):
+		self.clicked.emit()
+
 class main(QMainWindow):
 	def __init__(self):
 		super().__init__()
 		uic.loadUi(os.path.join(GUI_PATH, 'gcode.ui'), self)
 		self.setGeometry(50, 50, 500, 300)
 		self.setWindowTitle("G code Generator")
-		self.setupConnections()
 		utilities.getSettings(self)
 		self.helpInfo = helptext.descriptions
+		#clicked = pyqtSignal()
+		self.gcodePTE = gcodeEditor()
+		gcodeGrid = QGridLayout()
+		gcodeGrid.addWidget(self.gcodePTE, 0, 0)
+		self.gcodeFrame.setLayout(gcodeGrid)
 		#db = QSqlDatabase.addDatabase('QSQLITE')
 		#db.setDatabaseName(GUI_PATH + 'threads.db')
 		#if db.open():
@@ -56,6 +68,7 @@ class main(QMainWindow):
 			#develop.pocket(self)
 			#pocket.generate(self)
 			develop.canned(self)
+		self.setupConnections()
 
 		self.show()
 
@@ -93,6 +106,7 @@ class main(QMainWindow):
 		self.drillSfmSB.valueChanged.connect(partial(drillchart.populate, self))
 		self.drilliprSB.valueChanged.connect(partial(drillchart.populate, self))
 		self.drillMachineCB.currentIndexChanged.connect(partial(drillchart.update, self))
+		#self.drillPTE.clicked.connect(partial(drillchart.select, self))
 
 		self.millUnitsBG.buttonClicked.connect(partial(millchart.update, self))
 		self.millMaterialBG.buttonClicked.connect(partial(millchart.update, self))
@@ -108,6 +122,8 @@ class main(QMainWindow):
 		self.gcodeInsertPB.clicked.connect(partial(gcode.insert, self))
 		self.gcodeDeleteAllPB.clicked.connect(partial(gcode.deleteAll, self))
 		self.gcodeAddM2PB.clicked.connect(partial(gcode.addM2, self))
+		self.gcodePTE.clicked.connect(partial(gcode.selectLine, self))
+		#self.gcodePTE.clicked.connect(lambda: print('clicked'))
 
 
 		self.actionTabHelp.triggered.connect(self.help)
