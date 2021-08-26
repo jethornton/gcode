@@ -64,6 +64,7 @@ def getSettings(parent):
 			machine = getattr(parent, 'machineLE_' + str(i)).text()
 			rpm = getattr(parent, 'machineMaxSB_' + str(i)).text()
 			getattr(parent, 'drillMachineCB').addItem(machine, rpm)
+			getattr(parent, 'millMachineCB').addItem(machine, rpm)
 			#parent.drillMachineCB.addItem
 
 	'''

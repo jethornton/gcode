@@ -109,6 +109,11 @@ def populate(parent):
 	units = parent.drillUnitsBG.checkedButton().text()
 	material = parent.millMaterialBG.checkedButton().property('material')
 	feeds = getattr(parent, material)
+	if parent.millMachineCB.currentData() is None:
+		max_rpm = 1000000
+	else:
+		max_rpm = int(parent.millMachineCB.currentData())
+
 	max_rpm = int(parent.millMachineCB.currentData())
 	#print(feeds)
 	parent.millPTE.clear()
