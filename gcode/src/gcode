@@ -106,7 +106,6 @@ class main(QMainWindow):
 		self.millChipLoadFactorDSB.valueChanged.connect(partial(millchart.populate, self))
 		self.millMachineCB.currentIndexChanged.connect(partial(millchart.update, self))
 
-		self.pocketExitPB.clicked.connect(self.close)
 		#self.drillSelectPB.pressed.connect(partial(hole.drill, self))
 
 		self.gcodeCopyPB.clicked.connect(partial(gcode.copy, self))
