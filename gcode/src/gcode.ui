@@ -30,7 +30,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -424,7 +424,7 @@
           </layout>
          </widget>
         </item>
-        <item row="4" column="3">
+        <item row="4" column="4">
          <spacer name="horizontalSpacer">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -437,7 +437,7 @@
           </property>
          </spacer>
         </item>
-        <item row="4" column="1">
+        <item row="4" column="2">
          <widget class="QPushButton" name="faceCopyPB">
           <property name="text">
            <string>Copy to Clipboard</string>
@@ -528,7 +528,21 @@
           </layout>
          </widget>
         </item>
-        <item row="0" column="1" rowspan="4" colspan="3">
+        <item row="4" column="3">
+         <widget class="QPushButton" name="faceSavePB">
+          <property name="text">
+           <string>Save to File</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QPushButton" name="faceSendPB">
+          <property name="text">
+           <string>Send to G code Tab</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1" rowspan="4" colspan="4">
          <widget class="QPlainTextEdit" name="facePTE">
           <property name="minimumSize">
            <size>
@@ -543,13 +557,6 @@
             <weight>75</weight>
             <bold>true</bold>
            </font>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="2">
-         <widget class="QPushButton" name="faceSavePB">
-          <property name="text">
-           <string>Save to File</string>
           </property>
          </widget>
         </item>
@@ -869,28 +876,28 @@
           </layout>
          </widget>
         </item>
-        <item row="3" column="1">
+        <item row="3" column="2">
          <widget class="QPushButton" name="pocketCopyPB">
           <property name="text">
            <string>Copy to Clipboard</string>
           </property>
          </widget>
         </item>
-        <item row="3" column="2">
+        <item row="3" column="3">
          <widget class="QPushButton" name="pocketSavePB">
           <property name="text">
            <string>Save to File</string>
           </property>
          </widget>
         </item>
-        <item row="3" column="3">
-         <widget class="QPushButton" name="pocketExitPB">
+        <item row="3" column="1">
+         <widget class="QPushButton" name="pocketSendPB">
           <property name="text">
-           <string>Exit</string>
+           <string>Send to G code Tab</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="1" rowspan="3" colspan="3">
+        <item row="0" column="1" rowspan="3" colspan="4">
          <widget class="QPlainTextEdit" name="pocketPTE">
           <property name="minimumSize">
            <size>
@@ -1168,13 +1175,20 @@
           <x>20</x>
           <y>410</y>
           <width>251</width>
-          <height>221</height>
+          <height>271</height>
          </rect>
         </property>
         <property name="title">
          <string>Setup</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_32">
+         <item row="2" column="1">
+          <widget class="QLabel" name="label_68">
+           <property name="text">
+            <string>P</string>
+           </property>
+          </widget>
+         </item>
          <item row="1" column="0">
           <widget class="QLabel" name="label_65">
            <property name="text">
@@ -1219,13 +1233,6 @@
            </property>
            <property name="name" stdset="0">
             <string>Spindle</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QLabel" name="label_68">
-           <property name="text">
-            <string>P</string>
            </property>
           </widget>
          </item>
@@ -1298,13 +1305,27 @@
            </property>
           </widget>
          </item>
+         <item row="5" column="0" colspan="3">
+          <widget class="QCheckBox" name="canEndReturnCB">
+           <property name="text">
+            <string>Return to X0 Y0 Z0</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="0" colspan="3">
+          <widget class="QCheckBox" name="canProgEndCB">
+           <property name="text">
+            <string>Program End M2</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </widget>
        <widget class="QGroupBox" name="groupBox_25">
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>640</y>
+          <y>690</y>
           <width>251</width>
           <height>101</height>
          </rect>
@@ -1379,9 +1400,9 @@
         <property name="geometry">
          <rect>
           <x>500</x>
-          <y>20</y>
+          <y>10</y>
           <width>251</width>
-          <height>341</height>
+          <height>351</height>
          </rect>
         </property>
         <property name="title">
@@ -1487,9 +1508,9 @@
         <property name="geometry">
          <rect>
           <x>770</x>
-          <y>20</y>
+          <y>10</y>
           <width>191</width>
-          <height>271</height>
+          <height>221</height>
          </rect>
         </property>
         <property name="title">
@@ -1510,20 +1531,6 @@
           <widget class="QPushButton" name="canCopyPB">
            <property name="text">
             <string>Copy</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QCheckBox" name="canEndReturnCB">
-           <property name="text">
-            <string>Return to X0 Y0 Z0</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QCheckBox" name="canProgEndCB">
-           <property name="text">
-            <string>Program End M2</string>
            </property>
           </widget>
          </item>
@@ -1554,6 +1561,28 @@
           <widget class="QPushButton" name="canSendPB">
            <property name="text">
             <string>Send to G code Tab</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QGroupBox" name="groupBox_31">
+        <property name="geometry">
+         <rect>
+          <x>770</x>
+          <y>244</y>
+          <width>189</width>
+          <height>121</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Editing</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_40">
+         <item row="0" column="0">
+          <widget class="QPushButton" name="canRemovePB">
+           <property name="text">
+            <string>Remove Selected Line</string>
            </property>
           </widget>
          </item>
@@ -2539,14 +2568,131 @@ Position move then G33.1 for each hole.</string>
   <tabstop>faceLeft</tabstop>
   <tabstop>faceRear</tabstop>
   <tabstop>faceTop</tabstop>
+  <tabstop>faceTool</tabstop>
   <tabstop>faceToolDia</tabstop>
   <tabstop>faceRPM</tabstop>
   <tabstop>faceFeed</tabstop>
   <tabstop>faceStep</tabstop>
+  <tabstop>faceSafeZ</tabstop>
   <tabstop>faceLeadIn</tabstop>
+  <tabstop>faceCutDepth</tabstop>
+  <tabstop>faceStepDepth</tabstop>
+  <tabstop>faceReturnCB</tabstop>
   <tabstop>faceGeneratePB</tabstop>
   <tabstop>faceCopyPB</tabstop>
+  <tabstop>pocketWidthX</tabstop>
+  <tabstop>pocketDepthY</tabstop>
+  <tabstop>pocketRadius</tabstop>
+  <tabstop>pocketLeft</tabstop>
+  <tabstop>pocketRear</tabstop>
+  <tabstop>pocketTop</tabstop>
+  <tabstop>pocketTool</tabstop>
+  <tabstop>pocketToolDia</tabstop>
+  <tabstop>pocketRPM</tabstop>
+  <tabstop>pocketFeed</tabstop>
+  <tabstop>pocketStep</tabstop>
+  <tabstop>pocketSafeZ</tabstop>
+  <tabstop>pocketLeadIn</tabstop>
+  <tabstop>pocketCutDepth</tabstop>
+  <tabstop>pocketStepDepth</tabstop>
+  <tabstop>pocketReturnCB</tabstop>
+  <tabstop>pocketGeneratePB</tabstop>
+  <tabstop>pocketSendPB</tabstop>
+  <tabstop>pocketCopyPB</tabstop>
+  <tabstop>pocketSavePB</tabstop>
+  <tabstop>rpmMaxSB_0</tabstop>
+  <tabstop>machineLE_2</tabstop>
+  <tabstop>rpmMaxSB_1</tabstop>
+  <tabstop>rpmMaxSB_2</tabstop>
+  <tabstop>machineLE_1</tabstop>
+  <tabstop>inchRB</tabstop>
+  <tabstop>faceSavePB</tabstop>
+  <tabstop>preambleLE</tabstop>
+  <tabstop>facePTE</tabstop>
   <tabstop>tabWidget</tabstop>
+  <tabstop>saveSettingsPB</tabstop>
+  <tabstop>machineLE_0</tabstop>
+  <tabstop>pocketPTE</tabstop>
+  <tabstop>cannedG98RB</tabstop>
+  <tabstop>cannedG99RB</tabstop>
+  <tabstop>canZdepthLE</tabstop>
+  <tabstop>canRpmLE</tabstop>
+  <tabstop>canToolLE</tabstop>
+  <tabstop>canFeedLE</tabstop>
+  <tabstop>canSelectPB</tabstop>
+  <tabstop>radioButton_5</tabstop>
+  <tabstop>radioButton_3</tabstop>
+  <tabstop>radioButton_4</tabstop>
+  <tabstop>radioButton_7</tabstop>
+  <tabstop>radioButton_2</tabstop>
+  <tabstop>radioButton_10</tabstop>
+  <tabstop>radioButton_6</tabstop>
+  <tabstop>canRepeteLE</tabstop>
+  <tabstop>canDwellLE</tabstop>
+  <tabstop>canSpindleSB</tabstop>
+  <tabstop>canPeckLE</tabstop>
+  <tabstop>canRetractLE</tabstop>
+  <tabstop>canXstartLE</tabstop>
+  <tabstop>canYstartLE</tabstop>
+  <tabstop>canZstartLE</tabstop>
+  <tabstop>canGeneratePB</tabstop>
+  <tabstop>canGcodePTE</tabstop>
+  <tabstop>canXcoordLE</tabstop>
+  <tabstop>canYcoordLE</tabstop>
+  <tabstop>canCoordPTE</tabstop>
+  <tabstop>canG91RB</tabstop>
+  <tabstop>canG90RB</tabstop>
+  <tabstop>tabWidget_2</tabstop>
+  <tabstop>lineEdit_3</tabstop>
+  <tabstop>lineEdit_2</tabstop>
+  <tabstop>lineEdit</tabstop>
+  <tabstop>lineEdit_4</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>drillDepthLE</tabstop>
+  <tabstop>drillRpmLE</tabstop>
+  <tabstop>drillToolLE</tabstop>
+  <tabstop>drillFeedLE</tabstop>
+  <tabstop>drillSelectPB</tabstop>
+  <tabstop>drillMildSteelRB</tabstop>
+  <tabstop>drillBronzeRB</tabstop>
+  <tabstop>drillCastIronRB</tabstop>
+  <tabstop>drillAluminumRB</tabstop>
+  <tabstop>drillBrassRB</tabstop>
+  <tabstop>drillToolSteelRB</tabstop>
+  <tabstop>drillFractionRB</tabstop>
+  <tabstop>drillMetricRB</tabstop>
+  <tabstop>drillTapDrillRB</tabstop>
+  <tabstop>drill3xDiam</tabstop>
+  <tabstop>drill2xDiam</tabstop>
+  <tabstop>drill4xDiam</tabstop>
+  <tabstop>dcReamRB</tabstop>
+  <tabstop>drillMachineCB</tabstop>
+  <tabstop>drillPTE</tabstop>
+  <tabstop>millPTE</tabstop>
+  <tabstop>millInchRB</tabstop>
+  <tabstop>millMetricRB</tabstop>
+  <tabstop>millAluminumRB</tabstop>
+  <tabstop>millBrassRB</tabstop>
+  <tabstop>millToolSteelRB</tabstop>
+  <tabstop>radioButton</tabstop>
+  <tabstop>millCastIronRB</tabstop>
+  <tabstop>millMildSteelRB</tabstop>
+  <tabstop>millToothsSB</tabstop>
+  <tabstop>millChipLoadFactorDSB</tabstop>
+  <tabstop>millMachineCB</tabstop>
+  <tabstop>canProgEndCB</tabstop>
+  <tabstop>canCopyPB</tabstop>
+  <tabstop>radioButton_8</tabstop>
+  <tabstop>radioButton_9</tabstop>
+  <tabstop>canEndReturnCB</tabstop>
+  <tabstop>gcodePTE</tabstop>
+  <tabstop>gcodeCopyPB</tabstop>
+  <tabstop>gcodeRemovePB</tabstop>
+  <tabstop>gcodeAddM2PB</tabstop>
+  <tabstop>canSendPB</tabstop>
+  <tabstop>canRemovePB</tabstop>
+  <tabstop>faceSendPB</tabstop>
+  <tabstop>mmRB</tabstop>
  </tabstops>
  <resources/>
  <connections/>

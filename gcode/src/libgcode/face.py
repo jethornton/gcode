@@ -74,7 +74,10 @@ def generate(parent):
 	safeZ = retnumber(parent, 'faceSafeZ')
 	leadin = retnumber(parent, 'faceLeadIn')
 	cutdepth = retnumber(parent, 'faceCutDepth')
-	stepdepth = abs(retnumber(parent, 'faceStepDepth'))
+	if parent.faceStepDepth.text() == '':
+		stepdepth = cutdepth
+	else:
+		stepdepth = abs(retnumber(parent, 'faceStepDepth'))
 
 	step = min(widthX, depthY)
 	cutwidth = diam * stepPercent
@@ -151,6 +154,9 @@ def copy(parent):
 	qclip = QApplication.clipboard()
 	qclip.setText(parent.facePTE.toPlainText())
 	parent.statusbar.showMessage('G code copied to clipboard')
+
+def send(parent):
+	parent.gcodePTE.appendPlainText(parent.facePTE.toPlainText())
 
 def save(parent):
 	options = QFileDialog.Options()

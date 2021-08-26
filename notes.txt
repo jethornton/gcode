@@ -13,7 +13,7 @@ Append a new entry to the current changelog
 dch --append
 
 To change the version
-dch -v 0.0.3
+dch -v 0.0.4
 
 to build a deb from the top most directory
 dpkg-buildpackage -us -uc

@@ -75,10 +75,13 @@ class main(QMainWindow):
 		self.faceGeneratePB.clicked.connect(partial(face.generate, self))
 		self.faceCopyPB.clicked.connect(partial(face.copy, self))
 		self.faceSavePB.clicked.connect(partial(face.save, self))
+		self.faceSendPB.clicked.connect(partial(face.send, self))
 
 		self.pocketGeneratePB.clicked.connect(partial(pocket.generate, self))
 		self.pocketCopyPB.clicked.connect(partial(pocket.copy, self))
 		self.pocketSavePB.clicked.connect(partial(pocket.save, self))
+		self.pocketSendPB.clicked.connect(partial(pocket.send, self))
+
 
 		self.canCycleBG.buttonClicked.connect(partial(cancycle.update, self))
 		self.canSelectPB.clicked.connect(partial(cancycle.get, self))
@@ -86,8 +89,8 @@ class main(QMainWindow):
 		self.canXcoordLE.returnPressed.connect(partial(cancycle.xcoord, self))
 		self.canYcoordLE.returnPressed.connect(partial(cancycle.ycoord, self))
 		self.canCopyPB.clicked.connect(partial(cancycle.copy, self))
+		self.canRemovePB.clicked.connect(partial(cancycle.delete, self))
 		self.canSendPB.clicked.connect(partial(cancycle.send, self))
-
 
 		self.drillUnitsBG.buttonClicked.connect(partial(drillchart.update, self))
 		self.drillMaterialBG.buttonClicked.connect(partial(drillchart.update, self))

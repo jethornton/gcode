@@ -157,6 +157,10 @@ def copy(parent):
 	qclip.setText(parent.pocketPTE.toPlainText())
 	parent.statusbar.showMessage('G code copied to clipboard')
 
+def send(parent):
+	parent.gcodePTE.appendPlainText(parent.pocketPTE.toPlainText())
+
+
 def save(parent):
 	if parent.devel:
 		with open('/home/john/linuxcnc/nc_files/pocket.ngc', 'w') as f:

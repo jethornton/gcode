@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import QApplication
+from PyQt5.QtGui import QTextCursor
 
 gcodes = {
 	'G81':['canRetractLE', 'canRepeteLE'],
@@ -40,8 +41,6 @@ def g86(parent):
 
 def g89(parent):
 	return('G89 X Y Z R L P')
-
-
 
 cycles = {
 	'G81':g81,
@@ -150,6 +149,12 @@ def copy(parent):
 	qclip = QApplication.clipboard()
 	qclip.setText(parent.canGcodePTE.toPlainText())
 	parent.statusbar.showMessage('G code copied to clipboard')
+
+def delete(parent):
+	cursor = parent.canGcodePTE.textCursor()
+	cursor.select(QTextCursor.LineUnderCursor)
+	cursor.removeSelectedText()
+	cursor.deleteChar()
 
 def send(parent):
 	parent.gcodePTE.appendPlainText(parent.canGcodePTE.toPlainText())
