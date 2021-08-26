@@ -151,6 +151,9 @@ def copy(parent):
 	qclip.setText(parent.canGcodePTE.toPlainText())
 	parent.statusbar.showMessage('G code copied to clipboard')
 
+def send(parent):
+	parent.gcodePTE.appendPlainText(parent.canGcodePTE.toPlainText())
+
 def drill(parent):
 	cursor = parent.drillPTE.textCursor()
 	info = cursor.selectedText().split()

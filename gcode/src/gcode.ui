@@ -30,7 +30,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -1513,6 +1513,13 @@
            </property>
           </widget>
          </item>
+         <item row="2" column="0">
+          <widget class="QCheckBox" name="canEndReturnCB">
+           <property name="text">
+            <string>Return to X0 Y0 Z0</string>
+           </property>
+          </widget>
+         </item>
          <item row="3" column="0">
           <widget class="QCheckBox" name="canProgEndCB">
            <property name="text">
@@ -1543,10 +1550,10 @@
            </attribute>
           </widget>
          </item>
-         <item row="2" column="0">
-          <widget class="QCheckBox" name="canEndReturnCB">
+         <item row="7" column="0">
+          <widget class="QPushButton" name="canSendPB">
            <property name="text">
-            <string>Return to X0 Y0 Z0</string>
+            <string>Send to G code Tab</string>
            </property>
           </widget>
          </item>
@@ -1893,6 +1900,59 @@ Position move then G33.1 for each hole.</string>
        <attribute name="title">
         <string>Tapping</string>
        </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_20">
+       <attribute name="title">
+        <string>G code</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_39">
+        <item row="0" column="1">
+         <widget class="QGroupBox" name="groupBox_30">
+          <property name="title">
+           <string>Tools</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_38">
+           <item row="0" column="0">
+            <widget class="QPushButton" name="gcodeCopyPB">
+             <property name="text">
+              <string>Copy to Clipboard</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QPushButton" name="gcodeRemovePB">
+             <property name="text">
+              <string>Remove Selected Line</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QPushButton" name="gcodeAddM2PB">
+             <property name="text">
+              <string>Add Program End M2</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <spacer name="verticalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="0" rowspan="2">
+         <widget class="QPlainTextEdit" name="gcodePTE"/>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="tab_6">
        <attribute name="title">

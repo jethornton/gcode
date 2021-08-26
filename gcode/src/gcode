@@ -16,6 +16,7 @@ from libgcode import drillchart
 from libgcode import millchart
 from libgcode import tap
 from libgcode import thread
+from libgcode import gcode
 from libgcode import utilities
 from libgcode import develop
 from libgcode import helptext
@@ -69,22 +70,23 @@ class main(QMainWindow):
 	#	self.selectAll()      
 
 	def setupConnections(self):
-		self.saveSettingsPB.pressed.connect(partial(utilities.saveSettings, self))
+		self.saveSettingsPB.clicked.connect(partial(utilities.saveSettings, self))
 
-		self.faceGeneratePB.pressed.connect(partial(face.generate, self))
-		self.faceCopyPB.pressed.connect(partial(face.copy, self))
-		self.faceSavePB.pressed.connect(partial(face.save, self))
+		self.faceGeneratePB.clicked.connect(partial(face.generate, self))
+		self.faceCopyPB.clicked.connect(partial(face.copy, self))
+		self.faceSavePB.clicked.connect(partial(face.save, self))
 
-		self.pocketGeneratePB.pressed.connect(partial(pocket.generate, self))
-		self.pocketCopyPB.pressed.connect(partial(pocket.copy, self))
-		self.pocketSavePB.pressed.connect(partial(pocket.save, self))
+		self.pocketGeneratePB.clicked.connect(partial(pocket.generate, self))
+		self.pocketCopyPB.clicked.connect(partial(pocket.copy, self))
+		self.pocketSavePB.clicked.connect(partial(pocket.save, self))
 
 		self.canCycleBG.buttonClicked.connect(partial(cancycle.update, self))
-		self.canSelectPB.pressed.connect(partial(cancycle.get, self))
-		self.canGeneratePB.pressed.connect(partial(cancycle.gcode, self))
+		self.canSelectPB.clicked.connect(partial(cancycle.get, self))
+		self.canGeneratePB.clicked.connect(partial(cancycle.gcode, self))
 		self.canXcoordLE.returnPressed.connect(partial(cancycle.xcoord, self))
 		self.canYcoordLE.returnPressed.connect(partial(cancycle.ycoord, self))
-		self.canCopyPB.pressed.connect(partial(cancycle.copy, self))
+		self.canCopyPB.clicked.connect(partial(cancycle.copy, self))
+		self.canSendPB.clicked.connect(partial(cancycle.send, self))
 
 
 		self.drillUnitsBG.buttonClicked.connect(partial(drillchart.update, self))
@@ -101,8 +103,13 @@ class main(QMainWindow):
 		self.millChipLoadFactorDSB.valueChanged.connect(partial(millchart.populate, self))
 		self.millMachineCB.currentIndexChanged.connect(partial(millchart.update, self))
 
-		self.pocketExitPB.pressed.connect(self.close)
+		self.pocketExitPB.clicked.connect(self.close)
 		#self.drillSelectPB.pressed.connect(partial(hole.drill, self))
+
+		self.gcodeCopyPB.clicked.connect(partial(gcode.copy, self))
+		self.gcodeRemovePB.clicked.connect(partial(gcode.delete, self))
+		self.gcodeAddM2PB.clicked.connect(partial(gcode.addM2, self))
+
 
 		self.actionTabHelp.triggered.connect(self.help)
 
