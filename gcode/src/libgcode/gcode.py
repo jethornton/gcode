@@ -12,5 +12,11 @@ def delete(parent):
 	cursor.removeSelectedText()
 	cursor.deleteChar()
 
+def deleteAll(parent):
+	parent.gcodePTE.clear()
+
+def insert(parent):
+	parent.gcodePTE.insertPlainText(parent.gcodeCustomLE.text())
+
 def addM2(parent):
 	parent.gcodePTE.appendPlainText('M2')

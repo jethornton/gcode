@@ -105,6 +105,8 @@ class main(QMainWindow):
 
 		self.gcodeCopyPB.clicked.connect(partial(gcode.copy, self))
 		self.gcodeRemovePB.clicked.connect(partial(gcode.delete, self))
+		self.gcodeInsertPB.clicked.connect(partial(gcode.insert, self))
+		self.gcodeDeleteAllPB.clicked.connect(partial(gcode.deleteAll, self))
 		self.gcodeAddM2PB.clicked.connect(partial(gcode.addM2, self))
 
 

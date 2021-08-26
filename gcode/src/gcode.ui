@@ -1948,13 +1948,6 @@ Position move then G33.1 for each hole.</string>
            <string>Tools</string>
           </property>
           <layout class="QGridLayout" name="gridLayout_38">
-           <item row="0" column="0">
-            <widget class="QPushButton" name="gcodeCopyPB">
-             <property name="text">
-              <string>Copy to Clipboard</string>
-             </property>
-            </widget>
-           </item>
            <item row="1" column="0">
             <widget class="QPushButton" name="gcodeRemovePB">
              <property name="text">
@@ -1962,17 +1955,34 @@ Position move then G33.1 for each hole.</string>
              </property>
             </widget>
            </item>
-           <item row="2" column="0">
+           <item row="3" column="0">
             <widget class="QPushButton" name="gcodeAddM2PB">
              <property name="text">
               <string>Add Program End M2</string>
              </property>
             </widget>
            </item>
+           <item row="0" column="0">
+            <widget class="QPushButton" name="gcodeCopyPB">
+             <property name="text">
+              <string>Copy to Clipboard</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QPushButton" name="gcodeDeleteAllPB">
+             <property name="text">
+              <string>Delete All</string>
+             </property>
+            </widget>
+           </item>
           </layout>
          </widget>
         </item>
-        <item row="1" column="1">
+        <item row="0" column="0" rowspan="3">
+         <widget class="QPlainTextEdit" name="gcodePTE"/>
+        </item>
+        <item row="2" column="1">
          <spacer name="verticalSpacer_2">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -1985,8 +1995,31 @@ Position move then G33.1 for each hole.</string>
           </property>
          </spacer>
         </item>
-        <item row="0" column="0" rowspan="2">
-         <widget class="QPlainTextEdit" name="gcodePTE"/>
+        <item row="1" column="1">
+         <widget class="QGroupBox" name="groupBox_32">
+          <property name="title">
+           <string>Custom G code</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_41">
+           <item row="0" column="0">
+            <widget class="QLineEdit" name="gcodeCustomLE">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QPushButton" name="gcodeInsertPB">
+             <property name="text">
+              <string>Insert Code at Cursor</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
         </item>
        </layout>
       </widget>
