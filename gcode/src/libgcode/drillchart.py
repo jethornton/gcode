@@ -84,7 +84,10 @@ def setslider(parent, low, high):
 def populate(parent):
 	parent.drillSfmLb.setText(str(parent.drillSfmSB.value()))
 	units = parent.drillUnitsBG.checkedButton().text()
-	max_rpm = int(parent.drillMachineCB.currentData())
+	if parent.drillMachineCB.currentData() is None:
+		max_rpm = 1000000
+	else:
+		max_rpm = int(parent.drillMachineCB.currentData())
 
 	#print(units)
 	parent.drillPTE.clear()
@@ -156,3 +159,5 @@ def populate(parent):
 				ipm = ipm * 2
 			parent.drillPTE.appendPlainText(f'{dia} \t RPM {rpm:,} \t MPM {ipm:.1f}')
 
+def select(parent):
+	print('mouse')
