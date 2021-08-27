@@ -12,7 +12,7 @@ def face(parent):
 	parent.faceStep.setText('75')
 	parent.faceSafeZ.setText('0.75')
 	parent.faceLeadIn.setText('.5')
-	parent.faceCutDepth.setText('-.5')
+	parent.faceFullDepth.setText('-.5')
 	parent.faceStepDepth.setText('.125')
 
 def pocket(parent):

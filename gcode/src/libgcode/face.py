@@ -1,6 +1,8 @@
 import os
 from math import ceil
 from PyQt5.QtWidgets import QMessageBox, QApplication, QFileDialog
+from PyQt5.QtGui import QTextCursor, QTextCharFormat, QTextCharFormat
+from PyQt5.QtCore import Qt
 
 def isnumber(i):
 	try:
@@ -60,6 +62,21 @@ def generate(parent):
 	; second loop last positions - cutwidth
 	8 G2 X0.0 Y0.0 I0.1875 J0.0
 	"""
+	parent.facePTE.clear()
+	
+	required = [
+	'faceWidthX', 'faceDepthY', 'faceLeft', 'faceRear', 'faceRear',
+	'faceTop', 'faceTool', 'faceToolDia', 'faceRPM', 'faceFeed',
+	'faceSafeZ', 'faceLeadIn', 'faceFullDepth']
+	error = False
+	for item in required:
+		if getattr(parent, item).text() == '':
+			error = True
+			name = getattr(parent, item).property('name')
+			parent.facePTE.appendPlainText(f'{name} is required')
+	if error:
+		return
+
 	widthX = retnumber(parent, 'faceWidthX')
 	depthY = retnumber(parent, 'faceDepthY')
 	left = retnumber(parent, 'faceLeft')
@@ -73,7 +90,7 @@ def generate(parent):
 	stepPercent = retnumber(parent, 'faceStep') * 0.01
 	safeZ = retnumber(parent, 'faceSafeZ')
 	leadin = retnumber(parent, 'faceLeadIn')
-	cutdepth = retnumber(parent, 'faceCutDepth')
+	cutdepth = retnumber(parent, 'faceFullDepth')
 	if parent.faceStepDepth.text() == '':
 		stepdepth = cutdepth
 	else:
@@ -169,3 +186,28 @@ def save(parent):
 	if fileName:
 		with open(fileName, 'w') as f:
 			f.writelines(parent.facePTE.toPlainText())
+
+def delete(parent):
+	cursor = parent.facePTE.textCursor()
+	cursor.select(QTextCursor.LineUnderCursor)
+	cursor.removeSelectedText()
+	cursor.deleteChar()
+
+def selectLine(parent):
+	#print('here')
+	fmt = QTextCharFormat()
+	fmt.setUnderlineColor(Qt.red)
+	fmt.setUnderlineStyle(QTextCharFormat.SingleUnderline)
+	#fmt.setUnderlineStyle(QTextCharFormat.DashUnderline)
+	#fmt.setUnderlineStyle(QTextCharFormat.DotLine)
+	#fmt.setUnderlineStyle(QTextCharFormat.DashDotLine)
+	#fmt.setUnderlineStyle(QTextCharFormat.SpellCheckUnderline)
+	#fmt.setUnderlineStyle(QTextCharFormat.WaveUnderline)
+	cursor = parent.facePTE.textCursor()
+	position = cursor.position()
+	cursor.select(QTextCursor.Document)
+	cursor.setCharFormat(QTextCharFormat())
+	cursor.clearSelection()
+	cursor.setPosition(position)
+	cursor.select(QTextCursor.LineUnderCursor)
+	cursor.setCharFormat(fmt)

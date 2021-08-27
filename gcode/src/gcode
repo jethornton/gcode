@@ -36,7 +36,7 @@ if os.path.split(sys.argv[0])[0] == '.':
 	print('In Development')
 	DEVEL = True
 
-class gcodeEditor(QPlainTextEdit):
+class editor(QPlainTextEdit):
 	clicked = pyqtSignal()
 	def mouseReleaseEvent(self, event):
 		self.clicked.emit()
@@ -49,11 +49,18 @@ class main(QMainWindow):
 		self.setWindowTitle("G code Generator")
 		utilities.getSettings(self)
 		self.helpInfo = helptext.descriptions
-		#clicked = pyqtSignal()
-		self.gcodePTE = gcodeEditor()
+
+		self.facePTE = editor()
+		faceGrid = QGridLayout()
+		faceGrid.addWidget(self.facePTE, 0, 0)
+		self.faceingFM.setLayout(faceGrid)
+
+		self.gcodePTE = editor()
 		gcodeGrid = QGridLayout()
 		gcodeGrid.addWidget(self.gcodePTE, 0, 0)
-		self.gcodeFrame.setLayout(gcodeGrid)
+		self.gcodeFM.setLayout(gcodeGrid)
+
+
 		#db = QSqlDatabase.addDatabase('QSQLITE')
 		#db.setDatabaseName(GUI_PATH + 'threads.db')
 		#if db.open():
@@ -63,11 +70,11 @@ class main(QMainWindow):
 		self.devel = False
 		if DEVEL:
 			self.devel = True
-			#develop.face(self)
+			develop.face(self)
 			#face.generate(self)
 			#develop.pocket(self)
 			#pocket.generate(self)
-			develop.canned(self)
+			#develop.canned(self)
 		self.setupConnections()
 
 		self.show()
@@ -81,8 +88,10 @@ class main(QMainWindow):
 
 		self.faceGeneratePB.clicked.connect(partial(face.generate, self))
 		self.faceCopyPB.clicked.connect(partial(face.copy, self))
+		self.faceRemovePB.clicked.connect(partial(face.delete, self))
 		self.faceSavePB.clicked.connect(partial(face.save, self))
 		self.faceSendPB.clicked.connect(partial(face.send, self))
+		self.facePTE.clicked.connect(partial(face.selectLine, self))
 
 		self.pocketGeneratePB.clicked.connect(partial(pocket.generate, self))
 		self.pocketCopyPB.clicked.connect(partial(pocket.copy, self))
