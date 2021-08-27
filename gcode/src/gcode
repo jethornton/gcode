@@ -55,11 +55,15 @@ class main(QMainWindow):
 		faceGrid.addWidget(self.facePTE, 0, 0)
 		self.faceingFM.setLayout(faceGrid)
 
+		self.pocketPTE = editor()
+		pocketGrid = QGridLayout()
+		pocketGrid.addWidget(self.pocketPTE, 0, 0)
+		self.pocketFM.setLayout(pocketGrid)
+
 		self.gcodePTE = editor()
 		gcodeGrid = QGridLayout()
 		gcodeGrid.addWidget(self.gcodePTE, 0, 0)
 		self.gcodeFM.setLayout(gcodeGrid)
-
 
 		#db = QSqlDatabase.addDatabase('QSQLITE')
 		#db.setDatabaseName(GUI_PATH + 'threads.db')
@@ -97,7 +101,7 @@ class main(QMainWindow):
 		self.pocketCopyPB.clicked.connect(partial(pocket.copy, self))
 		self.pocketSavePB.clicked.connect(partial(pocket.save, self))
 		self.pocketSendPB.clicked.connect(partial(pocket.send, self))
-
+		self.pocketPTE.clicked.connect(partial(pocket.selectLine, self))
 
 		self.canCycleBG.buttonClicked.connect(partial(cancycle.update, self))
 		self.canSelectPB.clicked.connect(partial(cancycle.get, self))

@@ -1,6 +1,8 @@
 import os
 from math import ceil
 from PyQt5.QtWidgets import QMessageBox, QApplication, QFileDialog
+from PyQt5.QtGui import QTextCursor, QTextCharFormat, QTextCharFormat
+from PyQt5.QtCore import Qt
 
 def retnumber(parent, i): # get line edit name then test for number
 	if getattr(parent, i).text():
@@ -176,3 +178,22 @@ def save(parent):
 		if fileName:
 			with open(fileName, 'w') as f:
 				f.writelines(parent.pocketPTE.toPlainText())
+
+def selectLine(parent):
+	#print('here')
+	fmt = QTextCharFormat()
+	fmt.setUnderlineColor(Qt.red)
+	fmt.setUnderlineStyle(QTextCharFormat.SingleUnderline)
+	#fmt.setUnderlineStyle(QTextCharFormat.DashUnderline)
+	#fmt.setUnderlineStyle(QTextCharFormat.DotLine)
+	#fmt.setUnderlineStyle(QTextCharFormat.DashDotLine)
+	#fmt.setUnderlineStyle(QTextCharFormat.SpellCheckUnderline)
+	#fmt.setUnderlineStyle(QTextCharFormat.WaveUnderline)
+	cursor = parent.pocketPTE.textCursor()
+	position = cursor.position()
+	cursor.select(QTextCursor.Document)
+	cursor.setCharFormat(QTextCharFormat())
+	cursor.clearSelection()
+	cursor.setPosition(position)
+	cursor.select(QTextCursor.LineUnderCursor)
+	cursor.setCharFormat(fmt)

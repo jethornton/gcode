@@ -9,12 +9,12 @@ G code Generator
 
 .. Note:: Requires Python 3.6 or newer to work.
 
-Download the `deb <https://github.com/jethornton/gcode/raw/master/gcode_0.0.4_amd64.deb>`_
+Download the `deb <https://github.com/jethornton/gcode/raw/master/gcode_0.0.5_amd64.deb>`_
 
 Or use wget from a terminal
 ::
 
-	wget https://github.com/jethornton/gcode/raw/master/gcode_0.0.4_amd64.deb
+	wget https://github.com/jethornton/gcode/raw/master/gcode_0.0.5_amd64.deb
 
 If you get `bash: wget: command not found` you can install it from a terminal with
 ::
