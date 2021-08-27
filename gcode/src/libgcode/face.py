@@ -15,7 +15,7 @@ def retnumber(parent, i): # get line edit name then test for number
 	if getattr(parent, i).text():
 		try:
 			num = float(getattr(parent, i).text())
-			return num
+			return round(num, 4)
 		except Exception as e:
 			print(e)
 			name = getattr(parent, i).property("name")
@@ -112,8 +112,8 @@ def generate(parent):
 	parent.facePTE.clear()
 	parent.facePTE.appendPlainText(f';Face Stock X{left} to X{left + widthX} '
 		f'Y{back} to Y{back - depthY}')
-	parent.facePTE.appendPlainText(f';Inital Path X{minusX - leadin} '
-		f'Y{plusY} to X{plusX} to Y{minusY} to X{minusX} to Y{plusY - cutwidth}')
+	parent.facePTE.appendPlainText(f';Initial Path X{minusX - leadin} '
+		f'Y{plusY} to X{plusX} to Y{minusY} to X{minusX} to Y{round(plusY - cutwidth, 4)}')
 	parent.facePTE.appendPlainText(f'{parent.unitsBG.checkedButton().property("units")}')
 	parent.facePTE.appendPlainText(f'{parent.preambleLE.text()}')
 
