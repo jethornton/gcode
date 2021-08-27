@@ -124,9 +124,9 @@ def generate(parent):
 	parent.facePTE.appendPlainText(f'M3 S{rpm} F{feed}')
 	# raise top to make even number of full depth cuts if not even
 	depthPasses = ceil(cutdepth / stepdepth)
-	parent.pocketPTE.appendPlainText(f';Steps {depthPasses}')
+	parent.facePTE.appendPlainText(f';Steps {depthPasses}')
 	top = round((depthPasses * stepdepth) - cutdepth, 4)
-	parent.pocketPTE.appendPlainText(f';Top {top}')
+	parent.facePTE.appendPlainText(f';Top {top}')
 	currentZ = top
 
 	# depth loop
