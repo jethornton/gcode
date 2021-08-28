@@ -4,7 +4,8 @@ import sys, os
 from functools import partial
 
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QMessageBox,
-	QPlainTextEdit, QGridLayout)
+	QPlainTextEdit,QTextEdit, QGridLayout)
+from PyQt5.QtGui import QTextCharFormat, QFont
 from PyQt5 import uic, QtWidgets
 from PyQt5.QtCore import pyqtSignal
 
@@ -36,7 +37,7 @@ if os.path.split(sys.argv[0])[0] == '.':
 	print('In Development')
 	DEVEL = True
 
-class editor(QPlainTextEdit):
+class editor(QTextEdit):
 	clicked = pyqtSignal()
 	def mouseReleaseEvent(self, event):
 		self.clicked.emit()
@@ -64,6 +65,18 @@ class main(QMainWindow):
 		gcodeGrid = QGridLayout()
 		gcodeGrid.addWidget(self.gcodePTE, 0, 0)
 		self.gcodeFM.setLayout(gcodeGrid)
+
+		self.drillChartPTE = editor()
+		#drillChartfmt = QTextCharFormat()
+		#drillChartFont = QFont()
+		#drillChartFont.setFamily('monospace [Sans Mono]')
+		#drillChartFont.setFixedPitch(True)
+		#drillChartfmt.setFont(drillChartFont)
+		self.drillChartPTE.setFontFamily('Courier Bold')
+		self.drillChartPTE.setFontPointSize(12)
+		drillChartGrid = QGridLayout()
+		drillChartGrid.addWidget(self.drillChartPTE, 0, 0)
+		self.drillChartFM.setLayout(drillChartGrid)
 
 		#db = QSqlDatabase.addDatabase('QSQLITE')
 		#db.setDatabaseName(GUI_PATH + 'threads.db')
@@ -138,6 +151,8 @@ class main(QMainWindow):
 		self.gcodePTE.clicked.connect(partial(gcode.selectLine, self))
 		#self.gcodePTE.clicked.connect(lambda: print('clicked'))
 		self.gcodeLineNumPB.clicked.connect(partial(gcode.addLineNum, self))
+
+		#self.drillChartPTE.clicked.connect(partial(drillchart.selectLine, self))
 
 
 		self.actionTabHelp.triggered.connect(self.help)

@@ -2325,14 +2325,19 @@ Position move then G33.1 for each hole.</string>
           </layout>
          </widget>
         </item>
-        <item row="0" column="1" rowspan="7">
-         <widget class="QPlainTextEdit" name="drillPTE">
-          <property name="font">
-           <font>
-            <family>BPG Courier S GPL&amp;GNU</family>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
+        <item row="0" column="1" rowspan="6">
+         <widget class="QFrame" name="drillChartFM">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Plain</enum>
           </property>
          </widget>
         </item>
@@ -2745,7 +2750,6 @@ Position move then G33.1 for each hole.</string>
   <tabstop>drill4xDiam</tabstop>
   <tabstop>dcReamRB</tabstop>
   <tabstop>drillMachineCB</tabstop>
-  <tabstop>drillPTE</tabstop>
   <tabstop>millPTE</tabstop>
   <tabstop>millInchRB</tabstop>
   <tabstop>millMetricRB</tabstop>
