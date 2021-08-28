@@ -1978,6 +1978,13 @@ Position move then G33.1 for each hole.</string>
              </property>
             </widget>
            </item>
+           <item row="2" column="0">
+            <widget class="QPushButton" name="gcodeDeleteAllPB">
+             <property name="text">
+              <string>Delete All</string>
+             </property>
+            </widget>
+           </item>
            <item row="3" column="0">
             <widget class="QPushButton" name="gcodeAddM2PB">
              <property name="text">
@@ -1992,10 +1999,10 @@ Position move then G33.1 for each hole.</string>
              </property>
             </widget>
            </item>
-           <item row="2" column="0">
-            <widget class="QPushButton" name="gcodeDeleteAllPB">
+           <item row="4" column="0">
+            <widget class="QPushButton" name="gcodeLineNumPB">
              <property name="text">
-              <string>Delete All</string>
+              <string>Add Line Numbers</string>
              </property>
             </widget>
            </item>

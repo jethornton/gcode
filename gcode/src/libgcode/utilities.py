@@ -23,7 +23,6 @@ def saveSettings(parent):
 	settings.append(f'MAX_RPM_1 = {parent.machineMaxSB_1.value()}\n')
 	settings.append(f'NAME_2 = {parent.machineLE_2.text()}\n')
 	settings.append(f'MAX_RPM_2 = {parent.machineMaxSB_2.value()}\n')
-	
 
 	sf = os.path.expanduser('~/.gcode_settings')
 	with open(sf, 'w') as f:

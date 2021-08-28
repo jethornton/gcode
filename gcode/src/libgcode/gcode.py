@@ -40,3 +40,13 @@ def selectLine(parent):
 	cursor.setPosition(position)
 	cursor.select(QTextCursor.LineUnderCursor)
 	cursor.setCharFormat(fmt)
+
+def addLineNum(parent):
+	#print(len(parent.gcodePTE.toPlainText().split()))
+	lines = parent.gcodePTE.toPlainText().split('\n')
+	gcode = []
+	for i, line in enumerate(lines):
+		gcode.append(f'N{i} {line}')
+	parent.gcodePTE.clear()
+	for line in gcode:
+		parent.gcodePTE.appendPlainText(line)

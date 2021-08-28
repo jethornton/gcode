@@ -74,7 +74,7 @@ class main(QMainWindow):
 		self.devel = False
 		if DEVEL:
 			self.devel = True
-			develop.face(self)
+			#develop.face(self)
 			#face.generate(self)
 			#develop.pocket(self)
 			#pocket.generate(self)
@@ -137,6 +137,7 @@ class main(QMainWindow):
 		self.gcodeAddM2PB.clicked.connect(partial(gcode.addM2, self))
 		self.gcodePTE.clicked.connect(partial(gcode.selectLine, self))
 		#self.gcodePTE.clicked.connect(lambda: print('clicked'))
+		self.gcodeLineNumPB.clicked.connect(partial(gcode.addLineNum, self))
 
 
 		self.actionTabHelp.triggered.connect(self.help)

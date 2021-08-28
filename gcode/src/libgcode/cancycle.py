@@ -78,8 +78,9 @@ def ycoord(parent):
 	parent.canXcoordLE.clear()
 	parent.canYcoordLE.clear()
 
-
 def gcode(parent):
+	parent.canGcodePTE.clear()
+	ln = 1
 	if parent.canGenerateBG.checkedButton().text() == 'Replace':
 		parent.canGcodePTE.clear()
 	cycle = parent.canCycleBG.checkedButton().text()
