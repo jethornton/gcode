@@ -73,7 +73,7 @@ def generate(parent):
 		if getattr(parent, item).text() == '':
 			error = True
 			name = getattr(parent, item).property('name')
-			parent.facePTE.appendPlainText(f'{name} is required')
+			parent.facePTE.append(f'{name} is required')
 	if error:
 		return
 
@@ -110,63 +110,63 @@ def generate(parent):
 	minusY = (back - depthY) - radius + cutwidth
 
 	parent.facePTE.clear()
-	parent.facePTE.appendPlainText(f';Face Stock X{left} to X{left + widthX} '
+	parent.facePTE.append(f';Face Stock X{left} to X{left + widthX} '
 		f'Y{back} to Y{back - depthY}')
-	parent.facePTE.appendPlainText(f';Initial Path X{minusX - leadin} '
+	parent.facePTE.append(f';Initial Path X{minusX - leadin} '
 		f'Y{plusY} to X{plusX} to Y{minusY} to X{minusX} to Y{round(plusY - cutwidth, 4)}')
-	parent.facePTE.appendPlainText(f'{parent.unitsBG.checkedButton().property("units")}')
-	parent.facePTE.appendPlainText(f'{parent.preambleLE.text()}')
+	parent.facePTE.append(f'{parent.unitsBG.checkedButton().property("units")}')
+	parent.facePTE.append(f'{parent.preambleLE.text()}')
 
-	parent.facePTE.appendPlainText(f'G0 Z{safeZ}')
+	parent.facePTE.append(f'G0 Z{safeZ}')
 
 	if tool:
-		parent.facePTE.appendPlainText(f'T{int(tool)} M6 G43')
-	parent.facePTE.appendPlainText(f'M3 S{rpm} F{feed}')
+		parent.facePTE.append(f'T{int(tool)} M6 G43')
+	parent.facePTE.append(f'M3 S{rpm} F{feed}')
 	# raise top to make even number of full depth cuts if not even
 	depthPasses = ceil(cutdepth / stepdepth)
-	parent.facePTE.appendPlainText(f';Steps {depthPasses}')
+	parent.facePTE.append(f';Steps {depthPasses}')
 	top = round((depthPasses * stepdepth) - cutdepth, 4)
-	parent.facePTE.appendPlainText(f';Top {top}')
+	parent.facePTE.append(f';Top {top}')
 	currentZ = top
 
 	# depth loop
 	while currentZ > cutdepth:
-		parent.facePTE.appendPlainText(f'G0 Z{safeZ:.4f}')
+		parent.facePTE.append(f'G0 Z{safeZ:.4f}')
 
 		plusX = (left + widthX) + radius - cutwidth
 		minusX = left - radius + cutwidth
 		plusY = back + radius - cutwidth
 		minusY = (back - depthY) - radius + cutwidth
-		parent.facePTE.appendPlainText(f'G0 X{minusX  - leadin:.4f} Y{plusY:.4f}')
+		parent.facePTE.append(f'G0 X{minusX  - leadin:.4f} Y{plusY:.4f}')
 
 		nextZ = currentZ - stepdepth
-		parent.facePTE.appendPlainText(f'G1 Z{nextZ:.4f}')
+		parent.facePTE.append(f'G1 Z{nextZ:.4f}')
 		currentZ = nextZ
 
 		# path loop
 		for i in range(steps):
-			parent.facePTE.appendPlainText(f'G1 X{plusX - cutwidth:.4f} Y{plusY:.4f}')
+			parent.facePTE.append(f'G1 X{plusX - cutwidth:.4f} Y{plusY:.4f}')
 			plusY = plusY - cutwidth
-			parent.facePTE.appendPlainText(f'G2 X{plusX:.4f} Y{plusY:.4f} I0.0 J-{cutwidth:.4f}')
-			parent.facePTE.appendPlainText(f'G1 X{plusX:.4f} Y{minusY + cutwidth:.4f}')
+			parent.facePTE.append(f'G2 X{plusX:.4f} Y{plusY:.4f} I0.0 J-{cutwidth:.4f}')
+			parent.facePTE.append(f'G1 X{plusX:.4f} Y{minusY + cutwidth:.4f}')
 			plusX = plusX - cutwidth
-			parent.facePTE.appendPlainText(f'G2 X{plusX:.4f} Y{minusY:.4f} I-{cutwidth:.4f} J0.0')
-			parent.facePTE.appendPlainText(f'G1 X{minusX + cutwidth:.4f} Y{minusY:.4f}')
+			parent.facePTE.append(f'G2 X{plusX:.4f} Y{minusY:.4f} I-{cutwidth:.4f} J0.0')
+			parent.facePTE.append(f'G1 X{minusX + cutwidth:.4f} Y{minusY:.4f}')
 			minusY = minusY + cutwidth
 			w = plusX - minusX
 			d = plusY - minusY
 			if d <= 0.0 or w <= 0.0: break
-			parent.facePTE.appendPlainText(f'G2 X{minusX:.4f} Y{minusY:.4f} I0.0 J{cutwidth:.4f}')
-			parent.facePTE.appendPlainText(f'G1 X{minusX:.4f} Y{plusY - cutwidth:.4f}')
+			parent.facePTE.append(f'G2 X{minusX:.4f} Y{minusY:.4f} I0.0 J{cutwidth:.4f}')
+			parent.facePTE.append(f'G1 X{minusX:.4f} Y{plusY - cutwidth:.4f}')
 			minusX = minusX + cutwidth
-			parent.facePTE.appendPlainText(f'G2 X{minusX:.4f} Y{plusY:.4f} I{cutwidth:.4f} J0.0')
-		parent.facePTE.appendPlainText(f'G0 Z{safeZ:.4f}')
+			parent.facePTE.append(f'G2 X{minusX:.4f} Y{plusY:.4f} I{cutwidth:.4f} J0.0')
+		parent.facePTE.append(f'G0 Z{safeZ:.4f}')
 	if parent.faceReturnCB.isChecked():
-		parent.facePTE.appendPlainText(f'G0 X0 Y0')
+		parent.facePTE.append(f'G0 X0 Y0')
 	if parent.faceProgEndCB.isChecked():
-		parent.facePTE.appendPlainText('M2')
+		parent.facePTE.append('M2')
 
-	# parent.facePTE.appendPlainText(f'{}')
+	# parent.facePTE.append(f'{}')
 
 def copy(parent):
 	qclip = QApplication.clipboard()
@@ -174,7 +174,7 @@ def copy(parent):
 	parent.statusbar.showMessage('G code copied to clipboard')
 
 def send(parent):
-	parent.gcodePTE.appendPlainText(parent.facePTE.toPlainText())
+	parent.gcodePTE.append(parent.facePTE.toPlainText())
 
 def save(parent):
 	options = QFileDialog.Options()

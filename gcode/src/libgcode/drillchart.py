@@ -169,6 +169,8 @@ def selectLine(parent):
 	fmt = QTextCharFormat()
 	fmt.setUnderlineColor(Qt.red)
 	fmt.setUnderlineStyle(QTextCharFormat.SingleUnderline)
+	fmt.setFontFamily('Courier Bold')
+	fmt.setFontPointSize(12)
 	#fmt.setUnderlineStyle(QTextCharFormat.DashUnderline)
 	#fmt.setUnderlineStyle(QTextCharFormat.DotLine)
 	#fmt.setUnderlineStyle(QTextCharFormat.DashDotLine)

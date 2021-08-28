@@ -91,7 +91,7 @@ class main(QMainWindow):
 			#face.generate(self)
 			#develop.pocket(self)
 			#pocket.generate(self)
-			#develop.canned(self)
+			develop.canned(self)
 		self.setupConnections()
 
 		self.show()

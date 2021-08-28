@@ -42,21 +42,21 @@ def generate(parent):
 
 	parent.pocketPTE.clear()
 
-	parent.pocketPTE.appendPlainText(f';Pocket Size X{left} to X{left + widthX} '
+	parent.pocketPTE.append(f';Pocket Size X{left} to X{left + widthX} '
 		f'Y{back} to Y{back - depthY}')
 
-	parent.pocketPTE.appendPlainText(f'{parent.unitsBG.checkedButton().property("units")}')
-	parent.pocketPTE.appendPlainText(f'{parent.preambleLE.text()}')
+	parent.pocketPTE.append(f'{parent.unitsBG.checkedButton().property("units")}')
+	parent.pocketPTE.append(f'{parent.preambleLE.text()}')
 
 	if tool:
-		parent.pocketPTE.appendPlainText(f'T{int(tool)} M6 G43')
-	parent.pocketPTE.appendPlainText(f'M3 S{rpm} F{feed}')
+		parent.pocketPTE.append(f'T{int(tool)} M6 G43')
+	parent.pocketPTE.append(f'M3 S{rpm} F{feed}')
 	# raise top to make even number of full depth cuts if not even
 	depthPasses = ceil(abs(depthZ) / doc)
-	parent.pocketPTE.appendPlainText(f';Steps {depthPasses}')
+	parent.pocketPTE.append(f';Steps {depthPasses}')
 	top = (depthPasses * doc) - abs(depthZ)
-	parent.pocketPTE.appendPlainText(f';Top {top:.4f}')
-	parent.pocketPTE.appendPlainText(f'G0 Z{safeZ:.4f}')
+	parent.pocketPTE.append(f';Top {top:.4f}')
+	parent.pocketPTE.append(f'G0 Z{safeZ:.4f}')
 	currentZ = top
 	passes = int(ceil((depthY - diam) / woc)/2)
 
@@ -83,48 +83,48 @@ def generate(parent):
 	while currentZ > depthZ:
 		radius = woc
 		currentZ = nextZ
-		parent.pocketPTE.appendPlainText(f'G0 Z{safeZ:.4f}')
+		parent.pocketPTE.append(f'G0 Z{safeZ:.4f}')
 
 		minusX = left + (passes * woc)
 		plusX = (left + widthX) - passes * woc
 		minusY = back - (depthY / 2)
 		plusY = minusY
 
-		parent.pocketPTE.appendPlainText(f'G0 X{minusX:.4f} Y{plusY:.4f}')
-		parent.pocketPTE.appendPlainText(f'G1 Z{currentZ:.4f}')
-		parent.pocketPTE.appendPlainText(f'G0 X{minusX:.4f} Y{minusY:.4f}')
-		parent.pocketPTE.appendPlainText(f'G1 Z{currentZ:.4f}')
+		parent.pocketPTE.append(f'G0 X{minusX:.4f} Y{plusY:.4f}')
+		parent.pocketPTE.append(f'G1 Z{currentZ:.4f}')
+		parent.pocketPTE.append(f'G0 X{minusX:.4f} Y{minusY:.4f}')
+		parent.pocketPTE.append(f'G1 Z{currentZ:.4f}')
 		currentZ = currentZ - doc
-		parent.pocketPTE.appendPlainText(f'G1 X{plusX:.4f} Y{minusY:.4f} Z{currentZ:.4f}')
+		parent.pocketPTE.append(f'G1 X{plusX:.4f} Y{minusY:.4f} Z{currentZ:.4f}')
 		minusX = minusX - woc
-		parent.pocketPTE.appendPlainText(f'G1 X{minusX:.4f} Y{plusY:.4f}')
+		parent.pocketPTE.append(f'G1 X{minusX:.4f} Y{plusY:.4f}')
 
 		for i in range(1, passes):
-			parent.pocketPTE.appendPlainText(f'; pass {i}')
+			parent.pocketPTE.append(f'; pass {i}')
 			minusY = minusY - woc
 			remainingY = abs((back - depthY) - minusY)
 			if remainingY < corner:
 				radius = corner - remainingY
-			parent.pocketPTE.appendPlainText(f'G1 X{minusX:.4f} Y{minusY + radius:.4f}')
-			parent.pocketPTE.appendPlainText(f'G3 X{minusX + radius:.4f} Y{minusY:.4f} I{radius:.4f} J0.0')
+			parent.pocketPTE.append(f'G1 X{minusX:.4f} Y{minusY + radius:.4f}')
+			parent.pocketPTE.append(f'G3 X{minusX + radius:.4f} Y{minusY:.4f} I{radius:.4f} J0.0')
 			plusX = plusX + woc
-			parent.pocketPTE.appendPlainText(f'G1 X{plusX - radius:.4f} Y{minusY:.4f}')
-			parent.pocketPTE.appendPlainText(f'G3 X{plusX:.4f} Y{minusY + radius:.4f} I0.0 J{radius:.4f}')
+			parent.pocketPTE.append(f'G1 X{plusX - radius:.4f} Y{minusY:.4f}')
+			parent.pocketPTE.append(f'G3 X{plusX:.4f} Y{minusY + radius:.4f} I0.0 J{radius:.4f}')
 			plusY = plusY + woc
-			parent.pocketPTE.appendPlainText(f'G1 X{plusX:.4f} Y{plusY - radius:.4f}')
-			parent.pocketPTE.appendPlainText(f'G3 X{plusX - radius:.4f} Y{plusY:.4f} I-{radius:.4f} J0.0')
+			parent.pocketPTE.append(f'G1 X{plusX:.4f} Y{plusY - radius:.4f}')
+			parent.pocketPTE.append(f'G3 X{plusX - radius:.4f} Y{plusY:.4f} I-{radius:.4f} J0.0')
 			if minusX - woc > left:
 				minusX = minusX - woc
-			parent.pocketPTE.appendPlainText(f'G1 X{minusX + radius:.4f} Y{plusY:.4f}')
-			parent.pocketPTE.appendPlainText(f'G3 X{minusX:.4f} Y{plusY - radius:.4f} I0.0 J-{radius:.4f}')
+			parent.pocketPTE.append(f'G1 X{minusX + radius:.4f} Y{plusY:.4f}')
+			parent.pocketPTE.append(f'G3 X{minusX:.4f} Y{plusY - radius:.4f} I0.0 J-{radius:.4f}')
 
-		parent.pocketPTE.appendPlainText(f'G0 Z{safeZ:.4f}')
+		parent.pocketPTE.append(f'G0 Z{safeZ:.4f}')
 		nextZ = currentZ - doc
 
 	if parent.devel:
 		pocket(parent)
 	if parent.pocketProgEndCB.isChecked():
-		parent.pocketPTE.appendPlainText('M2')
+		parent.pocketPTE.append('M2')
 
 	# draw the pocket pocketReturnCB
 def pocket(parent):
@@ -141,19 +141,19 @@ def pocket(parent):
 	plusY = back
 	minusY = (back - depthY)
 
-	parent.facePTE.appendPlainText(f'{parent.unitsBG.checkedButton().property("units")}')
-	parent.facePTE.appendPlainText(f'{parent.preambleLE.text()}')
-	parent.pocketPTE.appendPlainText(f'M3 S{rpm} F{feed}')
-	parent.pocketPTE.appendPlainText('; Drawing the pocket')
-	parent.pocketPTE.appendPlainText(f'G0 X{minusX + corner} Y{plusY} Z0')
-	parent.pocketPTE.appendPlainText(f'G1 X{plusX - corner} Y{plusY}')
-	parent.pocketPTE.appendPlainText(f'G2 X{plusX} Y{plusY - corner} I0.0 J-{corner}')
-	parent.pocketPTE.appendPlainText(f'G1 X{plusX} Y{minusY + corner}')
-	parent.pocketPTE.appendPlainText(f'G2 X{plusX - corner} Y{minusY} I-{corner} J0.0')
-	parent.pocketPTE.appendPlainText(f'G1 X{minusX + corner} Y{minusY}')
-	parent.pocketPTE.appendPlainText(f'G2 X{minusX} Y{minusY + corner} I0.0 J{corner}')
-	parent.pocketPTE.appendPlainText(f'G1 X{minusX} Y{plusY - corner}')
-	parent.pocketPTE.appendPlainText(f'G2 X{minusX + corner} Y{plusY} I{corner} J0.0')
+	parent.facePTE.append(f'{parent.unitsBG.checkedButton().property("units")}')
+	parent.facePTE.append(f'{parent.preambleLE.text()}')
+	parent.pocketPTE.append(f'M3 S{rpm} F{feed}')
+	parent.pocketPTE.append('; Drawing the pocket')
+	parent.pocketPTE.append(f'G0 X{minusX + corner} Y{plusY} Z0')
+	parent.pocketPTE.append(f'G1 X{plusX - corner} Y{plusY}')
+	parent.pocketPTE.append(f'G2 X{plusX} Y{plusY - corner} I0.0 J-{corner}')
+	parent.pocketPTE.append(f'G1 X{plusX} Y{minusY + corner}')
+	parent.pocketPTE.append(f'G2 X{plusX - corner} Y{minusY} I-{corner} J0.0')
+	parent.pocketPTE.append(f'G1 X{minusX + corner} Y{minusY}')
+	parent.pocketPTE.append(f'G2 X{minusX} Y{minusY + corner} I0.0 J{corner}')
+	parent.pocketPTE.append(f'G1 X{minusX} Y{plusY - corner}')
+	parent.pocketPTE.append(f'G2 X{minusX + corner} Y{plusY} I{corner} J0.0')
 
 def copy(parent):
 	qclip = QApplication.clipboard()
@@ -161,7 +161,7 @@ def copy(parent):
 	parent.statusbar.showMessage('G code copied to clipboard')
 
 def send(parent):
-	parent.gcodePTE.appendPlainText(parent.pocketPTE.toPlainText())
+	parent.gcodePTE.append(parent.pocketPTE.toPlainText())
 
 
 def save(parent):

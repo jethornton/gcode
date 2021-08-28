@@ -20,7 +20,7 @@ def insert(parent):
 	parent.gcodePTE.insertPlainText(parent.gcodeCustomLE.text())
 
 def addM2(parent):
-	parent.gcodePTE.appendPlainText('M2')
+	parent.gcodePTE.append('M2')
 
 def selectLine(parent):
 	#print('here')
@@ -49,4 +49,4 @@ def addLineNum(parent):
 		gcode.append(f'N{i} {line}')
 	parent.gcodePTE.clear()
 	for line in gcode:
-		parent.gcodePTE.appendPlainText(line)
+		parent.gcodePTE.append(line)

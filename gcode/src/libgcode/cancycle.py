@@ -171,7 +171,7 @@ def deleteGcode(parent):
 	cursor.deleteChar()
 
 def send(parent):
-	parent.gcodePTE.appendPlainText(parent.canGcodePTE.toPlainText())
+	parent.gcodePTE.append(parent.canGcodePTE.toPlainText())
 
 def drill(parent):
 	cursor = parent.drillPTE.textCursor()
