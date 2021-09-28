@@ -16,12 +16,12 @@ ini_options = [
 def saveSettings(parent):
 	settings = ['[SETTINGS]\n']
 	settings.append(f'UNITS = {parent.unitsBG.checkedButton().property("units")}\n')
-	settings.append(f'PREAMBLE = {parent.preambleLE.text()}\n')
-	settings.append(f'NAME_0 = {parent.machineLE_0.text()}\n')
+	settings.append(f'PREAMBLE = {parent.preambleLE.text().strip()}\n')
+	settings.append(f'NAME_0 = {parent.machineLE_0.text().strip()}\n')
 	settings.append(f'MAX_RPM_0 = {parent.machineMaxSB_0.value()}\n')
-	settings.append(f'NAME_1 = {parent.machineLE_1.text()}\n')
+	settings.append(f'NAME_1 = {parent.machineLE_1.text().strip()}\n')
 	settings.append(f'MAX_RPM_1 = {parent.machineMaxSB_1.value()}\n')
-	settings.append(f'NAME_2 = {parent.machineLE_2.text()}\n')
+	settings.append(f'NAME_2 = {parent.machineLE_2.text().strip()}\n')
 	settings.append(f'MAX_RPM_2 = {parent.machineMaxSB_2.value()}\n')
 
 	sf = os.path.expanduser('~/.gcode_settings')
