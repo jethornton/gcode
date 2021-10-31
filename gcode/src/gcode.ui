@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1000</width>
-    <height>900</height>
+    <height>800</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -19,7 +19,7 @@
   <property name="minimumSize">
    <size>
     <width>1000</width>
-    <height>900</height>
+    <height>800</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -927,697 +927,631 @@
        <attribute name="title">
         <string>Canned Cycles</string>
        </attribute>
-       <widget class="QGroupBox" name="groupBox_22">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>20</y>
-          <width>401</width>
-          <height>101</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string>Retract Mode</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_30">
-         <item row="0" column="0">
-          <widget class="QRadioButton" name="cannedG98RB">
-           <property name="text">
-            <string>G98</string>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-           <attribute name="buttonGroup">
-            <string notr="true">canRetractBG</string>
-           </attribute>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QRadioButton" name="cannedG99RB">
-           <property name="text">
-            <string>G99</string>
-           </property>
-           <attribute name="buttonGroup">
-            <string notr="true">canRetractBG</string>
-           </attribute>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLabel" name="label_52">
-           <property name="text">
-            <string>Retract to Z position prior to Canned Cycle</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QLabel" name="label_53">
-           <property name="text">
-            <string>Retract to Z position specificed by R</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QGroupBox" name="groupBox_21">
-        <property name="geometry">
-         <rect>
-          <x>290</x>
-          <y>410</y>
-          <width>191</width>
-          <height>221</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string>Tool</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_29">
-         <item row="2" column="1" colspan="2">
-          <widget class="QLineEdit" name="canZdepthLE"/>
-         </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="label_48">
-           <property name="text">
-            <string>Feed</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1" colspan="2">
-          <widget class="QLineEdit" name="canRpmLE"/>
-         </item>
-         <item row="0" column="1" colspan="2">
-          <widget class="QLineEdit" name="canToolLE"/>
-         </item>
-         <item row="0" column="0">
-          <widget class="QLabel" name="label_49">
-           <property name="text">
-            <string>Tool #</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_50">
-           <property name="text">
-            <string>Z Depth</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="label_51">
-           <property name="text">
-            <string>RPM</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1" colspan="2">
-          <widget class="QLineEdit" name="canFeedLE"/>
-         </item>
-         <item row="4" column="0" colspan="3">
-          <widget class="QPushButton" name="canSelectPB">
-           <property name="text">
-            <string>Use Selected Data</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QGroupBox" name="groupBox_23">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>130</y>
-          <width>401</width>
-          <height>271</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string>Canned Cycle</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_31">
-         <item row="1" column="0">
-          <widget class="QRadioButton" name="radioButton_2">
-           <property name="text">
-            <string>G81</string>
-           </property>
-           <attribute name="buttonGroup">
-            <string notr="true">canCycleBG</string>
-           </attribute>
-          </widget>
-         </item>
-         <item row="4" column="0">
-          <widget class="QRadioButton" name="radioButton_5">
-           <property name="text">
-            <string>G84</string>
-           </property>
-           <attribute name="buttonGroup">
-            <string notr="true">canCycleBG</string>
-           </attribute>
-          </widget>
-         </item>
-         <item row="5" column="1">
-          <widget class="QLabel" name="label_58">
-           <property name="text">
-            <string>Boring Cycle, Feed Out</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QRadioButton" name="radioButton_3">
-           <property name="text">
-            <string>G82</string>
-           </property>
-           <attribute name="buttonGroup">
-            <string notr="true">canCycleBG</string>
-           </attribute>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QRadioButton" name="radioButton_4">
-           <property name="text">
-            <string>G83</string>
-           </property>
-           <attribute name="buttonGroup">
-            <string notr="true">canCycleBG</string>
-           </attribute>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QLabel" name="label_56">
-           <property name="text">
-            <string>Peck Drilling Cycle</string>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="1">
-          <widget class="QLabel" name="label_62">
-           <property name="text">
-            <string>Boring Cycle, Spindle Stop, Rapid Out</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QLabel" name="label_54">
-           <property name="text">
-            <string>Drilling Cycle</string>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="0">
-          <widget class="QRadioButton" name="radioButton_7">
-           <property name="text">
-            <string>G86</string>
-           </property>
-           <attribute name="buttonGroup">
-            <string notr="true">canCycleBG</string>
-           </attribute>
-          </widget>
-         </item>
-         <item row="7" column="0">
-          <widget class="QRadioButton" name="radioButton_10">
-           <property name="text">
-            <string>G89</string>
-           </property>
-           <attribute name="buttonGroup">
-            <string notr="true">canCycleBG</string>
-           </attribute>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QLabel" name="label_55">
-           <property name="text">
-            <string>Drilling Cycle, Dwell</string>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="0">
-          <widget class="QRadioButton" name="radioButton_6">
-           <property name="text">
-            <string>G85</string>
-           </property>
-           <attribute name="buttonGroup">
-            <string notr="true">canCycleBG</string>
-           </attribute>
-          </widget>
-         </item>
-         <item row="7" column="1">
-          <widget class="QLabel" name="label_61">
-           <property name="text">
-            <string>Boring Cycle, Dwell, Feed Out</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="1">
-          <widget class="QLabel" name="label_57">
-           <property name="text">
-            <string>Right Hand Tapping, Dwell</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <widget class="QRadioButton" name="radioButton_11">
-           <property name="text">
-            <string>G73</string>
-           </property>
-           <attribute name="buttonGroup">
-            <string notr="true">canCycleBG</string>
-           </attribute>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLabel" name="label_31">
-           <property name="text">
-            <string>Drilling Cycle with Chip Breaking</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QGroupBox" name="groupBox_24">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>410</y>
-          <width>251</width>
-          <height>271</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string>Setup</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_32">
-         <item row="2" column="1">
-          <widget class="QLabel" name="label_68">
-           <property name="text">
-            <string>P</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="label_65">
-           <property name="text">
-            <string>Repetitions</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="2">
-          <widget class="QLineEdit" name="canRepeteLE">
-           <property name="word" stdset="0">
-            <string>L</string>
-           </property>
-           <property name="name" stdset="0">
-            <string>Repetitions</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="2">
-          <widget class="QLineEdit" name="canDwellLE">
-           <property name="word" stdset="0">
-            <string>P</string>
-           </property>
-           <property name="name" stdset="0">
-            <string>Dwell</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLabel" name="label_64">
-           <property name="text">
-            <string>R</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="2">
-          <widget class="QSpinBox" name="canSpindleSB">
-           <property name="maximum">
-            <number>8</number>
-           </property>
-           <property name="word" stdset="0">
-            <string>$</string>
-           </property>
-           <property name="name" stdset="0">
-            <string>Spindle</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QLabel" name="label_70">
-           <property name="text">
-            <string>$</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_67">
-           <property name="text">
-            <string>Dwell</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="label_69">
-           <property name="text">
-            <string>Spindle</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="0">
-          <widget class="QLabel" name="label_71">
-           <property name="text">
-            <string>Peck</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="2">
-          <widget class="QLineEdit" name="canPeckLE">
-           <property name="word" stdset="0">
-            <string>Q</string>
-           </property>
-           <property name="name" stdset="0">
-            <string>Peck</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QLabel" name="label_66">
-           <property name="text">
-            <string>L</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="2">
-          <widget class="QLineEdit" name="canRetractLE">
-           <property name="word" stdset="0">
-            <string>R</string>
-           </property>
-           <property name="name" stdset="0">
-            <string>Retract Position</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="1">
-          <widget class="QLabel" name="label_72">
-           <property name="text">
-            <string>Q</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <widget class="QLabel" name="label_63">
-           <property name="text">
-            <string>Retract Position</string>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="0" colspan="3">
-          <widget class="QCheckBox" name="canEndReturnCB">
-           <property name="text">
-            <string>Return to X0 Y0 Z0</string>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="0" colspan="3">
-          <widget class="QCheckBox" name="canProgEndCB">
-           <property name="text">
-            <string>Program End M2</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QGroupBox" name="groupBox_25">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>690</y>
-          <width>251</width>
-          <height>101</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string>Start Location</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_33">
-         <item row="0" column="2">
-          <widget class="QLabel" name="label_74">
-           <property name="text">
-            <string>Z</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLabel" name="label_73">
-           <property name="text">
-            <string>Y</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <widget class="QLabel" name="label_60">
-           <property name="text">
-            <string>X</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLineEdit" name="canXstartLE">
-           <property name="text">
-            <string>0.0</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QLineEdit" name="canYstartLE">
-           <property name="text">
-            <string>0.0</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="2">
-          <widget class="QLineEdit" name="canZstartLE">
-           <property name="text">
-            <string>0.0</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QGroupBox" name="groupBox_26">
-        <property name="geometry">
-         <rect>
-          <x>500</x>
-          <y>10</y>
-          <width>251</width>
-          <height>351</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string>Coordinates</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_34">
-         <item row="1" column="0">
-          <widget class="QLabel" name="label_59">
-           <property name="text">
-            <string>X</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="2">
-          <widget class="QLineEdit" name="canXcoordLE"/>
-         </item>
-         <item row="1" column="4">
-          <widget class="QLineEdit" name="canYcoordLE"/>
-         </item>
-         <item row="1" column="3">
-          <widget class="QLabel" name="label_75">
-           <property name="text">
-            <string>Y</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0" colspan="6">
-          <widget class="QPlainTextEdit" name="canCoordPTE"/>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QGroupBox" name="groupBox_27">
-        <property name="geometry">
-         <rect>
-          <x>290</x>
-          <y>640</y>
-          <width>191</width>
-          <height>91</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string>Distance Mode</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_35">
-         <item row="1" column="0">
-          <widget class="QRadioButton" name="canG91RB">
-           <property name="text">
-            <string>G91</string>
-           </property>
-           <attribute name="buttonGroup">
-            <string notr="true">canDistanceBG</string>
-           </attribute>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <widget class="QRadioButton" name="canG90RB">
-           <property name="text">
-            <string>G90</string>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-           <attribute name="buttonGroup">
-            <string notr="true">canDistanceBG</string>
-           </attribute>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLabel" name="label_76">
-           <property name="text">
-            <string> Absolute</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QLabel" name="label_77">
-           <property name="text">
-            <string>Incremental</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QGroupBox" name="groupBox_28">
-        <property name="geometry">
-         <rect>
-          <x>500</x>
-          <y>370</y>
-          <width>471</width>
-          <height>421</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string>G code</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_36">
-         <item row="0" column="0">
-          <widget class="QPlainTextEdit" name="canGcodePTE"/>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QGroupBox" name="groupBox_29">
-        <property name="geometry">
-         <rect>
-          <x>770</x>
-          <y>110</y>
-          <width>191</width>
-          <height>251</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string>G code</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_37">
-         <item row="5" column="0">
-          <widget class="QPushButton" name="canGeneratePB">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string>Generate</string>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="0">
-          <widget class="QPushButton" name="canCopyPB">
-           <property name="text">
-            <string>Copy</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QRadioButton" name="radioButton_9">
-           <property name="text">
-            <string>Replace G code</string>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-           <attribute name="buttonGroup">
-            <string notr="true">canGenerateBG</string>
-           </attribute>
-          </widget>
-         </item>
-         <item row="0" column="0">
-          <widget class="QRadioButton" name="radioButton_8">
-           <property name="text">
-            <string>Append G code</string>
-           </property>
-           <attribute name="buttonGroup">
-            <string notr="true">canGenerateBG</string>
-           </attribute>
-          </widget>
-         </item>
-         <item row="8" column="0">
-          <widget class="QPushButton" name="canSendPB">
-           <property name="text">
-            <string>Send to G code Tab</string>
-           </property>
-          </widget>
-         </item>
-         <item row="7" column="0">
-          <widget class="QPushButton" name="canGcodeRemovePB">
-           <property name="text">
-            <string>Delete Selected Line</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QGroupBox" name="groupBox_31">
-        <property name="geometry">
-         <rect>
-          <x>770</x>
-          <y>10</y>
-          <width>189</width>
-          <height>71</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string>Coordinates Editing</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_40">
-         <item row="0" column="0">
-          <widget class="QPushButton" name="canCoordRemovePB">
-           <property name="text">
-            <string>Delete Selected Line</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
+       <layout class="QGridLayout" name="gridLayout_43">
+        <item row="0" column="0">
+         <widget class="QGroupBox" name="groupBox_22">
+          <property name="title">
+           <string>Retract Mode</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_30">
+           <item row="0" column="0">
+            <widget class="QRadioButton" name="cannedG98RB">
+             <property name="statusTip">
+              <string>Retract to Z position prior to Canned Cycle</string>
+             </property>
+             <property name="text">
+              <string>G98</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">canRetractBG</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QRadioButton" name="cannedG99RB">
+             <property name="statusTip">
+              <string>Retract to Z position specificed by R</string>
+             </property>
+             <property name="text">
+              <string>G99</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">canRetractBG</string>
+             </attribute>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="1" colspan="2">
+         <widget class="QGroupBox" name="groupBox_27">
+          <property name="title">
+           <string>Distance Mode</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_35">
+           <item row="1" column="0">
+            <widget class="QRadioButton" name="canG91RB">
+             <property name="text">
+              <string>G91</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">canDistanceBG</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QRadioButton" name="canG90RB">
+             <property name="text">
+              <string>G90</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">canDistanceBG</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="label_76">
+             <property name="text">
+              <string> Absolute</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLabel" name="label_77">
+             <property name="text">
+              <string>Incremental</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="3">
+         <widget class="QGroupBox" name="groupBox_25">
+          <property name="title">
+           <string>Start Location</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_33">
+           <item row="0" column="2">
+            <widget class="QLabel" name="label_74">
+             <property name="text">
+              <string>Z</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="label_73">
+             <property name="text">
+              <string>Y</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_60">
+             <property name="text">
+              <string>X</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLineEdit" name="canXstartLE">
+             <property name="text">
+              <string>0.0</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="canYstartLE">
+             <property name="text">
+              <string>0.0</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QLineEdit" name="canZstartLE">
+             <property name="text">
+              <string>0.0</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="4">
+         <widget class="QGroupBox" name="groupBox_31">
+          <property name="title">
+           <string>Coordinates Editing</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_40">
+           <item row="0" column="0">
+            <widget class="QPushButton" name="canCoordRemovePB">
+             <property name="text">
+              <string>Delete Selected Line</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="1" column="0" colspan="3">
+         <widget class="QGroupBox" name="groupBox_23">
+          <property name="title">
+           <string>Canned Cycle</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_31">
+           <item row="1" column="0">
+            <widget class="QRadioButton" name="radioButton_2">
+             <property name="text">
+              <string>G81</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">canCycleBG</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QRadioButton" name="radioButton_5">
+             <property name="text">
+              <string>G84</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">canCycleBG</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QLabel" name="label_58">
+             <property name="text">
+              <string>Boring Cycle, Feed Out</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QRadioButton" name="radioButton_3">
+             <property name="text">
+              <string>G82</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">canCycleBG</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QRadioButton" name="radioButton_4">
+             <property name="text">
+              <string>G83</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">canCycleBG</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QLabel" name="label_56">
+             <property name="text">
+              <string>Peck Drilling Cycle</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="1">
+            <widget class="QLabel" name="label_62">
+             <property name="text">
+              <string>Boring Cycle, Spindle Stop, Rapid Out</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLabel" name="label_54">
+             <property name="text">
+              <string>Drilling Cycle</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0">
+            <widget class="QRadioButton" name="radioButton_7">
+             <property name="text">
+              <string>G86</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">canCycleBG</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="7" column="0">
+            <widget class="QRadioButton" name="radioButton_10">
+             <property name="text">
+              <string>G89</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">canCycleBG</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLabel" name="label_55">
+             <property name="text">
+              <string>Drilling Cycle, Dwell</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0">
+            <widget class="QRadioButton" name="radioButton_6">
+             <property name="text">
+              <string>G85</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">canCycleBG</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="7" column="1">
+            <widget class="QLabel" name="label_61">
+             <property name="text">
+              <string>Boring Cycle, Dwell, Feed Out</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QLabel" name="label_57">
+             <property name="text">
+              <string>Right Hand Tapping, Dwell</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QRadioButton" name="radioButton_11">
+             <property name="text">
+              <string>G73</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">canCycleBG</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="label_31">
+             <property name="text">
+              <string>Drilling Cycle with Chip Breaking</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="1" column="3">
+         <widget class="QGroupBox" name="groupBox_26">
+          <property name="title">
+           <string>Coordinates</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_34">
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_59">
+             <property name="text">
+              <string>X</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QLineEdit" name="canXcoordLE"/>
+           </item>
+           <item row="1" column="4">
+            <widget class="QLineEdit" name="canYcoordLE"/>
+           </item>
+           <item row="1" column="3">
+            <widget class="QLabel" name="label_75">
+             <property name="text">
+              <string>Y</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0" colspan="6">
+            <widget class="QPlainTextEdit" name="canCoordPTE"/>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="1" column="4">
+         <widget class="QGroupBox" name="groupBox_29">
+          <property name="title">
+           <string>G code</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_37">
+           <item row="5" column="0">
+            <widget class="QPushButton" name="canGeneratePB">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Generate</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0">
+            <widget class="QPushButton" name="canCopyPB">
+             <property name="text">
+              <string>Copy</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QRadioButton" name="radioButton_9">
+             <property name="text">
+              <string>Replace G code</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">canGenerateBG</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QRadioButton" name="radioButton_8">
+             <property name="text">
+              <string>Append G code</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">canGenerateBG</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="8" column="0">
+            <widget class="QPushButton" name="canSendPB">
+             <property name="text">
+              <string>Send to G code Tab</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0">
+            <widget class="QPushButton" name="canGcodeRemovePB">
+             <property name="text">
+              <string>Delete Selected Line</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="2" column="0" colspan="2">
+         <widget class="QGroupBox" name="groupBox_24">
+          <property name="title">
+           <string>Setup</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_32">
+           <item row="2" column="1">
+            <widget class="QLabel" name="label_68">
+             <property name="text">
+              <string>P</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_65">
+             <property name="text">
+              <string>Repetitions</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QLineEdit" name="canRepeteLE">
+             <property name="word" stdset="0">
+              <string>L</string>
+             </property>
+             <property name="name" stdset="0">
+              <string>Repetitions</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QLineEdit" name="canDwellLE">
+             <property name="word" stdset="0">
+              <string>P</string>
+             </property>
+             <property name="name" stdset="0">
+              <string>Dwell</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="label_64">
+             <property name="text">
+              <string>R</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="2">
+            <widget class="QSpinBox" name="canSpindleSB">
+             <property name="maximum">
+              <number>8</number>
+             </property>
+             <property name="word" stdset="0">
+              <string>$</string>
+             </property>
+             <property name="name" stdset="0">
+              <string>Spindle</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QLabel" name="label_70">
+             <property name="text">
+              <string>$</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_67">
+             <property name="text">
+              <string>Dwell</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_69">
+             <property name="text">
+              <string>Spindle</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="label_71">
+             <property name="text">
+              <string>Peck</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="2">
+            <widget class="QLineEdit" name="canPeckLE">
+             <property name="word" stdset="0">
+              <string>Q</string>
+             </property>
+             <property name="name" stdset="0">
+              <string>Peck</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLabel" name="label_66">
+             <property name="text">
+              <string>L</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QLineEdit" name="canRetractLE">
+             <property name="word" stdset="0">
+              <string>R</string>
+             </property>
+             <property name="name" stdset="0">
+              <string>Retract Position</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QLabel" name="label_72">
+             <property name="text">
+              <string>Q</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_63">
+             <property name="text">
+              <string>Retract Position</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0" colspan="3">
+            <widget class="QCheckBox" name="canEndReturnCB">
+             <property name="text">
+              <string>Return to X0 Y0 Z0</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0" colspan="3">
+            <widget class="QCheckBox" name="canProgEndCB">
+             <property name="text">
+              <string>Program End M2</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QGroupBox" name="groupBox_21">
+          <property name="title">
+           <string>Tool</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_29">
+           <item row="2" column="1" colspan="2">
+            <widget class="QLineEdit" name="canZdepthLE"/>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_48">
+             <property name="text">
+              <string>Feed</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1" colspan="2">
+            <widget class="QLineEdit" name="canRpmLE"/>
+           </item>
+           <item row="0" column="1" colspan="2">
+            <widget class="QLineEdit" name="canToolLE"/>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_49">
+             <property name="text">
+              <string>Tool #</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_50">
+             <property name="text">
+              <string>Z Depth</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_51">
+             <property name="text">
+              <string>RPM</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1" colspan="2">
+            <widget class="QLineEdit" name="canFeedLE"/>
+           </item>
+           <item row="4" column="0" colspan="3">
+            <widget class="QPushButton" name="canSelectPB">
+             <property name="text">
+              <string>Use Selected Data</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="2" column="3" colspan="2">
+         <widget class="QGroupBox" name="groupBox_28">
+          <property name="title">
+           <string>G code</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_36">
+           <item row="0" column="0">
+            <widget class="QPlainTextEdit" name="canGcodePTE"/>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="tab_4">
        <attribute name="title">
@@ -2094,18 +2028,121 @@ Position move then G33.1 for each hole.</string>
         <string>Drill Charts</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_13">
-        <item row="6" column="0">
-         <spacer name="verticalSpacer">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
+        <item row="0" column="1">
+         <widget class="QGroupBox" name="groupBox_10">
+          <property name="title">
+           <string>Hole Op</string>
           </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
+          <layout class="QGridLayout" name="gridLayout_17">
+           <item row="1" column="0">
+            <widget class="QRadioButton" name="drill3xDiam">
+             <property name="text">
+              <string>&gt;2 &lt;=4 x Diam</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">drillDepthBG</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QRadioButton" name="drill2xDiam">
+             <property name="text">
+              <string>&lt;=2 x Diam</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">drillDepthBG</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QRadioButton" name="drill4xDiam">
+             <property name="text">
+              <string>&gt;4 x Diam</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">drillDepthBG</string>
+             </attribute>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QRadioButton" name="dcReamRB">
+             <property name="text">
+              <string>Reaming</string>
+             </property>
+             <attribute name="buttonGroup">
+              <string notr="true">drillDepthBG</string>
+             </attribute>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QGroupBox" name="drillsfmGB">
+          <property name="title">
+           <string>SFM</string>
           </property>
-         </spacer>
+          <layout class="QGridLayout" name="gridLayout_15">
+           <item row="1" column="0">
+            <widget class="QScrollBar" name="drillSfmSB">
+             <property name="singleStep">
+              <number>10</number>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="drillSfmLb">
+             <property name="frameShape">
+              <enum>QFrame::Box</enum>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QGroupBox" name="groupBox_11">
+          <property name="title">
+           <string>IPR Offset</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_16">
+           <item row="1" column="0">
+            <widget class="QScrollBar" name="drilliprSB">
+             <property name="minimum">
+              <number>-1</number>
+             </property>
+             <property name="maximum">
+              <number>1</number>
+             </property>
+             <property name="pageStep">
+              <number>1</number>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="drilliprLb">
+             <property name="frameShape">
+              <enum>QFrame::Box</enum>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
         </item>
         <item row="2" column="0">
          <widget class="QGroupBox" name="groupBox_7">
@@ -2176,6 +2213,34 @@ Position move then G33.1 for each hole.</string>
           </layout>
          </widget>
         </item>
+        <item row="0" column="2" rowspan="6">
+         <widget class="QFrame" name="drillChartFM">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Plain</enum>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QGroupBox" name="groupBox_19">
+          <property name="title">
+           <string>Machine</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_27">
+           <item row="0" column="0">
+            <widget class="QComboBox" name="drillMachineCB"/>
+           </item>
+          </layout>
+         </widget>
+        </item>
         <item row="1" column="0">
          <widget class="QGroupBox" name="groupBox_9">
           <property name="title">
@@ -2216,150 +2281,6 @@ Position move then G33.1 for each hole.</string>
             </widget>
            </item>
           </layout>
-         </widget>
-        </item>
-        <item row="3" column="0">
-         <widget class="QGroupBox" name="drillsfmGB">
-          <property name="title">
-           <string>SFM</string>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_15">
-           <item row="1" column="0">
-            <widget class="QScrollBar" name="drillSfmSB">
-             <property name="singleStep">
-              <number>10</number>
-             </property>
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="drillSfmLb">
-             <property name="frameShape">
-              <enum>QFrame::Box</enum>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item row="4" column="0">
-         <widget class="QGroupBox" name="groupBox_11">
-          <property name="title">
-           <string>IPR Offset</string>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_16">
-           <item row="1" column="0">
-            <widget class="QScrollBar" name="drilliprSB">
-             <property name="minimum">
-              <number>-1</number>
-             </property>
-             <property name="maximum">
-              <number>1</number>
-             </property>
-             <property name="pageStep">
-              <number>1</number>
-             </property>
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="drilliprLb">
-             <property name="frameShape">
-              <enum>QFrame::Box</enum>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item row="5" column="0">
-         <widget class="QGroupBox" name="groupBox_10">
-          <property name="title">
-           <string>Hole Op</string>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_17">
-           <item row="1" column="0">
-            <widget class="QRadioButton" name="drill3xDiam">
-             <property name="text">
-              <string>&gt;2 &lt;=4 x Diam</string>
-             </property>
-             <attribute name="buttonGroup">
-              <string notr="true">drillDepthBG</string>
-             </attribute>
-            </widget>
-           </item>
-           <item row="0" column="0">
-            <widget class="QRadioButton" name="drill2xDiam">
-             <property name="text">
-              <string>&lt;=2 x Diam</string>
-             </property>
-             <property name="checked">
-              <bool>true</bool>
-             </property>
-             <attribute name="buttonGroup">
-              <string notr="true">drillDepthBG</string>
-             </attribute>
-            </widget>
-           </item>
-           <item row="2" column="0">
-            <widget class="QRadioButton" name="drill4xDiam">
-             <property name="text">
-              <string>&gt;4 x Diam</string>
-             </property>
-             <attribute name="buttonGroup">
-              <string notr="true">drillDepthBG</string>
-             </attribute>
-            </widget>
-           </item>
-           <item row="3" column="0">
-            <widget class="QRadioButton" name="dcReamRB">
-             <property name="text">
-              <string>Reaming</string>
-             </property>
-             <attribute name="buttonGroup">
-              <string notr="true">drillDepthBG</string>
-             </attribute>
-            </widget>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QGroupBox" name="groupBox_19">
-          <property name="title">
-           <string>Machine</string>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_27">
-           <item row="0" column="0">
-            <widget class="QComboBox" name="drillMachineCB"/>
-           </item>
-          </layout>
-         </widget>
-        </item>
-        <item row="0" column="1" rowspan="6">
-         <widget class="QFrame" name="drillChartFM">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Plain</enum>
-          </property>
          </widget>
         </item>
        </layout>
@@ -2647,7 +2568,7 @@ Position move then G33.1 for each hole.</string>
      <x>0</x>
      <y>0</y>
      <width>1000</width>
-     <height>25</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">
@@ -2799,15 +2720,15 @@ Position move then G33.1 for each hole.</string>
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="drillUnitsBG"/>
   <buttongroup name="canDistanceBG"/>
-  <buttongroup name="canCycleBG"/>
-  <buttongroup name="canGenerateBG"/>
-  <buttongroup name="drillDepthBG"/>
   <buttongroup name="unitsBG"/>
-  <buttongroup name="drillMaterialBG"/>
-  <buttongroup name="millMaterialBG"/>
-  <buttongroup name="millUnitsBG"/>
+  <buttongroup name="canCycleBG"/>
   <buttongroup name="canRetractBG"/>
+  <buttongroup name="drillDepthBG"/>
+  <buttongroup name="millMaterialBG"/>
+  <buttongroup name="drillUnitsBG"/>
+  <buttongroup name="drillMaterialBG"/>
+  <buttongroup name="millUnitsBG"/>
+  <buttongroup name="canGenerateBG"/>
  </buttongroups>
 </ui>
