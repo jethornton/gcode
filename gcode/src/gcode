@@ -91,7 +91,7 @@ class main(QMainWindow):
 			#face.generate(self)
 			#develop.pocket(self)
 			#pocket.generate(self)
-			develop.canned(self)
+			#develop.canned(self)
 		self.setupConnections()
 
 		self.show()
@@ -102,6 +102,8 @@ class main(QMainWindow):
 
 	def setupConnections(self):
 		self.saveSettingsPB.clicked.connect(partial(utilities.saveSettings, self))
+		self.defaultDirPB.clicked.connect(partial(utilities.getDefault, self))
+
 
 		self.faceGeneratePB.clicked.connect(partial(face.generate, self))
 		self.faceCopyPB.clicked.connect(partial(face.copy, self))
@@ -109,6 +111,7 @@ class main(QMainWindow):
 		self.faceSavePB.clicked.connect(partial(face.save, self))
 		self.faceSendPB.clicked.connect(partial(face.send, self))
 		self.facePTE.clicked.connect(partial(face.selectLine, self))
+		self.saveFacePB.clicked.connect(partial(face.saveSetup, self))
 
 		self.pocketGeneratePB.clicked.connect(partial(pocket.generate, self))
 		self.pocketCopyPB.clicked.connect(partial(pocket.copy, self))

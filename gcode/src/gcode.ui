@@ -211,14 +211,59 @@
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
+       <widget class="QGroupBox" name="groupBox_35">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>240</y>
+          <width>381</width>
+          <height>73</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Default Directory to Save Configurations to</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_45">
+         <item row="0" column="0">
+          <widget class="QLineEdit" name="lineEdit_5"/>
+         </item>
+         <item row="0" column="1">
+          <widget class="QPushButton" name="defaultDirPB">
+           <property name="text">
+            <string>Look</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
       </widget>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
         <string>Facing</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_3">
-        <item row="0" column="0">
-         <widget class="QGroupBox" name="groupBox">
+        <item row="3" column="2">
+         <widget class="QPushButton" name="faceSendPB">
+          <property name="text">
+           <string>Send to G code Tab</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="5">
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="2" column="0">
+         <widget class="QGroupBox" name="groupBox_3">
           <property name="maximumSize">
            <size>
             <width>250</width>
@@ -226,101 +271,92 @@
            </size>
           </property>
           <property name="title">
-           <string>Material</string>
+           <string>Setup</string>
           </property>
-          <layout class="QGridLayout" name="gridLayout_2">
-           <item row="0" column="1">
-            <widget class="QLineEdit" name="faceWidthX">
-             <property name="text">
-              <string/>
-             </property>
+          <layout class="QGridLayout" name="gridLayout_5">
+           <item row="3" column="1">
+            <widget class="QLineEdit" name="faceStepDepth">
              <property name="name" stdset="0">
-              <string>X Width</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>X Width</string>
+              <string>Step</string>
              </property>
             </widget>
            </item>
            <item row="1" column="0">
-            <widget class="QLabel" name="label_3">
+            <widget class="QLabel" name="label_10">
              <property name="text">
-              <string>Y Depth</string>
+              <string>Lead In</string>
              </property>
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="QLineEdit" name="faceDepthY">
+            <widget class="QLineEdit" name="faceLeadIn">
              <property name="text">
               <string/>
              </property>
              <property name="name" stdset="0">
-              <string>Y Depth</string>
+              <string>Lead In</string>
              </property>
             </widget>
            </item>
            <item row="2" column="0">
-            <widget class="QLabel" name="label_6">
+            <widget class="QLabel" name="label_12">
              <property name="text">
-              <string>Left Edge</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="label_8">
-             <property name="text">
-              <string>Rear Edge</string>
+              <string>Full Depth</string>
              </property>
             </widget>
            </item>
            <item row="2" column="1">
-            <widget class="QLineEdit" name="faceLeft">
-             <property name="text">
-              <string>0</string>
-             </property>
+            <widget class="QLineEdit" name="faceFullDepth">
              <property name="name" stdset="0">
-              <string>Left Edge</string>
+              <string>Full Depth</string>
              </property>
             </widget>
            </item>
-           <item row="3" column="1">
-            <widget class="QLineEdit" name="faceRear">
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_13">
              <property name="text">
-              <string>0</string>
-             </property>
-             <property name="name" stdset="0">
-              <string>Rear Edge</string>
+              <string>Step</string>
              </property>
             </widget>
            </item>
-           <item row="4" column="0">
-            <widget class="QLabel" name="label_9">
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_15">
              <property name="text">
-              <string>Z Top</string>
+              <string>Safe Z</string>
              </property>
             </widget>
            </item>
-           <item row="4" column="1">
-            <widget class="QLineEdit" name="faceTop">
-             <property name="text">
-              <string>0</string>
-             </property>
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="faceSafeZ">
              <property name="name" stdset="0">
-              <string>Top</string>
+              <string>Safe Z</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0" colspan="2">
+            <widget class="QCheckBox" name="faceProgEndCB">
+             <property name="text">
+              <string>Program End M2</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="0" colspan="2">
+            <widget class="QCheckBox" name="faceReturnCB">
+             <property name="text">
+              <string>Return to X0 Y0 At End</string>
              </property>
             </widget>
            </item>
           </layout>
          </widget>
         </item>
-        <item row="3" column="0">
-         <widget class="QPushButton" name="faceGeneratePB">
-          <property name="text">
-           <string>Generate G code</string>
+        <item row="0" column="1" rowspan="3" colspan="5">
+         <widget class="QFrame" name="faceingFM">
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Plain</enum>
           </property>
          </widget>
         </item>
@@ -428,112 +464,11 @@
           </layout>
          </widget>
         </item>
-        <item row="3" column="5">
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
         <item row="3" column="3">
          <widget class="QPushButton" name="faceCopyPB">
           <property name="text">
            <string>Copy to Clipboard</string>
           </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QGroupBox" name="groupBox_3">
-          <property name="maximumSize">
-           <size>
-            <width>250</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="title">
-           <string>Setup</string>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_5">
-           <item row="3" column="1">
-            <widget class="QLineEdit" name="faceStepDepth">
-             <property name="name" stdset="0">
-              <string>Step</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="label_10">
-             <property name="text">
-              <string>Lead In</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QLineEdit" name="faceLeadIn">
-             <property name="text">
-              <string/>
-             </property>
-             <property name="name" stdset="0">
-              <string>Lead In</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="label_12">
-             <property name="text">
-              <string>Full Depth</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QLineEdit" name="faceFullDepth">
-             <property name="name" stdset="0">
-              <string>Full Depth</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="label_13">
-             <property name="text">
-              <string>Step</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_15">
-             <property name="text">
-              <string>Safe Z</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QLineEdit" name="faceSafeZ">
-             <property name="name" stdset="0">
-              <string>Safe Z</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="0" colspan="2">
-            <widget class="QCheckBox" name="faceProgEndCB">
-             <property name="text">
-              <string>Program End M2</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="0" colspan="2">
-            <widget class="QCheckBox" name="faceReturnCB">
-             <property name="text">
-              <string>Return to X0 Y0 At End</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
          </widget>
         </item>
         <item row="3" column="4">
@@ -543,10 +478,110 @@
           </property>
          </widget>
         </item>
-        <item row="3" column="2">
-         <widget class="QPushButton" name="faceSendPB">
+        <item row="0" column="0">
+         <widget class="QGroupBox" name="groupBox">
+          <property name="maximumSize">
+           <size>
+            <width>250</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="title">
+           <string>Material</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_2">
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="faceWidthX">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="name" stdset="0">
+              <string>X Width</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>X Width</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_3">
+             <property name="text">
+              <string>Y Depth</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="faceDepthY">
+             <property name="text">
+              <string/>
+             </property>
+             <property name="name" stdset="0">
+              <string>Y Depth</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_6">
+             <property name="text">
+              <string>Left Edge</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_8">
+             <property name="text">
+              <string>Rear Edge</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="faceLeft">
+             <property name="text">
+              <string>0</string>
+             </property>
+             <property name="name" stdset="0">
+              <string>Left Edge</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QLineEdit" name="faceRear">
+             <property name="text">
+              <string>0</string>
+             </property>
+             <property name="name" stdset="0">
+              <string>Rear Edge</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="label_9">
+             <property name="text">
+              <string>Z Top</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QLineEdit" name="faceTop">
+             <property name="text">
+              <string>0</string>
+             </property>
+             <property name="name" stdset="0">
+              <string>Top</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QPushButton" name="faceGeneratePB">
           <property name="text">
-           <string>Send to G code Tab</string>
+           <string>Generate G code</string>
           </property>
          </widget>
         </item>
@@ -557,14 +592,53 @@
           </property>
          </widget>
         </item>
-        <item row="0" column="1" rowspan="3" colspan="5">
-         <widget class="QFrame" name="faceingFM">
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
+        <item row="0" column="6">
+         <widget class="QGroupBox" name="groupBox_34">
+          <property name="title">
+           <string>Config</string>
           </property>
-          <property name="frameShadow">
-           <enum>QFrame::Plain</enum>
-          </property>
+          <layout class="QGridLayout" name="gridLayout_44">
+           <item row="1" column="0">
+            <widget class="QLineEdit" name="faceNameLE"/>
+           </item>
+           <item row="2" column="0">
+            <widget class="QPushButton" name="saveFacePB">
+             <property name="text">
+              <string>Save</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QPushButton" name="openFacePB">
+             <property name="text">
+              <string>Open</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_32">
+             <property name="text">
+              <string>Name</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0">
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
          </widget>
         </item>
        </layout>
@@ -2720,15 +2794,15 @@ Position move then G33.1 for each hole.</string>
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="canDistanceBG"/>
-  <buttongroup name="unitsBG"/>
   <buttongroup name="canCycleBG"/>
+  <buttongroup name="drillUnitsBG"/>
+  <buttongroup name="millUnitsBG"/>
+  <buttongroup name="unitsBG"/>
+  <buttongroup name="millMaterialBG"/>
+  <buttongroup name="drillMaterialBG"/>
   <buttongroup name="canRetractBG"/>
   <buttongroup name="drillDepthBG"/>
-  <buttongroup name="millMaterialBG"/>
-  <buttongroup name="drillUnitsBG"/>
-  <buttongroup name="drillMaterialBG"/>
-  <buttongroup name="millUnitsBG"/>
+  <buttongroup name="canDistanceBG"/>
   <buttongroup name="canGenerateBG"/>
  </buttongroups>
 </ui>
