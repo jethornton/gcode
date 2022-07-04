@@ -1,6 +1,6 @@
 import os, configparser
 from PyQt5.QtWidgets import (QLineEdit, QSpinBox, QCheckBox, QComboBox,
-	QLabel, QGroupBox, QDoubleSpinBox)
+	QLabel, QGroupBox, QDoubleSpinBox, QFileDialog)
 
 ini_options = [
 	['SETTINGS', 'UNITS', 'unitsBG'],
@@ -11,6 +11,8 @@ ini_options = [
 	['SETTINGS', 'MAX_RPM_1', 'machineMaxSB_1'],
 	['SETTINGS', 'NAME_2', 'machineLE_2'],
 	['SETTINGS', 'MAX_RPM_2', 'machineMaxSB_2'],
+	['SETTINGS', 'GCODE_DEFAULT', 'gcodeLocationLE'],
+	['SETTINGS', 'TEMPLATE_DEFAULT', 'templateLocationLE'],
 	]
 
 def saveSettings(parent):
@@ -23,6 +25,22 @@ def saveSettings(parent):
 	settings.append(f'MAX_RPM_1 = {parent.machineMaxSB_1.value()}\n')
 	settings.append(f'NAME_2 = {parent.machineLE_2.text().strip()}\n')
 	settings.append(f'MAX_RPM_2 = {parent.machineMaxSB_2.value()}\n')
+	if os.path.exists(parent.gcodeLocationLE.text().strip()):
+		settings.append(f'GCODE_DEFAULT = {parent.gcodeLocationLE.text().strip()}\n')
+	else:
+		result = parent.errorMsgYesNo('Create the Directory?', 'Directory Not Found!')
+		if result:
+			os.makedirs(parent.gcodeLocationLE.text().strip())
+			settings.append(f'GCODE_DEFAULT = {parent.gcodeLocationLE.text().strip()}\n')
+	if os.path.exists(parent.templateLocationLE.text().strip()):
+	settings.append(f'TEMPLATE_DEFAULT = {parent.templateLocationLE.text().strip()}\n')
+	else:
+		result = parent.errorMsgYesNo('Create the Directory?', 'Directory Not Found!')
+		if result:
+			os.makedirs(parent.templateLocationLE.text().strip())
+			settings.append(f'TEMPLATE_DEFAULT = {parent.templateLocationLE.text().strip()}\n')
+
+
 
 	sf = os.path.expanduser('~/.gcode_settings')
 	with open(sf, 'w') as f:
@@ -65,6 +83,30 @@ def getSettings(parent):
 			getattr(parent, 'drillMachineCB').addItem(machine, rpm)
 			getattr(parent, 'millMachineCB').addItem(machine, rpm)
 			#parent.drillMachineCB.addItem
+
+
+def gcodeDefault(parent):
+	options = QFileDialog.Options()
+	options |= QFileDialog.DontUseNativeDialog
+	dirName = QFileDialog.getExistingDirectory(
+		None,
+		'Select a Directory:',
+		os.path.expanduser("~")
+		, options=options)
+	if dirName:
+		parent.gcodeLocationLE.setText(dirName)
+
+def templateDefault(parent):
+	options = QFileDialog.Options()
+	options |= QFileDialog.DontUseNativeDialog
+	dirName = QFileDialog.getExistingDirectory(
+		None,
+		'Select a Directory:',
+		os.path.expanduser("~")
+		, options=options)
+	if dirName:
+		parent.templateLocationLE.setText(dirName)
+
 
 	'''
 		if config.has_section('SETTINGS'):
