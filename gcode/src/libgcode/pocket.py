@@ -1,8 +1,12 @@
-import os
+import os, configparser
 from math import ceil
-from PyQt5.QtWidgets import QMessageBox, QApplication, QFileDialog
+from PyQt5.QtWidgets import (QLineEdit, QSpinBox, QCheckBox, QComboBox,
+	QLabel, QGroupBox, QDoubleSpinBox, QFileDialog, QMessageBox, QFileDialog)
+
 from PyQt5.QtGui import QTextCursor, QTextCharFormat, QTextCharFormat
 from PyQt5.QtCore import Qt
+
+from libgcode import files
 
 def retnumber(parent, i): # get line edit name then test for number
 	if getattr(parent, i).text():
@@ -141,8 +145,8 @@ def pocket(parent):
 	plusY = back
 	minusY = (back - depthY)
 
-	parent.facePTE.append(f'{parent.unitsBG.checkedButton().property("units")}')
-	parent.facePTE.append(f'{parent.preambleLE.text()}')
+	parent.pocketPTE.append(f'{parent.unitsBG.checkedButton().property("units")}')
+	parent.pocketPTE.append(f'{parent.preambleLE.text()}')
 	parent.pocketPTE.append(f'M3 S{rpm} F{feed}')
 	parent.pocketPTE.append('; Drawing the pocket')
 	parent.pocketPTE.append(f'G0 X{minusX + corner} Y{plusY} Z0')
@@ -197,3 +201,72 @@ def selectLine(parent):
 	cursor.setPosition(position)
 	cursor.select(QTextCursor.LineUnderCursor)
 	cursor.setCharFormat(fmt)
+
+def saveTemplate(parent):
+	path = files.saveFilePath(parent,'pocket')
+	face = ['[POCKET]\n']
+	face.append(f'X_WIDTH = {parent.pocketWidthX.text().strip()}\n')
+	face.append(f'Y_DEPTH = {parent.pocketDepthY.text().strip()}\n')
+	face.append(f'X_LEFT = {parent.pocketLeft.text().strip()}\n')
+	face.append(f'Y_REAR = {parent.pocketRear.text().strip()}\n')
+	face.append(f'TOOL = {parent.pocketTool.text().strip()}\n')
+	face.append(f'TOOL_DIA = {parent.pocketToolDia.text().strip()}\n')
+	face.append(f'RPM = {parent.pocketRPM.text().strip()}\n')
+	face.append(f'FEED = {parent.pocketFeed.text().strip()}\n')
+	face.append(f'STEP = {parent.pocketStep.text().strip()}\n')
+	face.append(f'SAFE_Z = {parent.pocketSafeZ.text().strip()}\n')
+	face.append(f'LEAD_IN = {parent.pocketLeadIn.text().strip()}\n')
+	face.append(f'Z_DEPTH = {parent.pocketCutDepth.text().strip()}\n')
+	face.append(f'Z_STEP = {parent.pocketStepDepth.text().strip()}\n')
+	face.append(f'RETURN = {parent.pocketReturnCB.isChecked()}\n')
+	face.append(f'PROG_END = {parent.pocketProgEndCB.isChecked()}\n')
+
+	with open(path, 'w') as f:
+		f.writelines(face) 
+
+
+def openTemplate(parent):
+	path = files.openFile(parent,'pocket')
+	template = [
+	['POCKET', 'X_WIDTH', 'pocketWidthX'],
+	['POCKET', 'Y_DEPTH', 'pocketDepthY'],
+	['POCKET', 'X_LEFT', 'pocketLeft'],
+	['POCKET', 'Y_REAR', 'pocketRear'],
+	['POCKET', 'TOOL', 'pocketTool'],
+	['POCKET', 'TOOL_DIA', 'pocketToolDia'],
+	['POCKET', 'RPM', 'pocketRPM'],
+	['POCKET', 'FEED', 'pocketFeed'],
+	['POCKET', 'STEP', 'pocketStep'],
+	['POCKET', 'SAFE_Z', 'pocketSafeZ'],
+	['POCKET', 'LEAD_IN', 'pocketLeadIn'],
+	['POCKET', 'Z_DEPTH', 'pocketCutDepth'],
+	['POCKET', 'Z_STEP', 'pocketStepDepth'],
+	['POCKET', 'RETURN', 'pocketReturnCB'],
+	['POCKET', 'PROG_END', 'pocketProgEndCB'],
+	]
+
+	config = configparser.ConfigParser(strict=False)
+	config.optionxform = str
+	config.read(path)
+
+	for item in template:
+		if config.has_option(item[0], item[1]):
+			if isinstance(getattr(parent, item[2]), QLabel):
+				getattr(parent, item[2]).setText(config[item[0]][item[1]])
+			if isinstance(getattr(parent, item[2]), QLineEdit):
+				getattr(parent, item[2]).setText(config[item[0]][item[1]])
+			if isinstance(getattr(parent, item[2]), QSpinBox):
+				getattr(parent, item[2]).setValue(abs(int(config[item[0]][item[1]])))
+			if isinstance(getattr(parent, item[2]), QDoubleSpinBox):
+				getattr(parent, item[2]).setValue(float(config[item[0]][item[1]]))
+			if isinstance(getattr(parent, item[2]), QCheckBox):
+				getattr(parent, item[2]).setChecked(eval(config[item[0]][item[1]]))
+			if isinstance(getattr(parent, item[2]), QGroupBox):
+				getattr(parent, item[2]).setChecked(eval(config[item[0]][item[1]]))
+				#print(self.config[item[0]][item[1]])
+			if isinstance(getattr(parent, item[2]), QComboBox):
+				index = getattr(v, item[2]).findData(config[item[0]][item[1]])
+				if index >= 0:
+					getattr(parent, item[2]).setCurrentIndex(index)
+
+

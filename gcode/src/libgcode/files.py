@@ -9,14 +9,14 @@ def saveFilePath(parent, extension):
 		templateDir = parent.templateLocationLE.text()
 		fileName, _ = QFileDialog.getSaveFileName(parent,
 		caption="Save File", directory=templateDir,
-		filter=f"Facing Templates (*.{extension})", options=options)
+		filter=f"Templates (*.{extension})", options=options)
 	else:
 		options = QFileDialog.Options()
 		options |= QFileDialog.DontUseNativeDialog
 		templateDir = os.path.expanduser("~")
 		fileName, _ = QFileDialog.getSaveFileName(parent,
 		caption="Save File", directory=templateDir,
-		filter=f"Facing Templates (*.{extension})", options=options)
+		filter=f"Templates (*.{extension})", options=options)
 	if fileName:
 		path, ext = os.path.splitext(fileName)
 		if ext == '':
@@ -47,10 +47,10 @@ def openFile(parent,extension):
 	if fileName:
 		path, ext = os.path.splitext(fileName)
 		if ext == '':
-			print(f'{fileName}')
+			#print(f'{fileName}')
 			return(f'{fileName}.{extension}')
 		else:
-			print(f'{fileName}')
+			#print(f'{fileName}')
 			return(f'{fileName}')
 	else:
 		return(False)

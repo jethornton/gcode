@@ -120,6 +120,8 @@ class main(QMainWindow):
 		self.pocketSavePB.clicked.connect(partial(pocket.save, self))
 		self.pocketSendPB.clicked.connect(partial(pocket.send, self))
 		self.pocketPTE.clicked.connect(partial(pocket.selectLine, self))
+		self.pocketSaveTemplatePB.clicked.connect(partial(pocket.saveTemplate, self))
+		self.pocketOpenTemplatePB.clicked.connect(partial(pocket.openTemplate, self))
 
 		self.canCycleBG.buttonClicked.connect(partial(cancycle.update, self))
 		self.canSelectPB.clicked.connect(partial(cancycle.get, self))

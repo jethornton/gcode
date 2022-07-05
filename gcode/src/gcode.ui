@@ -679,7 +679,21 @@ you Save Settings you will be asked if you want to create the directory.</string
         <string>Pocket</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_9">
-        <item row="3" column="2">
+        <item row="3" column="1">
+         <widget class="QPushButton" name="pocketOpenTemplatePB">
+          <property name="text">
+           <string>Open Template</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="5">
+         <widget class="QPushButton" name="pocketRemovePB">
+          <property name="text">
+           <string>Delete Selected Line</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="6">
          <widget class="QPushButton" name="pocketSendPB">
           <property name="text">
            <string>Send to G code Tab</string>
@@ -687,13 +701,20 @@ you Save Settings you will be asked if you want to create the directory.</string
          </widget>
         </item>
         <item row="3" column="0">
-         <widget class="QPushButton" name="pocketGeneratePB">
+         <widget class="QPushButton" name="pocketSaveTemplatePB">
           <property name="text">
-           <string>Generate G code</string>
+           <string>Save Template</string>
           </property>
          </widget>
         </item>
-        <item row="1" column="0">
+        <item row="3" column="7">
+         <widget class="QPushButton" name="pocketCopyPB">
+          <property name="text">
+           <string>Copy to Clipboard</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0" colspan="2">
          <widget class="QGroupBox" name="groupBox_5">
           <property name="maximumSize">
            <size>
@@ -797,7 +818,105 @@ you Save Settings you will be asked if you want to create the directory.</string
           </layout>
          </widget>
         </item>
-        <item row="0" column="0">
+        <item row="3" column="8">
+         <widget class="QPushButton" name="pocketSavePB">
+          <property name="text">
+           <string>Save to File</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="4">
+         <widget class="QPushButton" name="pocketGeneratePB">
+          <property name="text">
+           <string>Generate G code</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0" colspan="2">
+         <widget class="QGroupBox" name="groupBox_6">
+          <property name="maximumSize">
+           <size>
+            <width>250</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="title">
+           <string>Setup</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_8">
+           <item row="3" column="1">
+            <widget class="QLineEdit" name="pocketStepDepth">
+             <property name="name" stdset="0">
+              <string>Step Depth</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_27">
+             <property name="text">
+              <string>Lead In</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="pocketLeadIn">
+             <property name="text">
+              <string>0</string>
+             </property>
+             <property name="name" stdset="0">
+              <string>Lead In</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_28">
+             <property name="text">
+              <string>Cut Depth</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="pocketCutDepth">
+             <property name="name" stdset="0">
+              <string>Cut Depth</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_30">
+             <property name="text">
+              <string>Safe Z</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_29">
+             <property name="text">
+              <string>Step Depth</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLineEdit" name="pocketSafeZ"/>
+           </item>
+           <item row="5" column="0" colspan="2">
+            <widget class="QCheckBox" name="pocketProgEndCB">
+             <property name="text">
+              <string>Program End M2</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="0" colspan="2">
+            <widget class="QCheckBox" name="pocketReturnCB">
+             <property name="text">
+              <string>Return to X0 Y0 At End</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="0" colspan="2">
          <widget class="QGroupBox" name="groupBox_4">
           <property name="maximumSize">
            <size>
@@ -911,112 +1030,20 @@ you Save Settings you will be asked if you want to create the directory.</string
           </layout>
          </widget>
         </item>
-        <item row="2" column="0">
-         <widget class="QGroupBox" name="groupBox_6">
-          <property name="maximumSize">
+        <item row="3" column="9">
+         <spacer name="horizontalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
            <size>
-            <width>250</width>
-            <height>16777215</height>
+            <width>40</width>
+            <height>20</height>
            </size>
           </property>
-          <property name="title">
-           <string>Setup</string>
-          </property>
-          <layout class="QGridLayout" name="gridLayout_8">
-           <item row="3" column="1">
-            <widget class="QLineEdit" name="pocketStepDepth">
-             <property name="name" stdset="0">
-              <string>Step Depth</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="label_27">
-             <property name="text">
-              <string>Lead In</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="1">
-            <widget class="QLineEdit" name="pocketLeadIn">
-             <property name="text">
-              <string>0</string>
-             </property>
-             <property name="name" stdset="0">
-              <string>Lead In</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="0">
-            <widget class="QLabel" name="label_28">
-             <property name="text">
-              <string>Cut Depth</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QLineEdit" name="pocketCutDepth">
-             <property name="name" stdset="0">
-              <string>Cut Depth</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_30">
-             <property name="text">
-              <string>Safe Z</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="label_29">
-             <property name="text">
-              <string>Step Depth</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="1">
-            <widget class="QLineEdit" name="pocketSafeZ"/>
-           </item>
-           <item row="5" column="0" colspan="2">
-            <widget class="QCheckBox" name="pocketProgEndCB">
-             <property name="text">
-              <string>Program End M2</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="0" colspan="2">
-            <widget class="QCheckBox" name="pocketReturnCB">
-             <property name="text">
-              <string>Return to X0 Y0 At End</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
+         </spacer>
         </item>
-        <item row="3" column="3">
-         <widget class="QPushButton" name="pocketCopyPB">
-          <property name="text">
-           <string>Copy to Clipboard</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="4">
-         <widget class="QPushButton" name="pocketSavePB">
-          <property name="text">
-           <string>Save to File</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="1">
-         <widget class="QPushButton" name="pocketRemovePB">
-          <property name="text">
-           <string>Delete Selected Line</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1" rowspan="3" colspan="4">
+        <item row="0" column="3" rowspan="3" colspan="7">
          <widget class="QFrame" name="pocketFM">
           <property name="frameShape">
            <enum>QFrame::Box</enum>
@@ -2727,7 +2754,6 @@ Position move then G33.1 for each hole.</string>
   <tabstop>pocketCutDepth</tabstop>
   <tabstop>pocketStepDepth</tabstop>
   <tabstop>pocketReturnCB</tabstop>
-  <tabstop>pocketGeneratePB</tabstop>
   <tabstop>pocketSendPB</tabstop>
   <tabstop>pocketCopyPB</tabstop>
   <tabstop>pocketSavePB</tabstop>
