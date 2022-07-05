@@ -1,8 +1,13 @@
-import os
+import os, configparser
 from math import ceil
-from PyQt5.QtWidgets import QMessageBox, QApplication, QFileDialog
+from PyQt5.QtWidgets import (QLineEdit, QSpinBox, QCheckBox, QComboBox,
+	QLabel, QGroupBox, QDoubleSpinBox, QFileDialog, QMessageBox, QFileDialog)
+
+#from PyQt5.QtWidgets import QMessageBox, QApplication, QFileDialog
 from PyQt5.QtGui import QTextCursor, QTextCharFormat, QTextCharFormat
 from PyQt5.QtCore import Qt
+
+from libgcode import files
 
 def isnumber(i):
 	try:
@@ -87,7 +92,10 @@ def generate(parent):
 	radius = diam / 2
 	rpm = retnumber(parent, 'faceRPM')
 	feed = retnumber(parent, 'faceFeed')
-	stepPercent = retnumber(parent, 'faceStep') * 0.01
+	if parent.faceStep.text() != '':
+		stepPercent = retnumber(parent, 'faceStep') * 0.01
+	else:
+		stepPercent = 0.75
 	safeZ = retnumber(parent, 'faceSafeZ')
 	leadin = retnumber(parent, 'faceLeadIn')
 	cutdepth = retnumber(parent, 'faceFullDepth')
@@ -194,7 +202,6 @@ def delete(parent):
 	cursor.deleteChar()
 
 def selectLine(parent):
-	#print('here')
 	fmt = QTextCharFormat()
 	fmt.setUnderlineColor(Qt.red)
 	fmt.setUnderlineStyle(QTextCharFormat.SingleUnderline)
@@ -211,3 +218,72 @@ def selectLine(parent):
 	cursor.setPosition(position)
 	cursor.select(QTextCursor.LineUnderCursor)
 	cursor.setCharFormat(fmt)
+
+def saveTemplate(parent):
+	path = files.saveFilePath(parent,'face')
+	face = ['[FACING]\n']
+	face.append(f'X_WIDTH = {parent.faceWidthX.text().strip()}\n')
+	face.append(f'Y_DEPTH = {parent.faceDepthY.text().strip()}\n')
+	face.append(f'X_LEFT = {parent.faceLeft.text().strip()}\n')
+	face.append(f'Y_REAR = {parent.faceRear.text().strip()}\n')
+	face.append(f'TOOL = {parent.faceTool.text().strip()}\n')
+	face.append(f'TOOL_DIA = {parent.faceToolDia.text().strip()}\n')
+	face.append(f'RPM = {parent.faceRPM.text().strip()}\n')
+	face.append(f'FEED = {parent.faceFeed.text().strip()}\n')
+	face.append(f'STEP = {parent.faceStep.text().strip()}\n')
+	face.append(f'SAFE_Z = {parent.faceSafeZ.text().strip()}\n')
+	face.append(f'LEAD_IN = {parent.faceLeadIn.text().strip()}\n')
+	face.append(f'Z_DEPTH = {parent.faceFullDepth.text().strip()}\n')
+	face.append(f'Z_STEP = {parent.faceStepDepth.text().strip()}\n')
+	face.append(f'RETURN = {parent.faceReturnCB.isChecked()}\n')
+	face.append(f'PROG_END = {parent.faceProgEndCB.isChecked()}\n')
+
+	with open(path, 'w') as f:
+		f.writelines(face) 
+
+
+def openTemplate(parent):
+	path = files.openFile(parent,'face')
+	template = [
+	['FACING', 'X_WIDTH', 'faceWidthX'],
+	['FACING', 'Y_DEPTH', 'faceDepthY'],
+	['FACING', 'X_LEFT', 'faceLeft'],
+	['FACING', 'Y_REAR', 'faceRear'],
+	['FACING', 'TOOL', 'faceTool'],
+	['FACING', 'TOOL_DIA', 'faceToolDia'],
+	['FACING', 'RPM', 'faceRPM'],
+	['FACING', 'FEED', 'faceFeed'],
+	['FACING', 'STEP', 'faceStep'],
+	['FACING', 'SAFE_Z', 'faceSafeZ'],
+	['FACING', 'LEAD_IN', 'faceLeadIn'],
+	['FACING', 'Z_DEPTH', 'faceFullDepth'],
+	['FACING', 'Z_STEP', 'faceStepDepth'],
+	['FACING', 'RETURN', 'faceReturnCB'],
+	['FACING', 'PROG_END', 'faceProgEndCB'],
+	]
+
+	config = configparser.ConfigParser(strict=False)
+	config.optionxform = str
+	config.read(path)
+
+	for item in template:
+		if config.has_option(item[0], item[1]):
+			if isinstance(getattr(parent, item[2]), QLabel):
+				getattr(parent, item[2]).setText(config[item[0]][item[1]])
+			if isinstance(getattr(parent, item[2]), QLineEdit):
+				getattr(parent, item[2]).setText(config[item[0]][item[1]])
+			if isinstance(getattr(parent, item[2]), QSpinBox):
+				getattr(parent, item[2]).setValue(abs(int(config[item[0]][item[1]])))
+			if isinstance(getattr(parent, item[2]), QDoubleSpinBox):
+				getattr(parent, item[2]).setValue(float(config[item[0]][item[1]]))
+			if isinstance(getattr(parent, item[2]), QCheckBox):
+				getattr(parent, item[2]).setChecked(eval(config[item[0]][item[1]]))
+			if isinstance(getattr(parent, item[2]), QGroupBox):
+				getattr(parent, item[2]).setChecked(eval(config[item[0]][item[1]]))
+				#print(self.config[item[0]][item[1]])
+			if isinstance(getattr(parent, item[2]), QComboBox):
+				index = getattr(v, item[2]).findData(config[item[0]][item[1]])
+				if index >= 0:
+					getattr(parent, item[2]).setCurrentIndex(index)
+
+

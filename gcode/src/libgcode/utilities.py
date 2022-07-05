@@ -33,7 +33,7 @@ def saveSettings(parent):
 			os.makedirs(parent.gcodeLocationLE.text().strip())
 			settings.append(f'GCODE_DEFAULT = {parent.gcodeLocationLE.text().strip()}\n')
 	if os.path.exists(parent.templateLocationLE.text().strip()):
-	settings.append(f'TEMPLATE_DEFAULT = {parent.templateLocationLE.text().strip()}\n')
+		settings.append(f'TEMPLATE_DEFAULT = {parent.templateLocationLE.text().strip()}\n')
 	else:
 		result = parent.errorMsgYesNo('Create the Directory?', 'Directory Not Found!')
 		if result:
