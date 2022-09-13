@@ -25,22 +25,24 @@ def saveSettings(parent):
 	settings.append(f'MAX_RPM_1 = {parent.machineMaxSB_1.value()}\n')
 	settings.append(f'NAME_2 = {parent.machineLE_2.text().strip()}\n')
 	settings.append(f'MAX_RPM_2 = {parent.machineMaxSB_2.value()}\n')
-	if os.path.exists(parent.gcodeLocationLE.text().strip()):
-		settings.append(f'GCODE_DEFAULT = {parent.gcodeLocationLE.text().strip()}\n')
-	else:
-		result = parent.errorMsgYesNo('Create the Directory?', 'Directory Not Found!')
-		if result:
-			os.makedirs(parent.gcodeLocationLE.text().strip())
+
+	if parent.gcodeLocationLE.text().strip():
+		if os.path.exists(parent.gcodeLocationLE.text().strip()):
 			settings.append(f'GCODE_DEFAULT = {parent.gcodeLocationLE.text().strip()}\n')
-	if os.path.exists(parent.templateLocationLE.text().strip()):
-		settings.append(f'TEMPLATE_DEFAULT = {parent.templateLocationLE.text().strip()}\n')
-	else:
-		result = parent.errorMsgYesNo('Create the Directory?', 'Directory Not Found!')
-		if result:
-			os.makedirs(parent.templateLocationLE.text().strip())
+		else:
+			result = parent.errorMsgYesNo('Create the Directory?', 'Directory Not Found!')
+			if result:
+				os.makedirs(parent.gcodeLocationLE.text().strip())
+				settings.append(f'GCODE_DEFAULT = {parent.gcodeLocationLE.text().strip()}\n')
+
+	if parent.templateLocationLE.text().strip():
+		if os.path.exists(parent.templateLocationLE.text().strip()):
 			settings.append(f'TEMPLATE_DEFAULT = {parent.templateLocationLE.text().strip()}\n')
-
-
+		else:
+			result = parent.errorMsgYesNo('Create the Directory?', 'Directory Not Found!')
+			if result:
+				os.makedirs(parent.templateLocationLE.text().strip())
+				settings.append(f'TEMPLATE_DEFAULT = {parent.templateLocationLE.text().strip()}\n')
 
 	sf = os.path.expanduser('~/.gcode_settings')
 	with open(sf, 'w') as f:
