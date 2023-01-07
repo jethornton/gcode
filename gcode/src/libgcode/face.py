@@ -98,9 +98,9 @@ def generate(parent):
 		stepPercent = 0.75
 	safeZ = retnumber(parent, 'faceSafeZ')
 	leadin = retnumber(parent, 'faceLeadIn')
-	cutdepth = retnumber(parent, 'faceFullDepth')
+	fullDepthZ = retnumber(parent, 'faceFullDepth')
 	if parent.faceStepDepth.text() == '':
-		stepdepth = cutdepth
+		stepdepth = fullDepthZ
 	else:
 		stepdepth = abs(retnumber(parent, 'faceStepDepth'))
 
@@ -131,14 +131,15 @@ def generate(parent):
 		parent.facePTE.append(f'T{int(tool)} M6 G43')
 	parent.facePTE.append(f'M3 S{rpm} F{feed}')
 	# raise top to make even number of full depth cuts if not even
-	depthPasses = ceil(cutdepth / stepdepth)
+	depthPasses = ceil(fullDepthZ / stepdepth)
 	parent.facePTE.append(f';Steps {depthPasses}')
-	top = round((depthPasses * stepdepth) - cutdepth, 4)
+	bottomZ = top - fullDepthZ
+	top = round((depthPasses * stepdepth) + bottomZ, 4)
 	parent.facePTE.append(f';Top {top}')
 	currentZ = top
 
 	# depth loop
-	while currentZ > cutdepth:
+	while currentZ > fullDepthZ:
 		parent.facePTE.append(f'G0 Z{safeZ:.4f}')
 
 		plusX = (left + widthX) + radius - cutwidth
