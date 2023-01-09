@@ -100,9 +100,9 @@ def generate(parent):
 	leadin = retnumber(parent, 'faceLeadIn')
 	fullDepthZ = retnumber(parent, 'faceFullDepth')
 	if parent.faceStepDepth.text() == '':
-		stepdepth = fullDepthZ
+		stepDepth = fullDepthZ
 	else:
-		stepdepth = abs(retnumber(parent, 'faceStepDepth'))
+		stepDepth = abs(retnumber(parent, 'faceStepDepth'))
 
 	step = min(widthX, depthY)
 	cutwidth = diam * stepPercent
@@ -131,15 +131,19 @@ def generate(parent):
 		parent.facePTE.append(f'T{int(tool)} M6 G43')
 	parent.facePTE.append(f'M3 S{rpm} F{feed}')
 	# raise top to make even number of full depth cuts if not even
-	depthPasses = ceil(fullDepthZ / stepdepth)
-	parent.facePTE.append(f';Steps {depthPasses}')
+	depthPasses = ceil(fullDepthZ / stepDepth)
+
+	parent.facePTE.append(f'; Step Depth = {stepDepth:.4f}')
+	parent.facePTE.append(f'; Number of Cuts = {depthPasses}')
 	bottomZ = top - fullDepthZ
-	top = round((depthPasses * stepdepth) + bottomZ, 4)
-	parent.facePTE.append(f';Top {top}')
+	parent.facePTE.append(f'; Bottom Cut Z = {bottomZ:.4f}')
+
+	top = round((depthPasses * stepDepth) + bottomZ, 4)
+	parent.facePTE.append(f';Top = {top}')
 	currentZ = top
 
 	# depth loop
-	while currentZ > fullDepthZ:
+	while currentZ > bottomZ:
 		parent.facePTE.append(f'G0 Z{safeZ:.4f}')
 
 		plusX = (left + widthX) + radius - cutwidth
@@ -148,7 +152,7 @@ def generate(parent):
 		minusY = (back - depthY) - radius + cutwidth
 		parent.facePTE.append(f'G0 X{minusX  - leadin:.4f} Y{plusY:.4f}')
 
-		nextZ = currentZ - stepdepth
+		nextZ = currentZ - stepDepth
 		parent.facePTE.append(f'G1 Z{nextZ:.4f}')
 		currentZ = nextZ
 

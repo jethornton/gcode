@@ -2850,15 +2850,15 @@ Position move then G33.1 for each hole.</string>
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="drillDepthBG"/>
-  <buttongroup name="millMaterialBG"/>
-  <buttongroup name="drillUnitsBG"/>
-  <buttongroup name="millUnitsBG"/>
-  <buttongroup name="unitsBG"/>
-  <buttongroup name="canCycleBG"/>
-  <buttongroup name="canGenerateBG"/>
-  <buttongroup name="canRetractBG"/>
   <buttongroup name="canDistanceBG"/>
+  <buttongroup name="canRetractBG"/>
+  <buttongroup name="unitsBG"/>
+  <buttongroup name="drillUnitsBG"/>
+  <buttongroup name="millMaterialBG"/>
+  <buttongroup name="millUnitsBG"/>
   <buttongroup name="drillMaterialBG"/>
+  <buttongroup name="canCycleBG"/>
+  <buttongroup name="drillDepthBG"/>
+  <buttongroup name="canGenerateBG"/>
  </buttongroups>
 </ui>
